@@ -5,61 +5,78 @@
 <title>Renan & Laislla</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#333}
+<!-- Fonte elegante (similar ao Casar.com) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
-/* HERO – TOPO IGUAL CASAR.COM */
+<style>
+:root{
+  --bege:#f7f3ef;
+  --cinza:#777;
+  --dourado:#c8a165;
+  --texto:#333;
+}
+
+body{
+  margin:0;
+  font-family:'Montserrat',sans-serif;
+  color:var(--texto);
+  background:#fff;
+}
+
+/* HERO */
 .hero{
   position:relative;
   height:100vh;
-  background:url("imagens/foto_topo.jpg") center center / cover no-repeat;
+  background:url("imagens/foto_topo.jpg") center/cover no-repeat;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   text-align:center;
   color:#fff;
 }
-.hero .overlay{
+.hero::after{
+  content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.45);
+  background:rgba(0,0,0,.45);
 }
 .hero-content{
   position:relative;
   z-index:2;
+  max-width:820px;
   padding:20px;
-  max-width:800px;
 }
 .hero-content h1{
-  font-size:56px;
+  font-family:'Playfair Display',serif;
   font-weight:300;
+  font-size:58px;
   margin-bottom:20px;
 }
 .hero-content .frase{
+  font-style:italic;
   font-size:20px;
   line-height:1.6;
   margin-bottom:25px;
-  font-style:italic;
 }
 .hero-content .data{
-  font-size:18px;
   letter-spacing:1px;
+  font-size:18px;
 }
 
 /* CONTADOR */
-.contador-section{
+.contador{
   background:#fff;
   text-align:center;
   padding:30px 20px;
   font-size:20px;
-  color:#555;
+  color:var(--cinza);
 }
 
 /* MENU */
 nav{
-  background:#fff;
   position:sticky;
   top:0;
+  background:#fff;
   border-bottom:1px solid #eee;
   text-align:center;
   z-index:100;
@@ -67,74 +84,66 @@ nav{
 nav a{
   display:inline-block;
   padding:15px;
-  color:#555;
   text-decoration:none;
+  color:#555;
   font-size:14px;
 }
-nav a:hover{color:#c8a165}
+nav a:hover{color:var(--dourado);}
 
 /* SEÇÕES */
 section{
   max-width:1000px;
   margin:auto;
-  padding:60px 20px;
+  padding:70px 20px;
 }
-h2{text-align:center;font-weight:300;margin-bottom:30px}
+h2{
+  font-family:'Playfair Display',serif;
+  font-weight:300;
+  text-align:center;
+  margin-bottom:30px;
+}
 
-/* ===== CARROSSEL COMPLETO ===== */
+/* CARROSSEL */
 .carrossel{
   position:relative;
-  max-width:1000px;
-  margin:40px auto;
   overflow:hidden;
-  background:#f7f3ef;
+  background:var(--bege);
 }
 .slides{
   display:flex;
-  transition:transform .6s ease;
+  transition:.6s;
 }
 .slide{
   min-width:100%;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:#f7f3ef;
 }
 .slide img{
   width:100%;
   height:500px;
   object-fit:contain;
 }
-
-/* SETAS */
 .prev,.next{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  background:rgba(0,0,0,.5);
+  background:rgba(0,0,0,.45);
   color:#fff;
   border:none;
-  font-size:28px;
+  font-size:26px;
   padding:12px 16px;
   cursor:pointer;
   border-radius:50%;
-  z-index:10;
 }
-.prev{left:15px}
-.next{right:15px}
-
-/* BOLINHAS */
-.dots{text-align:center;margin-top:10px}
+.prev{left:15px;}
+.next{right:15px;}
+.dots{text-align:center;margin-top:10px;}
 .dot{
-  display:inline-block;
-  width:10px;
-  height:10px;
-  margin:5px;
-  background:#ccc;
-  border-radius:50%;
-  cursor:pointer;
+  width:10px;height:10px;border-radius:50%;
+  background:#ccc;display:inline-block;margin:5px;cursor:pointer;
 }
-.dot.active{background:#c8a165}
+.dot.active{background:var(--dourado);}
 
 /* GRID */
 .grid{
@@ -144,29 +153,35 @@ h2{text-align:center;font-weight:300;margin-bottom:30px}
 }
 .card{
   border:1px solid #eee;
+  border-radius:6px;
   padding:20px;
   text-align:center;
-  border-radius:6px;
 }
 button{
-  background:#c8a165;
+  background:var(--dourado);
   border:none;
   color:#fff;
   padding:10px 20px;
-  cursor:pointer;
   border-radius:4px;
+  cursor:pointer;
 }
-button:hover{opacity:.9}
+
+/* MAPA */
+.mapa iframe{
+  width:100%;
+  height:350px;
+  border:0;
+  border-radius:6px;
+}
 
 /* MODAL PIX */
 .modal{
   display:none;
   position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
+  inset:0;
   background:rgba(0,0,0,.6);
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   z-index:999;
 }
 .modal-content{
@@ -177,12 +192,10 @@ button:hover{opacity:.9}
   text-align:center;
   border-radius:6px;
 }
-.close{cursor:pointer;font-size:18px;color:#999;float:right}
 
 /* MOBILE */
 @media(max-width:768px){
   .hero-content h1{font-size:38px}
-  .hero-content .frase{font-size:16px}
   .slide img{height:300px}
 }
 </style>
@@ -191,9 +204,8 @@ button:hover{opacity:.9}
 <body>
 
 <header class="hero">
-  <div class="overlay"></div>
   <div class="hero-content">
-    <h1>Renan &amp; Laislla</h1>
+    <h1>Renan & Laislla</h1>
     <p class="frase">
       “O amor é paciente, o amor é bondoso.<br>
       Tudo sofre, tudo crê, tudo espera, tudo suporta.”
@@ -202,38 +214,25 @@ button:hover{opacity:.9}
   </div>
 </header>
 
-<section class="contador-section">
-  <p id="contador"></p>
-</section>
+<div class="contador" id="contador"></div>
 
 <nav>
 <a href="#galeria">Galeria</a>
 <a href="#casal">O Casal</a>
 <a href="#recepcao">Recepção</a>
+<a href="#local">Localização</a>
 <a href="#presentes">Presentes</a>
 <a href="#rsvp">Confirmação</a>
 </nav>
 
-<!-- CARROSSEL -->
 <section class="carrossel" id="galeria">
 <button class="prev" onclick="voltar()">‹</button>
 <button class="next" onclick="avancar()">›</button>
-
 <div class="slides" id="slides">
 <div class="slide"><img src="imagens/foto1.jpg.jpeg"></div>
 <div class="slide"><img src="imagens/foto2.jpg.jpeg"></div>
 <div class="slide"><img src="imagens/foto3.jpg.jpeg"></div>
-<div class="slide"><img src="imagens/foto4.jpg.jpeg"></div>
-<div class="slide"><img src="imagens/foto5.jpg.jpeg"></div>
-<div class="slide"><img src="imagens/foto6.jpg.jpeg"></div>
-<div class="slide"><img src="imagens/foto7.jpg.jpeg"></div>
-<div class="slide"><img src="imagens/foto8.jpg.jpeg"></div>
-<div class="slide"><img src="imagens/foto9.jpg.jpeg"></div>
-<div class="slide"><img src="imagens/foto10.jpg.jpeg"></div>
-<div class="slide"><img src="imagens/foto11.jpg.jpeg"></div>
-<div class="slide"><img src="imagens/foto12.jpg.jpeg"></div>
 </div>
-
 <div class="dots" id="dots"></div>
 </section>
 
@@ -248,22 +247,20 @@ Nossa história é feita de amor, parceria e sonhos compartilhados.
 <h2>Recepção</h2>
 <p style="text-align:center">
 📍 Cachoeira Grande<br>
-📅 22 de agosto de 2026<br>
-👔 Traje: Esporte fino
+🕓 16h • Traje: Esporte fino
 </p>
+</section>
+
+<section id="local" class="mapa">
+<h2>Localização</h2>
+<iframe src="https://www.google.com/maps?q=Cachoeira%20Grande%20Lagoinha%20SP&output=embed"></iframe>
 </section>
 
 <section id="presentes">
 <h2>Lista de Presentes</h2>
 <div class="grid">
 <div class="card">
-<h3>🍽️ Jogo de Pratos</h3>
-<p>Valor sugerido: R$ 400</p>
-<button onclick="abrirPix()">Presentear</button>
-</div>
-<div class="card">
 <h3>✈️ Lua de Mel</h3>
-<p>Contribua com qualquer valor</p>
 <button onclick="abrirPix()">Presentear</button>
 </div>
 </div>
@@ -271,66 +268,51 @@ Nossa história é feita de amor, parceria e sonhos compartilhados.
 
 <section id="rsvp">
 <h2>Confirme sua presença</h2>
-<form onsubmit="alert('Presença confirmada! ❤️');return false;">
-<input type="text" placeholder="Nome completo" required>
-<input type="number" placeholder="Quantidade de pessoas" required>
-<button type="submit">Confirmar presença</button>
+<form onsubmit="alert('Presença confirmada!');return false;">
+<input required placeholder="Nome completo">
+<input required type="number" placeholder="Quantidade de pessoas">
+<button>Confirmar</button>
 </form>
 </section>
 
 <div class="modal" id="pixModal">
 <div class="modal-content">
-<span class="close" onclick="fecharPix()">✕</span>
-<h3>Pix para presente 🎁</h3>
-<p><strong>Chave Pix:</strong><br>300.389.638-50</p>
-<button onclick="copiarPix()">Copiar chave Pix</button>
+<p><strong>Pix:</strong> 300.389.638-50</p>
+<button onclick="fecharPix()">Fechar</button>
 </div>
 </div>
 
 <script>
-let index=0;
+/* CONTADOR */
+const data=new Date("2026-08-22").getTime();
+setInterval(()=>{
+ const d=data-new Date().getTime();
+ document.getElementById("contador").innerHTML=
+ `Faltam <strong>${Math.floor(d/86400000)}</strong> dias para o grande dia 💍`;
+},1000);
+
+/* CARROSSEL */
+let i=0;
 const slides=document.getElementById("slides");
 const total=document.querySelectorAll(".slide").length;
-const dotsContainer=document.getElementById("dots");
-let autoPlay;
-
-for(let i=0;i<total;i++){
-  const d=document.createElement("span");
-  d.className="dot"+(i===0?" active":"");
-  d.onclick=()=>{index=i;mostrar();pararAuto();}
-  dotsContainer.appendChild(d);
-}
-function atualizarDots(){
-  document.querySelectorAll(".dot").forEach((d,i)=>{
-    d.classList.toggle("active",i===index);
-  });
+const dots=document.getElementById("dots");
+for(let x=0;x<total;x++){
+ const s=document.createElement("span");
+ s.className="dot"+(x===0?" active":"");
+ s.onclick=()=>{i=x;mostrar();}
+ dots.appendChild(s);
 }
 function mostrar(){
-  slides.style.transform=`translateX(-${index*100}%)`;
-  atualizarDots();
+ slides.style.transform=`translateX(-${i*100}%)`;
+ document.querySelectorAll(".dot").forEach((d,x)=>d.classList.toggle("active",x===i));
 }
-function avancar(){index=(index+1)%total;mostrar();}
-function voltar(){index=(index-1+total)%total;mostrar();}
-function iniciarAuto(){autoPlay=setInterval(avancar,4000);}
-function pararAuto(){clearInterval(autoPlay);}
-slides.addEventListener("mouseenter",pararAuto);
-slides.addEventListener("mouseleave",iniciarAuto);
-iniciarAuto();
+function avancar(){i=(i+1)%total;mostrar();}
+function voltar(){i=(i-1+total)%total;mostrar();}
+setInterval(avancar,4000);
 
+/* PIX */
 function abrirPix(){document.getElementById("pixModal").style.display="flex";}
 function fecharPix(){document.getElementById("pixModal").style.display="none";}
-function copiarPix(){
-navigator.clipboard.writeText("300.389.638-50");
-alert("Chave Pix copiada!");
-}
-
-const dataCasamento=new Date("2026-08-22T16:00:00").getTime();
-setInterval(()=>{
-const agora=new Date().getTime();
-const d=dataCasamento-agora;
-if(d<0)return;
-document.getElementById("contador").innerHTML=`Faltam <strong>${Math.floor(d/86400000)}</strong> dias para o grande dia 💍`;
-},1000);
 </script>
 
 </body>
