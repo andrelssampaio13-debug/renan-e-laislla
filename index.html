@@ -1,5 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Renan & Laislla</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --roxo:#4b2a6b;
+  --dourado:#e6d8a8;
+  --dourado-forte:#d4af37;
+  --cinza:#777;
+}
+
+body{
+  margin:0;
+  font-family:"Georgia","Times New Roman",serif;
+  color:#555;
+  background:#fff;
+}
+
+/* MENU */
+nav{
+  position:sticky;
+  top:0;
+  background:#fff;
+  border-bottom:1px solid #eee;
+  z-index:100;
+  text-align:center;
+}
+nav a{
+  display:inline-block;
+  padding:15px;
+  text-decoration:none;
+  color:var(--roxo);
+  font-size:14px;
+}
+nav a:hover{color:var(--dourado-forte);}
+
+/* TOPO */
+.hero{
+  text-align:center;
+  padding:50px 20px;
+}
+.hero img{
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  object-fit:cover;
+  border:6px solid #eee;
+}
+.hero h1{
+  font-size:46px;
+  letter-spacing:6px;
+  font-weight:300;
+  color:var(--roxo);
+}
+.hero span{
+  font-size:34px;
+  color:var(--dourado-forte);
+}
+.hero p{color:#888}
+
+/* CONTAGEM */
 .countdown{
-  background:#9bbf9b; /* verde elegante */
+  background:var(--dourado);
   padding:60px 20px;
   text-align:center;
 }
+.time{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+.time div{
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  min-width:110px;
+}
+.time span{
+  display:block;
+  font-size:34px;
+  color:var(--roxo);
+}
+
+/* TEXTO */
+.text-section{
+  max-width:900px;
+  margin:60px auto;
+  padding:0 20px;
+  text-align:center;
+  font-size:18px;
+  line-height:1.8;
+  color:#777;
+}
+.text-section strong{color:var(--roxo)}
+.text-section em{color:var(--dourado-forte)}
+
+/* SEÇÕES */
+section{
+  max-width:1000px;
+  margin:80px auto;
+  padding:0 20px;
+  text-align:center;
+}
+section h2{
+  font-weight:300;
+  letter-spacing:5px;
+  color:#777;
+  margin-bottom:40px;
+}
+
+/* CASAL */
+.casal{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-bottom:40px;
+  flex-wrap:wrap;
+}
+.casal img{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* CARROSSEL */
+.carousel{
+  position:relative;
+  max-width:900px;
+  margin:40px auto;
+  overflow:hidden;
+}
+.carousel-track{
+  display:flex;
+  transition:.6s;
+}
+.carousel-slide{
+  min-width:100%;
+  display:flex;
+  justify-content:center;
+}
+.carousel-slide img{
+  max-width:100%;
+  max-height:520px;
+  object-fit:contain;
+}
+.carousel button{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(75,42,107,.85);
+  color:#fff;
+  border:none;
+  font-size:26px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+}
+.prev{left:10px}
+.next{right:10px}
+.dots{display:flex;justify-content:center;margin-top:15px}
+.dot{width:10px;height:10px;border-radius:50%;background:#ccc;margin:5px}
+.dot.active{background:var(--dourado-forte)}
+
+/* PRESENTES */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.card{
+  border:1px solid #eee;
+  border-radius:8px;
+  padding:20px;
+}
+.card img{
+  width:100%;
+  border-radius:6px;
+}
+
+/* RSVP */
+form{
+  max-width:400px;
+  margin:auto;
+}
+input,button{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+}
+button{
+  background:var(--roxo);
+  color:#fff;
+  border:none;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1{font-size:34px}
+  .carousel-slide img{max-height:320px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="#casal">O Casal</a>
+<a href="#galeria">Galeria</a>
+<a href="#recepcao">Recepção</a>
+<a href="#presentes">Presentes</a>
+<a href="#rsvp">Confirme sua Presença</a>
+</nav>
+
+<div class="hero">
+  <img src="imagens/foto1.jpg.jpeg">
+  <h1>LAISLLA</h1>
+  <span>+</span>
+  <h1>RENAN</h1>
+  <p>22 de agosto de 2026 • Cachoeira Grande</p>
+</div>
+
+<div class="countdown">
+  <div class="time">
+    <div><span id="d">0</span>Dias</div>
+    <div><span id="h">0</span>Horas</div>
+    <div><span id="m">0</span>Minutos</div>
+    <div><span id="s">0</span>Segundos</div>
+  </div>
+</div>
+
+<div class="text-section">
+<strong>O que Deus uniu, ninguém o separe</strong><br>
+<em>Mateus 19:6</em><br><br>
+
+Criamos esse site para compartilhar com vocês os detalhes da organização do nosso casamento.
+Estamos muito felizes e contamos com a presença de todos no nosso grande dia!<br><br>
+
+Aqui vocês encontrarão trajes, estacionamento, etc.
+Ah, é importante também confirmar sua presença. Para isto contamos com sua ajuda clicando no menu
+<strong>“Confirme sua Presença”</strong> e preenchendo os dados necessários.<br><br>
+
+Para nos presentear, escolha qualquer item da Lista de Casamento, escolha com o coração!
+Aguardamos vocês no nosso grande dia!
+</div>
+
+<section id="casal">
+<h2>O CASAL</h2>
+<div class="casal">
+  <img src="imagens/foto2.jpg.jpeg">
+  <img src="imagens/foto3.jpg.jpeg">
+</div>
+<p class="text-section">
+<strong>Cada dia é um capítulo novo na nossa história de amor</strong><br><br>
+Histórias de amor existem, e, às vezes, nem nós mesmos acreditamos todo o tempo que já estamos juntos.
+Porém, o brilho intenso e apaixonado dos nossos olhares nos fazem lembrar o porquê de chegarmos até aqui
+sem sentir tanto o tempo passar...<br><br>
+Vamos nos casar! Estamos preparando tudo com muito carinho para curtirmos cada momento com nossos amigos
+e familiares queridos!
+</p>
+</section>
+
+<section id="galeria">
+<h2>GALERIA</h2>
+<div class="carousel" id="carousel">
+  <div class="carousel-track">
+    <div class="carousel-slide"><img src="imagens/foto1.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto2.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto3.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto4.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto5.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto6.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto7.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto8.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto9.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto10.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto11.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto12.jpg.jpeg"></div>
+  </div>
+  <button class="prev">‹</button>
+  <button class="next">›</button>
+</div>
+<div class="dots" id="dots"></div>
+</section>
+
+<section id="presentes">
+<h2>LISTA DE PRESENTES</h2>
+<div class="cards">
+  <div class="card">
+    <img src="imagens/presente1.jpg">
+    <p>Lua de Mel</p>
+    <p>Pix livre</p>
+  </div>
+  <div class="card">
+    <img src="imagens/presente2.jpg">
+    <p>Jantar Especial</p>
+    <p>R$ 300</p>
+  </div>
+</div>
+</section>
+
+<section id="rsvp">
+<h2>CONFIRME SUA PRESENÇA</h2>
+<form onsubmit="alert('Presença confirmada!');return false;">
+<input placeholder="Nome completo" required>
+<input type="number" placeholder="Quantidade de pessoas" required>
+<button>Confirmar</button>
+</form>
+</section>
+
+<script>
+const data=new Date("2026-08-22T14:00:00").getTime();
+setInterval(()=>{
+ const n=new Date().getTime();
+ const d=data-n;
+ if(d<0)return;
+ document.getElementById("d").innerText=Math.floor(d/86400000);
+ document.getElementById("h").innerText=Math.floor((d/3600000)%24);
+ document.getElementById("m").innerText=Math.floor((d/60000)%60);
+ document.getElementById("s").innerText=Math.floor((d/1000)%60);
+},1000);
+</script>
+
+</body>
+</html>
