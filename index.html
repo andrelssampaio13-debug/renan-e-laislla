@@ -18,6 +18,7 @@ body{
   font-family:"Georgia","Times New Roman",serif;
   color:#555;
   background:#fff;
+  line-height:1.8;
 }
 
 /* MENU */
@@ -35,13 +36,14 @@ nav a{
   text-decoration:none;
   color:var(--roxo);
   font-size:14px;
+  letter-spacing:1px;
 }
 nav a:hover{color:var(--dourado-forte);}
 
 /* TOPO */
 .hero{
   text-align:center;
-  padding:50px 20px;
+  padding:60px 20px 40px;
 }
 .hero img{
   width:260px;
@@ -55,8 +57,10 @@ nav a:hover{color:var(--dourado-forte);}
   letter-spacing:6px;
   font-weight:300;
   color:var(--roxo);
+  margin:20px 0 5px;
 }
 .hero span{
+  display:block;
   font-size:34px;
   color:var(--dourado-forte);
 }
@@ -86,14 +90,13 @@ nav a:hover{color:var(--dourado-forte);}
   color:var(--roxo);
 }
 
-/* TEXTO */
+/* TEXTO CENTRAL */
 .text-section{
   max-width:900px;
-  margin:60px auto;
+  margin:70px auto;
   padding:0 20px;
   text-align:center;
   font-size:18px;
-  line-height:1.8;
   color:#777;
 }
 .text-section strong{color:var(--roxo)}
@@ -102,7 +105,7 @@ nav a:hover{color:var(--dourado-forte);}
 /* SEÇÕES */
 section{
   max-width:1000px;
-  margin:80px auto;
+  margin:90px auto;
   padding:0 20px;
   text-align:center;
 }
@@ -137,7 +140,7 @@ section h2{
 }
 .carousel-track{
   display:flex;
-  transition:.6s;
+  transition:.6s ease;
 }
 .carousel-slide{
   min-width:100%;
@@ -148,6 +151,7 @@ section h2{
   max-width:100%;
   max-height:520px;
   object-fit:contain;
+  background:#fff;
 }
 .carousel button{
   position:absolute;
@@ -163,16 +167,27 @@ section h2{
 }
 .prev{left:10px}
 .next{right:10px}
-.dots{display:flex;justify-content:center;margin-top:15px}
-.dot{width:10px;height:10px;border-radius:50%;background:#ccc;margin:5px}
+.dots{
+  display:flex;
+  justify-content:center;
+  margin-top:15px;
+}
+.dot{
+  width:10px;height:10px;
+  border-radius:50%;
+  background:#ccc;
+  margin:5px;
+}
 .dot.active{background:var(--dourado-forte)}
 
-/* PRESENTES */
-.cards{
+/* GRID */
+.grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
 }
+
+/* PRESENTES */
 .card{
   border:1px solid #eee;
   border-radius:8px;
@@ -182,10 +197,16 @@ section h2{
   width:100%;
   border-radius:6px;
 }
+.qr{
+  margin-top:15px;
+}
+.qr img{
+  width:160px;
+}
 
 /* RSVP */
 form{
-  max-width:400px;
+  max-width:420px;
   margin:auto;
 }
 input,button{
@@ -197,6 +218,7 @@ button{
   background:var(--roxo);
   color:#fff;
   border:none;
+  cursor:pointer;
 }
 
 /* MOBILE */
@@ -237,14 +259,11 @@ button{
 <div class="text-section">
 <strong>O que Deus uniu, ninguém o separe</strong><br>
 <em>Mateus 19:6</em><br><br>
-
 Criamos esse site para compartilhar com vocês os detalhes da organização do nosso casamento.
 Estamos muito felizes e contamos com a presença de todos no nosso grande dia!<br><br>
-
 Aqui vocês encontrarão trajes, estacionamento, etc.
 Ah, é importante também confirmar sua presença. Para isto contamos com sua ajuda clicando no menu
 <strong>“Confirme sua Presença”</strong> e preenchendo os dados necessários.<br><br>
-
 Para nos presentear, escolha qualquer item da Lista de Casamento, escolha com o coração!
 Aguardamos vocês no nosso grande dia!
 </div>
@@ -255,7 +274,7 @@ Aguardamos vocês no nosso grande dia!
   <img src="imagens/foto2.jpg.jpeg">
   <img src="imagens/foto3.jpg.jpeg">
 </div>
-<p class="text-section">
+<p>
 <strong>Cada dia é um capítulo novo na nossa história de amor</strong><br><br>
 Histórias de amor existem, e, às vezes, nem nós mesmos acreditamos todo o tempo que já estamos juntos.
 Porém, o brilho intenso e apaixonado dos nossos olhares nos fazem lembrar o porquê de chegarmos até aqui
@@ -290,16 +309,21 @@ e familiares queridos!
 
 <section id="presentes">
 <h2>LISTA DE PRESENTES</h2>
-<div class="cards">
+<div class="grid">
   <div class="card">
     <img src="imagens/presente1.jpg">
-    <p>Lua de Mel</p>
-    <p>Pix livre</p>
+    <p><strong>Lua de Mel</strong><br>Pix livre</p>
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850">
+    </div>
   </div>
+
   <div class="card">
     <img src="imagens/presente2.jpg">
-    <p>Jantar Especial</p>
-    <p>R$ 300</p>
+    <p><strong>Jantar Especial</strong><br>R$ 300</p>
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850">
+    </div>
   </div>
 </div>
 </section>
@@ -314,6 +338,7 @@ e familiares queridos!
 </section>
 
 <script>
+/* CONTAGEM */
 const data=new Date("2026-08-22T14:00:00").getTime();
 setInterval(()=>{
  const n=new Date().getTime();
@@ -324,6 +349,29 @@ setInterval(()=>{
  document.getElementById("m").innerText=Math.floor((d/60000)%60);
  document.getElementById("s").innerText=Math.floor((d/1000)%60);
 },1000);
+
+/* CARROSSEL */
+let i=0;
+const track=document.querySelector(".carousel-track");
+const slides=document.querySelectorAll(".carousel-slide");
+const prev=document.querySelector(".prev");
+const next=document.querySelector(".next");
+const dotsC=document.getElementById("dots");
+
+slides.forEach((_,x)=>{
+  const d=document.createElement("div");
+  d.className="dot"+(x===0?" active":"");
+  d.onclick=()=>{i=x;update();}
+  dotsC.appendChild(d);
+});
+
+function update(){
+  track.style.transform=`translateX(-${i*100}%)`;
+  document.querySelectorAll(".dot").forEach((d,x)=>d.classList.toggle("active",x===i));
+}
+prev.onclick=()=>{i=(i-1+slides.length)%slides.length;update();}
+next.onclick=()=>{i=(i+1)%slides.length;update();}
+setInterval(()=>{next.onclick()},4000);
 </script>
 
 </body>
