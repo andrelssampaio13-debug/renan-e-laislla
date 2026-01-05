@@ -7,68 +7,114 @@
 
 <style>
 :root{
-  --roxo:#6a4c93;
-  --amarelo:#f2c94c;
-  --cinza:#777;
-  --fundo:#f6f6f6;
+  --roxo:#4b2a6b;
+  --dourado:#d4af37;
+  --cinza:#666;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-
 body{
-  font-family: "Georgia", serif;
+  margin:0;
+  font-family:"Georgia","Times New Roman",serif;
+  color:#444;
   background:#fff;
-  color:#555;
 }
 
 /* ===== TOPO ===== */
-.hero{
+header{
   text-align:center;
-  padding:60px 20px 40px;
+  padding:40px 20px;
 }
 
-.hero-img{
-  width:280px;
-  height:360px;
-  margin:auto;
-  border-radius:50% / 40%;
+header h1{
+  font-size:48px;
+  letter-spacing:6px;
+  color:var(--roxo);
+  margin:20px 0 10px;
+}
+
+header p{
+  color:#777;
+  font-size:18px;
+}
+
+/* ===== CARROSSEL ===== */
+.carousel{
+  position:relative;
+  max-width:900px;
+  margin:30px auto;
   overflow:hidden;
-  border:6px solid var(--amarelo);
+  background:#fff;
 }
 
-.hero-img img{
-  width:100%;
-  height:100%;
+.carousel-track{
+  display:flex;
+  transition:transform .6s ease;
+}
+
+.carousel-slide{
+  min-width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#fff;
+}
+
+.carousel-slide img{
+  max-width:100%;
+  max-height:520px;
   object-fit:contain;
   background:#fff;
 }
 
-.hero h1{
-  margin-top:30px;
-  font-size:46px;
-  letter-spacing:6px;
-  color:var(--roxo);
-  font-weight:400;
+/* SETAS */
+.carousel button{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(75,42,107,.8);
+  color:#fff;
+  border:none;
+  font-size:28px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  cursor:pointer;
 }
 
-.hero span{
-  display:block;
-  font-size:32px;
-  margin:10px 0;
-  color:var(--amarelo);
+.prev{left:10px;}
+.next{right:10px;}
+
+/* INDICADORES */
+.dots{
+  display:flex;
+  justify-content:center;
+  margin-top:15px;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ccc;
+  margin:0 5px;
+  cursor:pointer;
+}
+
+.dot.active{
+  background:var(--dourado);
 }
 
 /* ===== CONTAGEM ===== */
 .countdown{
-  background:#a8d5ba;
-  padding:50px 20px;
+  background:var(--roxo);
+  color:#fff;
   text-align:center;
+  padding:50px 20px;
 }
 
 .countdown h2{
-  letter-spacing:6px;
-  font-weight:400;
-  color:#fff;
+  font-weight:300;
+  letter-spacing:4px;
   margin-bottom:30px;
 }
 
@@ -79,217 +125,118 @@ body{
   flex-wrap:wrap;
 }
 
-.box{
+.time div{
   background:#fff;
-  width:120px;
-  padding:20px 10px;
-  border-radius:12px;
+  color:#333;
+  padding:20px;
+  border-radius:10px;
+  min-width:90px;
 }
 
-.box strong{
+.time span{
+  font-size:32px;
   display:block;
-  font-size:36px;
-  color:var(--roxo);
 }
 
-.box span{
-  font-size:14px;
-  color:#999;
-}
-
-/* ===== SEÇÃO ===== */
-section{
-  max-width:900px;
-  margin:auto;
-  padding:60px 20px;
-}
-
-section h2{
-  text-align:center;
-  font-weight:400;
-  letter-spacing:6px;
-  color:#888;
-  margin-bottom:40px;
-}
-
-/* ===== CASAL ===== */
-.casal{
-  display:flex;
-  gap:40px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.casal img{
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  object-fit:cover;
-}
-
-.texto{
-  margin-top:40px;
-  text-align:center;
-  font-size:20px;
-  line-height:1.8;
-  color:#888;
-}
-
-/* ===== CARROSSEL ===== */
-.carrossel{
-  position:relative;
-  overflow:hidden;
-  max-width:600px;
-  margin:40px auto 0;
-  background:#fff;
-}
-
-.slides{
-  display:flex;
-  transition:0.5s;
-}
-
-.slides img{
-  width:100%;
-  flex-shrink:0;
-  object-fit:contain;
-  background:#fff;
-}
-
-.arrow{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:30px;
-  background:rgba(0,0,0,0.5);
-  color:#fff;
-  padding:10px;
-  cursor:pointer;
-  user-select:none;
-}
-
-.left{left:0}
-.right{right:0}
-
-/* ===== FOOTER ===== */
-footer{
-  background:var(--fundo);
-  padding:40px 20px;
-  text-align:center;
-  font-size:14px;
-  color:#999;
+/* ===== RESPONSIVO ===== */
+@media(max-width:600px){
+  header h1{font-size:34px;}
+  .carousel-slide img{max-height:320px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOPO -->
-<div class="hero">
-  <div class="hero-img">
-    <img src="imagens/foto1.jpg">
+<header>
+  <h1>LAISLLA + RENAN</h1>
+  <p>22 de agosto de 2026 • Cachoeira Grande</p>
+</header>
+
+<!-- CARROSSEL -->
+<div class="carousel" id="carousel">
+  <div class="carousel-track">
+    <div class="carousel-slide"><img src="imagens/foto1.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto2.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto3.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto4.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto5.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto6.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto7.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto8.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto9.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto10.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto11.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto12.jpg.jpeg"></div>
   </div>
 
-  <h1>LAISLLA</h1>
-  <span>+</span>
-  <h1>RENAN</h1>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
 </div>
+
+<div class="dots" id="dots"></div>
 
 <!-- CONTAGEM -->
-<div class="countdown">
+<section class="countdown">
   <h2>CONTAGEM REGRESSIVA</h2>
-
   <div class="time">
-    <div class="box"><strong id="d">0</strong><span>DIAS</span></div>
-    <div class="box"><strong id="h">0</strong><span>HORAS</span></div>
-    <div class="box"><strong id="m">0</strong><span>MINUTOS</span></div>
-    <div class="box"><strong id="s">0</strong><span>SEGUNDOS</span></div>
-  </div>
-</div>
-
-<!-- O CASAL -->
-<section>
-  <h2>O CASAL</h2>
-
-  <div class="casal">
-    <img src="imagens/foto2.jpg">
-    <img src="imagens/foto3.jpg">
-  </div>
-
-  <div class="texto">
-    Cada dia é um capítulo novo na nossa história de amor.
-    <br><br>
-    Histórias de amor existem, e, às vezes, nem nós mesmos acreditamos todo o tempo que já estamos juntos.
-    Porém, o brilho intenso e apaixonado dos nossos olhares nos fazem lembrar o porquê de chegarmos até aqui
-    sem sentir tanto o tempo passar...
-    <br><br>
-    Vamos nos casar! Estamos preparando tudo com muito carinho para curtirmos cada momento com nossos amigos
-    e familiares queridos!
+    <div><span id="dias">0</span>Dias</div>
+    <div><span id="horas">0</span>Horas</div>
+    <div><span id="min">0</span>Minutos</div>
+    <div><span id="seg">0</span>Segundos</div>
   </div>
 </section>
-
-<!-- GALERIA -->
-<section>
-  <h2>GALERIA</h2>
-
-  <div class="carrossel">
-    <div class="slides" id="slides">
-      <img src="imagens/foto1.jpg.jpeg">
-      <img src="imagens/foto2.jpg.jpeg">
-      <img src="imagens/foto3.jpg.jpeg">
-      <img src="imagens/foto4.jpg.jpeg">
-      <img src="imagens/foto5.jpg.jpeg">
-      <img src="imagens/foto6.jpg.jpeg">
-      <img src="imagens/foto7.jpg.jpeg">
-      <img src="imagens/foto8.jpg.jpeg">
-      <img src="imagens/foto9.jpg.jpeg">
-      <img src="imagens/foto10.jpg.jpeg">
-      <img src="imagens/foto11.jpg.jpeg">
-      <img src="imagens/foto12.jpg.jpeg">
-    </div>
-
-    <div class="arrow left" onclick="prev()">‹</div>
-    <div class="arrow right" onclick="next()">›</div>
-  </div>
-</section>
-
-<footer>
-  Nosso maior presente é compartilhar esse dia com você 💜
-</footer>
 
 <script>
-/* CONTAGEM */
-const data = new Date("2026-08-22T16:00:00").getTime();
-
-setInterval(()=>{
-  const now = new Date().getTime();
-  const d = data - now;
-  if(d<0) return;
-
-  document.getElementById("d").innerText = Math.floor(d/(1000*60*60*24));
-  document.getElementById("h").innerText = Math.floor((d%(1000*60*60*24))/(1000*60*60));
-  document.getElementById("m").innerText = Math.floor((d%(1000*60*60))/(1000*60));
-  document.getElementById("s").innerText = Math.floor((d%(1000*60))/1000);
-},1000);
-
-/* CARROSSEL */
+const track=document.querySelector(".carousel-track");
+const slides=document.querySelectorAll(".carousel-slide");
+const prev=document.querySelector(".prev");
+const next=document.querySelector(".next");
+const dotsContainer=document.getElementById("dots");
 let index=0;
-const slides=document.getElementById("slides");
-const total=slides.children.length;
+let interval;
+
+slides.forEach((_,i)=>{
+  const d=document.createElement("div");
+  d.className="dot";
+  if(i===0)d.classList.add("active");
+  d.onclick=()=>goTo(i);
+  dotsContainer.appendChild(d);
+});
+
+const dots=document.querySelectorAll(".dot");
 
 function update(){
-  slides.style.transform=`translateX(-${index*100}%)`;
+  track.style.transform=`translateX(-${index*100}%)`;
+  dots.forEach(d=>d.classList.remove("active"));
+  dots[index].classList.add("active");
 }
 
-function next(){
-  index=(index+1)%total;
-  update();
-}
+function goTo(i){ index=i; update(); }
 
-function prev(){
-  index=(index-1+total)%total;
-  update();
-}
+prev.onclick=()=>{ index=(index-1+slides.length)%slides.length; update(); }
+next.onclick=()=>{ index=(index+1)%slides.length; update(); }
+
+function start(){ interval=setInterval(()=>next.onclick(),4000); }
+function stop(){ clearInterval(interval); }
+
+document.getElementById("carousel").addEventListener("mouseenter",stop);
+document.getElementById("carousel").addEventListener("mouseleave",start);
+document.getElementById("carousel").addEventListener("touchstart",stop);
+
+start();
+
+/* CONTAGEM */
+const data=new Date("2026-08-22T16:00:00").getTime();
+setInterval(()=>{
+  const now=new Date().getTime();
+  const d=data-now;
+  if(d<0)return;
+  document.getElementById("dias").innerText=Math.floor(d/(1000*60*60*24));
+  document.getElementById("horas").innerText=Math.floor((d/(1000*60*60))%24);
+  document.getElementById("min").innerText=Math.floor((d/(1000*60))%60);
+  document.getElementById("seg").innerText=Math.floor((d/1000)%60);
+},1000);
 </script>
 
 </body>
