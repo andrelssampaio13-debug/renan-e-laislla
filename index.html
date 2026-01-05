@@ -6,12 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  color:#333;
-  background:#fff;
-}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#333}
 
 /* CABEÇALHO */
 header{
@@ -48,7 +43,7 @@ section{
 }
 h2{text-align:center;font-weight:300;margin-bottom:30px}
 
-/* ===== CARROSSEL SEM CORTES ===== */
+/* ===== CARROSSEL COMPLETO ===== */
 .carrossel{
   position:relative;
   max-width:1000px;
@@ -59,7 +54,7 @@ h2{text-align:center;font-weight:300;margin-bottom:30px}
 
 .slides{
   display:flex;
-  transition:transform 0.6s ease;
+  transition:transform .6s ease;
 }
 
 .slide{
@@ -73,16 +68,15 @@ h2{text-align:center;font-weight:300;margin-bottom:30px}
 .slide img{
   width:100%;
   height:500px;
-  object-fit:contain;   /* NÃO CORTA */
-  background:#f7f3ef;
+  object-fit:contain;
 }
 
-/* SETAS SEMPRE VISÍVEIS */
+/* SETAS */
 .prev,.next{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  background:rgba(0,0,0,0.5);
+  background:rgba(0,0,0,.5);
   color:#fff;
   border:none;
   font-size:28px;
@@ -91,8 +85,29 @@ h2{text-align:center;font-weight:300;margin-bottom:30px}
   border-radius:50%;
   z-index:10;
 }
-.prev{left:15px;}
-.next{right:15px;}
+.prev{left:15px}
+.next{right:15px}
+
+/* BOLINHAS */
+.dots{
+  text-align:center;
+  margin-top:10px;
+}
+.dot{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin:5px;
+  background:#ccc;
+  border-radius:50%;
+  cursor:pointer;
+}
+.dot.active{background:#c8a165}
+
+/* MOBILE */
+@media(max-width:768px){
+  .slide img{height:300px}
+}
 
 /* GRID */
 .grid{
@@ -117,14 +132,6 @@ button{
 }
 button:hover{opacity:.9}
 
-/* RODAPÉ */
-footer{
-  background:#f7f7f7;
-  text-align:center;
-  padding:40px 20px;
-  font-size:14px;
-}
-
 /* MODAL PIX */
 .modal{
   display:none;
@@ -144,14 +151,7 @@ footer{
   text-align:center;
   border-radius:6px;
 }
-.close{cursor:pointer;float:right;font-size:18px;color:#999}
-input{
-  width:100%;
-  padding:10px;
-  margin:10px 0;
-  border:1px solid #ccc;
-  border-radius:4px;
-}
+.close{cursor:pointer;font-size:18px;color:#999;float:right}
 </style>
 </head>
 
@@ -164,8 +164,8 @@ input{
 </header>
 
 <nav>
-<a href="#casal">O Casal</a>
 <a href="#galeria">Galeria</a>
+<a href="#casal">O Casal</a>
 <a href="#recepcao">Recepção</a>
 <a href="#presentes">Presentes</a>
 <a href="#rsvp">Confirmação</a>
@@ -173,7 +173,6 @@ input{
 
 <!-- CARROSSEL -->
 <section class="carrossel" id="galeria">
-
 <button class="prev" onclick="voltar()">‹</button>
 <button class="next" onclick="avancar()">›</button>
 
@@ -191,13 +190,14 @@ input{
 <div class="slide"><img src="imagens/foto11.jpg.jpeg"></div>
 <div class="slide"><img src="imagens/foto12.jpg.jpeg"></div>
 </div>
+
+<div class="dots" id="dots"></div>
 </section>
 
 <section id="casal">
 <h2>O Casal</h2>
 <p style="text-align:center">
 Nossa história é feita de amor, parceria e sonhos compartilhados.
-Criamos este site com muito carinho para dividir esse momento especial com você.
 </p>
 </section>
 
@@ -212,20 +212,12 @@ Criamos este site com muito carinho para dividir esse momento especial com você
 
 <section id="presentes">
 <h2>Lista de Presentes</h2>
-
 <div class="grid">
 <div class="card">
 <h3>🍽️ Jogo de Pratos</h3>
 <p>Valor sugerido: R$ 400</p>
 <button onclick="abrirPix()">Presentear</button>
 </div>
-
-<div class="card">
-<h3>🛋️ Sofá</h3>
-<p>Valor sugerido: R$ 1.500</p>
-<button onclick="abrirPix()">Presentear</button>
-</div>
-
 <div class="card">
 <h3>✈️ Lua de Mel</h3>
 <p>Contribua com qualquer valor</p>
@@ -236,16 +228,12 @@ Criamos este site com muito carinho para dividir esse momento especial com você
 
 <section id="rsvp">
 <h2>Confirme sua presença</h2>
-<form onsubmit="alert('Presença confirmada! Obrigado ❤️');return false;">
+<form onsubmit="alert('Presença confirmada! ❤️');return false;">
 <input type="text" placeholder="Nome completo" required>
 <input type="number" placeholder="Quantidade de pessoas" required>
 <button type="submit">Confirmar presença</button>
 </form>
 </section>
-
-<footer>
-<p>Nosso maior presente é sua presença ❤️</p>
-</footer>
 
 <div class="modal" id="pixModal">
 <div class="modal-content">
@@ -260,34 +248,51 @@ Criamos este site com muito carinho para dividir esse momento especial com você
 let index=0;
 const slides=document.getElementById("slides");
 const total=document.querySelectorAll(".slide").length;
+const dotsContainer=document.getElementById("dots");
+let autoPlay;
+
+for(let i=0;i<total;i++){
+  const d=document.createElement("span");
+  d.className="dot"+(i===0?" active":"");
+  d.onclick=()=>{index=i;mostrar();pararAuto();}
+  dotsContainer.appendChild(d);
+}
+
+function atualizarDots(){
+  document.querySelectorAll(".dot").forEach((d,i)=>{
+    d.classList.toggle("active",i===index);
+  });
+}
 
 function mostrar(){
   slides.style.transform=`translateX(-${index*100}%)`;
+  atualizarDots();
 }
-function avancar(){
-  index=(index+1)%total;
-  mostrar();
-}
-function voltar(){
-  index=(index-1+total)%total;
-  mostrar();
-}
-setInterval(avancar,4000);
+
+function avancar(){index=(index+1)%total;mostrar();}
+function voltar(){index=(index-1+total)%total;mostrar();}
+
+function iniciarAuto(){autoPlay=setInterval(avancar,4000);}
+function pararAuto(){clearInterval(autoPlay);}
+
+slides.addEventListener("mouseenter",pararAuto);
+slides.addEventListener("mouseleave",iniciarAuto);
+
+iniciarAuto();
 
 function abrirPix(){document.getElementById("pixModal").style.display="flex";}
 function fecharPix(){document.getElementById("pixModal").style.display="none";}
 function copiarPix(){
-  navigator.clipboard.writeText("300.389.638-50");
-  alert("Chave Pix copiada!");
+navigator.clipboard.writeText("300.389.638-50");
+alert("Chave Pix copiada!");
 }
 
 const dataCasamento=new Date("2026-08-22T16:00:00").getTime();
 setInterval(()=>{
-  const agora=new Date().getTime();
-  const d=dataCasamento-agora;
-  if(d<0)return;
-  const dias=Math.floor(d/(1000*60*60*24));
-  document.getElementById("contador").innerHTML=`Faltam <strong>${dias}</strong> dias para o grande dia 💍`;
+const agora=new Date().getTime();
+const d=dataCasamento-agora;
+if(d<0)return;
+document.getElementById("contador").innerHTML=`Faltam <strong>${Math.floor(d/86400000)}</strong> dias 💍`;
 },1000);
 </script>
 
