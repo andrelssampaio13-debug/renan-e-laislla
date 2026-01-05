@@ -10,48 +10,45 @@ body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#333}
 header{background:#f7f3ef;text-align:center;padding:80px 20px}
 header h1{font-size:44px;font-weight:300;margin:0}
 header p{color:#777;font-size:18px}
+
 nav{background:#fff;position:sticky;top:0;border-bottom:1px solid #eee;text-align:center;z-index:10}
 nav a{display:inline-block;padding:15px;color:#555;text-decoration:none;font-size:14px}
 nav a:hover{color:#c8a165}
+
 section{max-width:1000px;margin:auto;padding:60px 20px}
 h2{text-align:center;font-weight:300;margin-bottom:30px}
+
+footer{background:#f7f7f7;text-align:center;padding:40px 20px;font-size:14px}
+
+/* CARROSSEL */
+.carrossel{overflow:hidden;width:100%;max-width:1000px;margin:auto}
+.slides{display:flex;transition:transform 1s ease}
+.slides img{
+  width:100%;
+  height:500px;
+  object-fit:cover;
+  border-radius:6px;
+}
+
+/* GALERIA */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.grid img{width:100%;border-radius:6px}
+
+/* PRESENTES */
 .card{border:1px solid #eee;padding:20px;text-align:center;border-radius:6px}
 button{background:#c8a165;border:none;color:#fff;padding:10px 20px;cursor:pointer;border-radius:4px}
 button:hover{opacity:.9}
-.galeria img{width:100%;border-radius:6px}
-footer{background:#f7f7f7;text-align:center;padding:40px 20px;font-size:14px}
 
 /* MODAL PIX */
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);justify-content:center;align-items:center;z-index:999}
 .modal-content{background:#fff;padding:30px;max-width:420px;width:90%;text-align:center;border-radius:6px}
 .close{cursor:pointer;float:right;font-size:18px;color:#999}
 input{width:100%;padding:10px;margin:10px 0;border:1px solid #ccc;border-radius:4px}
-.qr{margin:20px 0}
-small{color:#777}
 </style>
 </head>
 
 <body>
-<div class="slides">
-    <img src="imagens/foto1.jpg.jpeg">
-    <img src="imagens/foto2.jpg.jpeg">
-    <img src="imagens/foto3.jpg.jpeg">
-    <img src="imagens/foto4.jpg.jpeg">
-    <img src="imagens/foto5.jpg.jpeg">
-    <img src="imagens/foto6.jpg.jpeg">
-    <img src="imagens/foto7.jpg.jpeg">
-    <img src="imagens/foto8.jpg.jpeg">
-    <img src="imagens/foto9.jpg.jpeg">
-    <img src="imagens/foto10.jpg.jpeg">
-    <img src="imagens/foto11.jpg.jpeg">
-    <img src="imagens/foto12.jpg.jpeg">
-  </div>
-</div>
-</section>
 
-<script>
-let index=0;
 <header>
 <h1>Renan & Laislla</h1>
 <p>22 de agosto de 2026 • Cachoeira Grande</p>
@@ -66,6 +63,24 @@ let index=0;
 <a href="#rsvp">Confirmação</a>
 </nav>
 
+<!-- CARROSSEL COM 12 FOTOS -->
+<section class="carrossel">
+<div class="slides" id="slides">
+<img src="imagens/foto1.jpg.jpeg">
+<img src="imagens/foto2.jpg.jpeg">
+<img src="imagens/foto3.jpg.jpeg">
+<img src="imagens/foto4.jpg.jpeg">
+<img src="imagens/foto5.jpg.jpeg">
+<img src="imagens/foto6.jpg.jpeg">
+<img src="imagens/foto7.jpg.jpeg">
+<img src="imagens/foto8.jpg.jpeg">
+<img src="imagens/foto9.jpg.jpeg">
+<img src="imagens/foto10.jpg.jpeg">
+<img src="imagens/foto11.jpg.jpeg">
+<img src="imagens/foto12.jpg.jpeg">
+</div>
+</section>
+
 <section id="casal">
 <h2>O Casal</h2>
 <p style="text-align:center">
@@ -76,13 +91,12 @@ Criamos este site com muito carinho para dividir esse momento especial com você
 
 <section id="galeria">
 <h2>Galeria</h2>
-<div class="grid galeria">
-<img src="https://via.placeholder.com/400x500">
-<img src="https://via.placeholder.com/400x500">
-<img src="https://via.placeholder.com/400x500">
-<img src="https://via.placeholder.com/400x500">
+<div class="grid">
+<img src="imagens/foto1.jpg.jpeg">
+<img src="imagens/foto2.jpg.jpeg">
+<img src="imagens/foto3.jpg.jpeg">
+<img src="imagens/foto4.jpg.jpeg">
 </div>
-<p style="text-align:center"><small>(Troque pelas fotos reais do casal)</small></p>
 </section>
 
 <section id="recepcao">
@@ -116,10 +130,6 @@ Criamos este site com muito carinho para dividir esse momento especial com você
 <button onclick="abrirPix()">Presentear</button>
 </div>
 </div>
-
-<p style="text-align:center;margin-top:40px">
-<button onclick="abrirPix()">Contribuir com outro valor</button>
-</p>
 </section>
 
 <section id="rsvp">
@@ -140,26 +150,23 @@ Criamos este site com muito carinho para dividir esse momento especial com você
 <div class="modal-content">
 <span class="close" onclick="fecharPix()">✕</span>
 <h3>Pix para presente 🎁</h3>
-
-<div class="qr">
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=00020126580014BR.GOV.BCB.PIX0136300389638505204000053039865802BR5920Renan%20e%20Laislla6009SAO%20PAULO62070503***6304B14F">
-</div>
-
-<p><strong>Chave Pix (CPF):</strong><br>300.389.638-50</p>
+<p><strong>Chave Pix:</strong><br>300.389.638-50</p>
 <button onclick="copiarPix()">Copiar chave Pix</button>
-<p><small>O valor vai direto para os noivos 💖</small></p>
 </div>
 </div>
 
 <script>
-function abrirPix(){document.getElementById("pixModal").style.display="flex"}
-function fecharPix(){document.getElementById("pixModal").style.display="none"}
-function copiarPix(){
-navigator.clipboard.writeText("300.389.638-50");
-alert("Chave Pix copiada!");
-}
+/* CARROSSEL */
+let index=0;
+const slides=document.getElementById("slides");
+const total=slides.children.length;
 
-// CONTAGEM REGRESSIVA
+setInterval(()=>{
+  index=(index+1)%total;
+  slides.style.transform=`translateX(-${index*100}%)`;
+},4000);
+
+/* CONTADOR */
 const dataCasamento=new Date("2026-08-22T16:00:00").getTime();
 setInterval(()=>{
 const agora=new Date().getTime();
@@ -168,6 +175,14 @@ if(d<0)return;
 const dias=Math.floor(d/(1000*60*60*24));
 document.getElementById("contador").innerHTML=`Faltam <strong>${dias}</strong> dias para o grande dia 💍`;
 },1000);
+
+/* PIX */
+function abrirPix(){document.getElementById("pixModal").style.display="flex"}
+function fecharPix(){document.getElementById("pixModal").style.display="none"}
+function copiarPix(){
+navigator.clipboard.writeText("300.389.638-50");
+alert("Chave Pix copiada!");
+}
 </script>
 
 </body>
