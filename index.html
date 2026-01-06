@@ -428,21 +428,32 @@ iframe{
   </p>
 </section>
 
-<!-- LISTA DE PRESENTES (ESTÁTICA AINDA) -->
+<!-- LISTA DE PRESENTES (DINÂMICA - PLANILHA) -->
 <section id="presentes">
   <h2>LISTA DE PRESENTES</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="imagens/presente1.jpg">
-      <p class="texto"><strong>Lua de Mel</strong><br>Contribua com qualquer valor</p>
-      <div class="qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850">
-      </div>
-    </div>
-  </div>
 
-  <p class="texto"><strong>Pix (CPF):</strong> 300.389.638-50</p>
+  <div class="grid" id="listaPresentes"></div>
+
+  <button id="verMais" style="margin-top:30px">Ver mais presentes</button>
+
+  <p class="texto" style="margin-top:40px">
+    <strong>Pix (CPF):</strong> 300.389.638-50
+  </p>
 </section>
+
+<!-- MODAL PIX -->
+<div class="modal" id="pixModal">
+  <div class="modal-content">
+    <span class="close" onclick="fecharModal()">✕</span>
+    <h3 id="modalTitulo"></h3>
+    <p id="modalValor"></p>
+    <div class="qr">
+      <img id="qrPix">
+    </div>
+    <p><strong>Pix:</strong> 300.389.638-50</p>
+  </div>
+</div>
+
 
 <!-- CONFIRME SUA PRESENÇA -->
 <section id="rsvp">
@@ -490,6 +501,77 @@ prev.onclick=()=>{i=(i-1+slides.length)%slides.length;update();}
 next.onclick=()=>{i=(i+1)%slides.length;update();}
 setInterval(()=>{next.onclick()},4000);
 </script>
+<script>
+/* ===== LISTA DE PRESENTES VIA PLANILHA ===== */
+const CSV_URL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vSUOq5Rmx6x6K9XZnuppxV6VnyJODPnEqBvrWtGYbBl_rp0uh3sczKGv7W1YzKL1-m2HH2R46MaCL6B/pub?output=csv";
 
+let presentes = [];
+let pagina = 0;
+const porPagina = 9;
+
+fetch(CSV_URL)
+  .then(res => res.text())
+  .then(csv => {
+    const linhas = csv.split("\n").slice(1);
+    presentes = linhas
+      .map(l => {
+        const c = l.split(",");
+        return {
+          nome: c[0],
+          valor: c[1],
+          tipo: c[2],
+          ativo: c[3] === "sim"
+        };
+      })
+      .filter(p => p.ativo);
+    renderPresentes();
+  });
+
+function renderPresentes() {
+  const cont = document.getElementById("listaPresentes");
+  const fim = (pagina + 1) * porPagina;
+
+  presentes.slice(0, fim).forEach(p => {
+    if (p.rendered) return;
+    p.rendered = true;
+
+    cont.innerHTML += `
+      <div class="card">
+        <img src="https://source.unsplash.com/400x300/?wedding,gift">
+        <h3>${p.nome}</h3>
+        <p>${p.tipo === "livre" ? "Valor livre" : "R$ " + p.valor}</p>
+        <button onclick="abrirModal('${p.nome}','${p.valor}','${p.tipo}')">
+          Presentear
+        </button>
+      </div>
+    `;
+  });
+}
+
+document.getElementById("verMais").onclick = () => {
+  pagina++;
+  renderPresentes();
+};
+
+/* ===== MODAL PIX ===== */
+function abrirModal(nome, valor, tipo) {
+  document.getElementById("modalTitulo").innerText = nome;
+  document.getElementById("modalValor").innerText =
+    tipo === "livre"
+      ? "Escolha o valor"
+      : "Valor sugerido: R$ " + valor;
+
+  document.getElementById("qrPix").src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850";
+
+  document.getElementById("pixModal").style.display = "flex";
+}
+
+function fecharModal() {
+  document.getElementById("pixModal").style.display = "none";
+}
+</script>
+  
 </body>
 </html>
