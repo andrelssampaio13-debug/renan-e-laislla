@@ -10,7 +10,6 @@
   --rosa:#d88fa3;
   --dourado:#e6c76b;
   --cinza:#777;
-  --claro:#f9f5f6;
 }
 
 *{box-sizing:border-box}
@@ -28,16 +27,10 @@ body{
   padding:50px 20px 30px;
 }
 
-.hero img,
-.casal img{
-  background:#fff;
-  object-fit:cover;
-  object-position:center 25%;
-}
-
 .hero img{
   width:260px;
   height:260px;
+  object-fit:cover;
   border-radius:50%;
   border:6px solid #eee;
 }
@@ -61,7 +54,7 @@ body{
   color:#888;
 }
 
-/* ===== CONTAGEM (AJUSTADA) ===== */
+/* ===== CONTAGEM ===== */
 .countdown{
   background:var(--dourado);
   padding:70px 20px;
@@ -72,7 +65,7 @@ body{
   letter-spacing:6px;
   font-weight:300;
   color:var(--rosa);
-  margin-bottom:35px;
+  margin-bottom:30px;
 }
 
 .time{
@@ -95,10 +88,10 @@ body{
   color:var(--rosa);
 }
 
-/* ===== TEXTO DA CONTAGEM (SEPARADO) ===== */
+/* ===== TEXTO CONTAGEM ===== */
 .texto-contagem{
   max-width:900px;
-  margin:60px auto 0;
+  margin:60px auto;
   text-align:center;
   color:#888;
   font-size:18px;
@@ -139,6 +132,7 @@ section h2{
   width:180px;
   height:180px;
   border-radius:50%;
+  object-fit:cover;
 }
 
 .texto{
@@ -191,6 +185,7 @@ section h2{
 .prev{left:10px}
 .next{right:10px}
 
+/* ===== DOTS ===== */
 .dots{
   display:flex;
   justify-content:center;
@@ -207,19 +202,18 @@ section h2{
 
 .dot.active{background:var(--dourado)}
 
-/* ===== GRID / IMAGENS ===== */
+/* ===== GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
 .full-img{
   width:100%;
   max-height:400px;
   object-fit:cover;
   border-radius:8px;
-  margin-bottom:30px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
 }
 
 /* ===== PRESENTES ===== */
@@ -256,7 +250,6 @@ iframe{
   border-radius:8px;
 }
 
-/* ===== MOBILE ===== */
 @media(max-width:600px){
   .hero h1{font-size:34px}
   .carousel-slide img{max-height:320px}
@@ -303,21 +296,103 @@ iframe{
   Aguardamos vocês no nosso grande dia!
 </div>
 
-<!-- ⚠️ DAQUI PARA BAIXO É EXATAMENTE O MESMO CONTEÚDO DA ETAPA 1 -->
-<!-- GALERIA, RECEPÇÃO, INFORMAÇÕES, CARDÁPIO, LOCALIZAÇÃO, LISTA DE PRESENTES, RSVP -->
-<!-- (sem nenhuma linha removida) -->
+<!-- O CASAL -->
+<section>
+  <h2>O CASAL</h2>
+  <div class="casal">
+    <img src="imagens/foto19.jpg.jpeg">
+    <img src="imagens/foto20.jpg.jpeg">
+  </div>
+  <div class="texto">
+    <strong>Cada dia é um capítulo novo na nossa história de amor</strong><br><br>
+    Histórias de amor existem, e, às vezes, nem nós mesmos acreditamos todo o tempo que já estamos juntos.
+    Porém, o brilho intenso e apaixonado dos nossos olhares nos fazem lembrar o porquê de chegarmos até aqui
+    sem sentir tanto o tempo passar...<br><br>
+    Vamos nos casar!
+  </div>
+</section>
 
-<!-- CONTAGEM SCRIPT -->
+<!-- GALERIA -->
+<div class="carousel">
+  <div class="carousel-track">
+    <!-- fotos 1 a 17 -->
+    <script>
+      for(let i=1;i<=17;i++){
+        document.write(`<div class="carousel-slide"><img src="imagens/foto${i}.jpg.jpeg"></div>`);
+      }
+    </script>
+  </div>
+  <button class="prev">‹</button>
+  <button class="next">›</button>
+</div>
+
+<div class="dots" id="dots"></div>
+
+<!-- RECEPÇÃO -->
+<section>
+  <h2>RECEPÇÃO</h2>
+  <img src="imagens/foto21.jpg.jpeg" class="full-img">
+</section>
+
+<!-- INFORMAÇÕES -->
+<section>
+  <h2>INFORMAÇÕES GERAIS</h2>
+  <p class="texto"><strong>Dresscode:</strong> Social / Passeio Completo</p>
+  <div class="grid">
+    <img src="imagens/foto22.jpg.jpeg" class="full-img">
+    <img src="imagens/foto23.jpg.jpeg" class="full-img">
+  </div>
+</section>
+
+<!-- CARDÁPIO -->
+<section>
+  <h2>CARDÁPIO</h2>
+  <div class="grid">
+    <img src="imagens/foto24.jpg.jpeg" class="full-img">
+    <img src="imagens/foto25.jpg.jpeg" class="full-img">
+  </div>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section>
+  <h2>LOCALIZAÇÃO</h2>
+  <iframe src="https://www.google.com/maps?q=Cachoeira%20Grande%20SP&output=embed"></iframe>
+</section>
+
+<!-- LISTA DE PRESENTES -->
+<section>
+  <h2>LISTA DE PRESENTES</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="imagens/presente1.jpg">
+      <div class="qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850">
+      </div>
+    </div>
+  </div>
+  <p class="texto"><strong>Pix (CPF):</strong> 300.389.638-50</p>
+</section>
+
+<!-- CONFIRME SUA PRESENÇA -->
+<section id="rsvp">
+  <h2>CONFIRME SUA PRESENÇA</h2>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScU7mQdPGp_Oy1N2eMSJPgL2apfoZNu1rGnb6z7sCNtkDo1WQ/viewform" target="_blank">
+    <button>Confirmar Presença</button>
+  </a>
+</section>
+
 <script>
 const data=new Date("2026-08-22T14:00:00").getTime();
 setInterval(()=>{
   const n=new Date().getTime();
   const d=data-n;
   if(d<0)return;
-  document.getElementById("d").innerText=Math.floor(d/(1000*60*60*24));
-  document.getElementById("h").innerText=Math.floor((d/(1000*60*60))%24);
-  document.getElementById("m").innerText=Math.floor((d/(1000*60))%60);
-  document.getElementById("s").innerText=Math.floor((d/1000)%60);
+  d&&(
+    document.getElementById("d").innerText=Math.floor(d/(1000*60*60*24)),
+    document.getElementById("h").innerText=Math.floor((d/(1000*60*60))%24),
+    document.getElementById("m").innerText=Math.floor((d/(1000*60))%60),
+    document.getElementById("s").innerText=Math.floor((d/1000)%60)
+  );
 },1000);
 </script>
 
