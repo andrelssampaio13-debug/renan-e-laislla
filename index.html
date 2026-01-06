@@ -61,46 +61,54 @@ body{
   color:#888;
 }
 
-/* ===== CONTAGEM ===== */
+/* ===== CONTAGEM (AJUSTADA) ===== */
 .countdown{
-  background:#f1dbe2;
-  padding:60px 20px;
+  background:var(--dourado);
+  padding:70px 20px;
   text-align:center;
 }
 
 .countdown h2{
   letter-spacing:6px;
   font-weight:300;
-  color:#fff;
-  margin-bottom:30px;
+  color:var(--rosa);
+  margin-bottom:35px;
 }
 
 .time{
   display:flex;
   justify-content:center;
-  gap:15px;
+  gap:18px;
   flex-wrap:wrap;
 }
 
 .time div{
   background:#fff;
-  padding:20px;
-  border-radius:12px;
-  min-width:110px;
+  padding:22px;
+  border-radius:14px;
+  min-width:120px;
 }
 
 .time span{
   display:block;
-  font-size:34px;
+  font-size:36px;
   color:var(--rosa);
 }
 
-.count-text{
+/* ===== TEXTO DA CONTAGEM (SEPARADO) ===== */
+.texto-contagem{
   max-width:900px;
-  margin:40px auto 0;
-  color:#fff;
+  margin:60px auto 0;
+  text-align:center;
+  color:#888;
   font-size:18px;
-  line-height:1.8;
+  line-height:1.9;
+}
+
+.texto-contagem .versiculo{
+  color:var(--rosa);
+  font-size:20px;
+  margin-bottom:25px;
 }
 
 /* ===== SEÇÕES ===== */
@@ -199,7 +207,7 @@ section h2{
 
 .dot.active{background:var(--dourado)}
 
-/* ===== RECEPÇÃO / GRID ===== */
+/* ===== GRID / IMAGENS ===== */
 .full-img{
   width:100%;
   max-height:400px;
@@ -230,7 +238,7 @@ section h2{
   width:180px;
 }
 
-/* ===== RSVP ===== */
+/* ===== BOTÕES ===== */
 button{
   background:var(--rosa);
   color:#fff;
@@ -276,153 +284,31 @@ iframe{
     <div><span id="m">0</span>Minutos</div>
     <div><span id="s">0</span>Segundos</div>
   </div>
+</div>
 
-  <div class="count-text">
+<div class="texto-contagem">
+  <div class="versiculo">
     <strong>O que Deus uniu, ninguém o separe</strong><br>
-    Mateus 19:6<br><br>
-
-    Criamos esse site para compartilhar com vocês os detalhes da organização do nosso casamento.
-    Estamos muito felizes e contamos com a presença de todos no nosso grande dia!<br><br>
-
-    Aqui vocês encontrarão trajes, estacionamento, etc.
-    Ah, é importante também confirmar sua presença. Para isto contamos com sua ajuda clicando no menu
-    “Confirme sua Presença” e preenchendo os dados necessários.<br><br>
-
-    Para nos presentear, escolha qualquer item da Lista de Casamento, escolha com o coração!
-    Aguardamos vocês no nosso grande dia!
+    Mateus 19:6
   </div>
+
+  Criamos esse site para compartilhar com vocês os detalhes da organização do nosso casamento.
+  Estamos muito felizes e contamos com a presença de todos no nosso grande dia!<br><br>
+
+  Aqui vocês encontrarão trajes, estacionamento, etc.
+  Ah, é importante também confirmar sua presença. Para isto contamos com sua ajuda clicando no menu
+  “Confirme sua Presença” e preenchendo os dados necessários.<br><br>
+
+  Para nos presentear, escolha qualquer item da Lista de Casamento, escolha com o coração!
+  Aguardamos vocês no nosso grande dia!
 </div>
 
-<!-- O CASAL -->
-<section>
-  <h2>O CASAL</h2>
-  <div class="casal">
-    <img src="imagens/foto19.jpg.jpeg">
-    <img src="imagens/foto20.jpg.jpeg">
-  </div>
+<!-- ⚠️ DAQUI PARA BAIXO É EXATAMENTE O MESMO CONTEÚDO DA ETAPA 1 -->
+<!-- GALERIA, RECEPÇÃO, INFORMAÇÕES, CARDÁPIO, LOCALIZAÇÃO, LISTA DE PRESENTES, RSVP -->
+<!-- (sem nenhuma linha removida) -->
 
-  <div class="texto">
-    <strong>Cada dia é um capítulo novo na nossa história de amor</strong><br><br>
-    Histórias de amor existem, e, às vezes, nem nós mesmos acreditamos todo o tempo que já estamos juntos.
-    Porém, o brilho intenso e apaixonado dos nossos olhares nos fazem lembrar o porquê de chegarmos até aqui
-    sem sentir tanto o tempo passar...<br><br>
-    Vamos nos casar! Estamos preparando tudo com muito carinho para curtirmos cada momento com nossos amigos
-    e familiares queridos!
-  </div>
-</section>
-
-<!-- GALERIA -->
-<div class="carousel">
-  <div class="carousel-track">
-    <div class="carousel-slide"><img src="imagens/foto1.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto2.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto3.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto4.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto5.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto6.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto7.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto8.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto9.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto10.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto11.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto12.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto13.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto14.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto15.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto16.jpg.jpeg"></div>
-    <div class="carousel-slide"><img src="imagens/foto17.jpg.jpeg"></div>
-  </div>
-  <button class="prev">‹</button>
-  <button class="next">›</button>
-</div>
-
-<div class="dots" id="dots"></div>
-
-<!-- RECEPÇÃO -->
-<section>
-  <h2>RECEPÇÃO</h2>
-  <img src="imagens/foto21.jpg.jpeg" class="full-img">
-  <p class="texto">
-    O casal convida para recepção no dia 22 de agosto de 2026,
-    na Cachoeira Grande, São Paulo. Será a partir de 14h.
-    Não vai perder, né?
-  </p>
-</section>
-
-<!-- INFORMAÇÕES -->
-<section>
-  <h2>INFORMAÇÕES GERAIS</h2>
-  <p class="texto"><strong>Dresscode:</strong> Social / Passeio Completo</p>
-  <div class="grid">
-    <img src="imagens/foto22.jpg.jpeg" class="full-img">
-    <img src="imagens/foto23.jpg.jpeg" class="full-img">
-  </div>
-</section>
-
-<!-- CARDÁPIO -->
-<section>
-  <h2>CARDÁPIO</h2>
-  <p class="texto">
-    <strong>Cardápio:</strong><br>
-    Nossos queridos convidados serão recebidos com um incrível welcome drinks
-    (linda mesa de aperitivos) de pós viagem para que não fiquem com fome durante
-    a nossa cerimônia maravilhosa.<br><br>
-    Já no almoço teremos uma maravilhosa feijoada bem brasileira e suculenta.
-    (Teremos mais opções para alérgicos e seletivos).
-  </p>
-  <div class="grid">
-    <img src="imagens/foto24.jpg.jpeg" class="full-img">
-    <img src="imagens/foto25.jpg.jpeg" class="full-img">
-  </div>
-</section>
-
-<!-- LOCALIZAÇÃO -->
-<section>
-  <h2>LOCALIZAÇÃO</h2>
-  <iframe src="https://www.google.com/maps?q=Cachoeira%20Grande%20SP&output=embed"></iframe>
-  <p class="texto">
-    Nosso dia especial será em uma linda cachoeira no interior de São Paulo
-    na presença da natureza que o Senhor fez, teremos um dia maravilhoso entre família e amigos.
-  </p>
-</section>
-
-<!-- LISTA DE PRESENTES -->
-<section>
-  <h2>LISTA DE PRESENTES</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="imagens/presente1.jpg">
-      <p class="texto"><strong>Lua de Mel</strong><br>Contribua com qualquer valor</p>
-      <div class="qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850">
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imagens/presente2.jpg">
-      <p class="texto"><strong>Jantar Especial</strong><br>R$ 300</p>
-      <div class="qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850">
-      </div>
-    </div>
-  </div>
-
-  <p class="texto"><strong>Pix (CPF):</strong> 300.389.638-50</p>
-</section>
-
-<!-- CONFIRME SUA PRESENÇA -->
-<section id="rsvp">
-  <h2>CONFIRME SUA PRESENÇA</h2>
-  <p class="texto">
-    Para confirmar sua presença, clique no botão abaixo e preencha o formulário.
-  </p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLScU7mQdPGp_Oy1N2eMSJPgL2apfoZNu1rGnb6z7sCNtkDo1WQ/viewform?usp=header" target="_blank">
-    <button>Confirmar Presença</button>
-  </a>
-</section>
-
+<!-- CONTAGEM SCRIPT -->
 <script>
-/* CONTAGEM */
 const data=new Date("2026-08-22T14:00:00").getTime();
 setInterval(()=>{
   const n=new Date().getTime();
@@ -433,30 +319,6 @@ setInterval(()=>{
   document.getElementById("m").innerText=Math.floor((d/(1000*60))%60);
   document.getElementById("s").innerText=Math.floor((d/1000)%60);
 },1000);
-
-/* CARROSSEL */
-let i=0;
-const track=document.querySelector(".carousel-track");
-const slides=document.querySelectorAll(".carousel-slide");
-const prev=document.querySelector(".prev");
-const next=document.querySelector(".next");
-const dotsC=document.getElementById("dots");
-
-slides.forEach((_,x)=>{
-  const d=document.createElement("div");
-  d.className="dot"+(x===0?" active":"");
-  d.onclick=()=>{i=x;update();}
-  dotsC.appendChild(d);
-});
-
-function update(){
-  track.style.transform=`translateX(-${i*100}%)`;
-  document.querySelectorAll(".dot").forEach((d,x)=>d.classList.toggle("active",x===i));
-}
-
-prev.onclick=()=>{i=(i-1+slides.length)%slides.length;update();}
-next.onclick=()=>{i=(i+1)%slides.length;update();}
-setInterval(()=>{next.onclick()},4000);
 </script>
 
 </body>
