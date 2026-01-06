@@ -9,7 +9,6 @@
 :root{
   --roxo:#4b2a6b;
   --dourado:#d4af37;
-  --cinza:#777;
   --verde:#9bbf9b;
 }
 
@@ -22,19 +21,35 @@ body{
   background:#fff;
 }
 
+/* ===== CÍRCULOS (CORREÇÃO DEFINITIVA FUNDO PRETO) ===== */
+.circle{
+  border-radius:50%;
+  overflow:hidden;
+  background:#fff;
+  display:inline-block;
+}
+
+.circle.big{
+  width:260px;
+  height:260px;
+}
+
+.circle.small{
+  width:180px;
+  height:180px;
+}
+
+.circle img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 30%;
+}
+
 /* ===== TOPO ===== */
 .hero{
   text-align:center;
   padding:50px 20px 30px;
-}
-
-.hero img{
-  width:260px;
-  height:260px;
-  border-radius:50%;
-  object-fit:cover;
-  object-position:center 25%;
-  background:#fff;
 }
 
 .hero h1{
@@ -78,8 +93,8 @@ body{
 }
 
 .time span{
-  display:block;
   font-size:34px;
+  display:block;
 }
 
 .count-text{
@@ -112,15 +127,6 @@ section h2{
   gap:40px;
   margin-bottom:40px;
   flex-wrap:wrap;
-}
-
-.casal img{
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  object-fit:cover;
-  object-position:center 20%;
-  background:#fff;
 }
 
 .texto{
@@ -250,7 +256,9 @@ iframe{
 
 <!-- TOPO -->
 <div class="hero">
-  <img src="imagens/foto18.jpg.jpeg">
+  <div class="circle big">
+    <img src="imagens/foto18.jpg.jpeg">
+  </div>
   <h1>LAISLLA</h1>
   <span>+</span>
   <h1>RENAN</h1>
@@ -279,8 +287,8 @@ iframe{
 <section>
   <h2>O CASAL</h2>
   <div class="casal">
-    <img src="imagens/foto19.jpg.jpeg">
-    <img src="imagens/foto20.jpg.jpeg">
+    <div class="circle small"><img src="imagens/foto19.jpg.jpeg"></div>
+    <div class="circle small"><img src="imagens/foto20.jpg.jpeg"></div>
   </div>
 </section>
 
@@ -319,26 +327,20 @@ iframe{
 <script>
 /* CONTAGEM */
 const data=new Date("2026-08-22T14:00:00").getTime();
-const dId=document.getElementById("d");
-const hId=document.getElementById("h");
-const mId=document.getElementById("m");
-const sId=document.getElementById("s");
-
 setInterval(()=>{
-  const n=new Date().getTime();
-  const d=data-n;
+  const now=new Date().getTime();
+  const d=data-now;
   if(d<0)return;
-  dId.innerText=Math.floor(d/(1000*60*60*24));
-  hId.innerText=Math.floor((d/(1000*60*60))%24);
-  mId.innerText=Math.floor((d/(1000*60))%60);
-  sId.innerText=Math.floor((d/1000)%60);
+  document.getElementById("d").innerText=Math.floor(d/(1000*60*60*24));
+  document.getElementById("h").innerText=Math.floor((d/(1000*60*60))%24);
+  document.getElementById("m").innerText=Math.floor((d/(1000*60))%60);
+  document.getElementById("s").innerText=Math.floor((d/1000)%60);
 },1000);
 
 /* GALERIA 1 → 17 */
 const fotos=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
 const track=document.getElementById("track");
 const dots=document.getElementById("dots");
-
 let index=0;
 
 fotos.forEach((f,i)=>{
