@@ -64,7 +64,7 @@ body{
 .countdown h2{
   letter-spacing:6px;
   font-weight:300;
-  color:var(--rosa);
+  color:#fff; /* ALTERADO CONFORME PEDIDO */
   margin-bottom:30px;
 }
 
@@ -250,9 +250,55 @@ iframe{
   border-radius:8px;
 }
 
+/* ===== ETAPA 3 – MOBILE ===== */
 @media(max-width:600px){
-  .hero h1{font-size:34px}
-  .carousel-slide img{max-height:320px}
+  .hero h1{
+    font-size:32px;
+    letter-spacing:4px;
+  }
+
+  .hero img{
+    width:220px;
+    height:220px;
+  }
+
+  .countdown{
+    padding:50px 15px;
+  }
+
+  .countdown h2{
+    font-size:20px;
+    letter-spacing:4px;
+  }
+
+  .time div{
+    min-width:95px;
+    padding:16px;
+  }
+
+  .time span{
+    font-size:28px;
+  }
+
+  .texto,
+  .texto-contagem{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .carousel-slide img{
+    max-height:300px;
+  }
+
+  .carousel button{
+    width:36px;
+    height:36px;
+    font-size:22px;
+  }
+
+  section{
+    margin:60px auto;
+  }
 }
 </style>
 </head>
