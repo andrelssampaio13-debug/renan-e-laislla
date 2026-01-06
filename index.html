@@ -517,12 +517,14 @@ fetch(CSV_URL)
     presentes = linhas
       .map(l => {
         const c = l.split(",");
-        return {
-          nome: c[0],
-          valor: c[1],
-          tipo: c[2],
-          ativo: c[3] === "sim"
-        };
+       return {
+  nome: c[0],
+  valor: c[1],
+  tipo: c[2],
+  ativo: c[3] === "sim",
+  imagem: c[5] || ""
+};
+
       })
       .filter(p => p.ativo);
     renderPresentes();
@@ -536,16 +538,22 @@ function renderPresentes() {
     if (p.rendered) return;
     p.rendered = true;
 
-    cont.innerHTML += `
-      <div class="card">
-        <img src="https://source.unsplash.com/400x300/?wedding,gift">
-        <h3>${p.nome}</h3>
-        <p>${p.tipo === "livre" ? "Valor livre" : "R$ " + p.valor}</p>
-        <button onclick="abrirModal('${p.nome}','${p.valor}','${p.tipo}')">
-          Presentear
-        </button>
-      </div>
-    `;
+    // define imagem do presente
+const imagemPresente = p.imagem && p.imagem.trim() !== ""
+  ? p.imagem
+  : "https://source.unsplash.com/400x300/?wedding,gift,love";
+
+cont.innerHTML += `
+  <div class="card">
+    <img src="${imagemPresente}">
+    <h3>${p.nome}</h3>
+    <p>${p.tipo === "livre" ? "Valor livre" : "R$ " + p.valor}</p>
+    <button onclick="abrirModal('${p.nome}','${p.valor}','${p.tipo}')">
+      Presentear
+    </button>
+  </div>
+`;
+
   });
 }
 
