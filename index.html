@@ -13,6 +13,7 @@
 }
 
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -20,6 +21,24 @@ body{
   color:#555;
   background:#fff;
 }
+
+/* ===== MENU ===== */
+nav{
+  position:sticky;
+  top:0;
+  background:#fff;
+  border-bottom:1px solid #eee;
+  z-index:1000;
+  text-align:center;
+}
+nav a{
+  display:inline-block;
+  padding:14px 12px;
+  font-size:14px;
+  text-decoration:none;
+  color:#777;
+}
+nav a:hover{color:var(--rosa)}
 
 /* ===== TOPO ===== */
 .hero{
@@ -62,7 +81,7 @@ body{
 }
 
 .countdown h2{
-  color:#fff;
+  color:#000;
   letter-spacing:6px;
   font-weight:300;
   margin-bottom:30px;
@@ -254,14 +273,28 @@ iframe{
 @media(max-width:600px){
   .hero h1{font-size:34px}
   .carousel-slide img{max-height:320px}
+  nav a{font-size:12px;padding:12px 8px}
 }
 </style>
 </head>
 
 <body>
 
+<!-- MENU -->
+<nav>
+  <a href="#inicio">Início</a>
+  <a href="#casal">O Casal</a>
+  <a href="#galeria">Galeria</a>
+  <a href="#recepcao">Recepção</a>
+  <a href="#informacoes">Informações</a>
+  <a href="#cardapio">Cardápio</a>
+  <a href="#localizacao">Localização</a>
+  <a href="#presentes">Presentes</a>
+  <a href="#rsvp">Confirmação</a>
+</nav>
+
 <!-- TOPO -->
-<div class="hero">
+<div class="hero" id="inicio">
   <img src="imagens/foto18.jpg.jpeg">
   <h1>LAISLLA</h1>
   <span>+</span>
@@ -298,7 +331,7 @@ iframe{
 </div>
 
 <!-- O CASAL -->
-<section>
+<section id="casal">
   <h2>O CASAL</h2>
 
   <div class="casal">
@@ -317,7 +350,7 @@ iframe{
 </section>
 
 <!-- GALERIA -->
-<div class="carousel">
+<div class="carousel" id="galeria">
   <div class="carousel-track">
     <div class="carousel-slide"><img src="imagens/foto1.jpg.jpeg"></div>
     <div class="carousel-slide"><img src="imagens/foto2.jpg.jpeg"></div>
@@ -345,7 +378,7 @@ iframe{
 <div class="dots" id="dots"></div>
 
 <!-- RECEPÇÃO -->
-<section>
+<section id="recepcao">
   <h2>RECEPÇÃO</h2>
   <img src="imagens/foto21.jpg.jpeg" class="full-img">
   <p class="texto">
@@ -356,7 +389,7 @@ iframe{
 </section>
 
 <!-- INFORMAÇÕES -->
-<section>
+<section id="informacoes">
   <h2>INFORMAÇÕES GERAIS</h2>
   <p class="texto"><strong>Dresscode:</strong> Social / Passeio Completo</p>
 
@@ -367,7 +400,7 @@ iframe{
 </section>
 
 <!-- CARDÁPIO -->
-<section>
+<section id="cardapio">
   <h2>CARDÁPIO</h2>
   <p class="texto">
     <strong>Cardápio:</strong><br>
@@ -386,7 +419,7 @@ iframe{
 </section>
 
 <!-- LOCALIZAÇÃO -->
-<section>
+<section id="localizacao">
   <h2>LOCALIZAÇÃO</h2>
   <iframe src="https://www.google.com/maps?q=Cachoeira%20Grande%20SP&output=embed"></iframe>
   <p class="texto">
@@ -395,8 +428,8 @@ iframe{
   </p>
 </section>
 
-<!-- LISTA DE PRESENTES (ESTÁTICA) -->
-<section>
+<!-- LISTA DE PRESENTES (ESTÁTICA AINDA) -->
+<section id="presentes">
   <h2>LISTA DE PRESENTES</h2>
   <div class="grid">
     <div class="card">
@@ -414,11 +447,7 @@ iframe{
 <!-- CONFIRME SUA PRESENÇA -->
 <section id="rsvp">
   <h2>CONFIRME SUA PRESENÇA</h2>
-
-  <p class="texto">
-    Para confirmar sua presença, clique no botão abaixo e preencha o formulário.
-  </p>
-
+  <p class="texto">Para confirmar sua presença, clique no botão abaixo e preencha o formulário.</p>
   <a href="https://docs.google.com/forms/d/e/1FAIpQLScU7mQdPGp_Oy1N2eMSJPgL2apfoZNu1rGnb6z7sCNtkDo1WQ/viewform" target="_blank">
     <button>Confirmar Presença</button>
   </a>
