@@ -13,6 +13,7 @@
 }
 
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -20,6 +21,26 @@ body{
   color:#555;
   background:#fff;
 }
+
+/* ===== MENU ===== */
+nav{
+  position:sticky;
+  top:0;
+  background:#fff;
+  border-bottom:1px solid #eee;
+  z-index:1000;
+  text-align:center;
+}
+
+nav a{
+  display:inline-block;
+  padding:14px 12px;
+  font-size:14px;
+  text-decoration:none;
+  color:#777;
+}
+
+nav a:hover{color:var(--rosa)}
 
 /* ===== TOPO ===== */
 .hero{
@@ -62,9 +83,9 @@ body{
 }
 
 .countdown h2{
+  color:#fff;
   letter-spacing:6px;
   font-weight:300;
-  color:#fff; /* ALTERADO CONFORME PEDIDO */
   margin-bottom:30px;
 }
 
@@ -124,7 +145,6 @@ section h2{
   display:flex;
   justify-content:center;
   gap:40px;
-  margin-bottom:40px;
   flex-wrap:wrap;
 }
 
@@ -250,63 +270,32 @@ iframe{
   border-radius:8px;
 }
 
-/* ===== ETAPA 3 – MOBILE ===== */
+/* ===== MOBILE ===== */
 @media(max-width:600px){
-  .hero h1{
-    font-size:32px;
-    letter-spacing:4px;
-  }
-
-  .hero img{
-    width:220px;
-    height:220px;
-  }
-
-  .countdown{
-    padding:50px 15px;
-  }
-
-  .countdown h2{
-    font-size:20px;
-    letter-spacing:4px;
-  }
-
-  .time div{
-    min-width:95px;
-    padding:16px;
-  }
-
-  .time span{
-    font-size:28px;
-  }
-
-  .texto,
-  .texto-contagem{
-    font-size:16px;
-    line-height:1.7;
-  }
-
-  .carousel-slide img{
-    max-height:300px;
-  }
-
-  .carousel button{
-    width:36px;
-    height:36px;
-    font-size:22px;
-  }
-
-  section{
-    margin:60px auto;
-  }
+  .hero h1{font-size:32px}
+  .carousel-slide img{max-height:300px}
+  nav a{font-size:12px;padding:12px 8px}
 }
 </style>
 </head>
 
 <body>
 
+<!-- MENU -->
+<nav>
+  <a href="#inicio">Início</a>
+  <a href="#casal">O Casal</a>
+  <a href="#galeria">Galeria</a>
+  <a href="#recepcao">Recepção</a>
+  <a href="#info">Informações</a>
+  <a href="#cardapio">Cardápio</a>
+  <a href="#local">Localização</a>
+  <a href="#presentes">Presentes</a>
+  <a href="#rsvp">Confirmar Presença</a>
+</nav>
+
 <!-- TOPO -->
-<div class="hero">
+<div class="hero" id="inicio">
   <img src="imagens/foto18.jpg.jpeg">
   <h1>LAISLLA</h1>
   <span>+</span>
@@ -343,20 +332,19 @@ iframe{
 </div>
 
 <!-- O CASAL -->
-<section>
+<section id="casal">
   <h2>O CASAL</h2>
   <div class="casal">
     <img src="imagens/foto19.jpg.jpeg">
     <img src="imagens/foto20.jpg.jpeg">
   </div>
-  <div class="texto">
-    <strong>Cada dia é um capítulo novo na nossa história de amor</strong>
-  </div>
 </section>
 
 <!-- GALERIA -->
+<section id="galeria">
 <div class="carousel">
   <div class="carousel-track">
+    <!-- 17 FOTOS -->
     <div class="carousel-slide"><img src="imagens/foto1.jpg.jpeg"></div>
     <div class="carousel-slide"><img src="imagens/foto2.jpg.jpeg"></div>
     <div class="carousel-slide"><img src="imagens/foto3.jpg.jpeg"></div>
@@ -378,17 +366,17 @@ iframe{
   <button class="prev">‹</button>
   <button class="next">›</button>
 </div>
-
 <div class="dots" id="dots"></div>
+</section>
 
 <!-- RECEPÇÃO -->
-<section>
+<section id="recepcao">
   <h2>RECEPÇÃO</h2>
   <img src="imagens/foto21.jpg.jpeg" class="full-img">
 </section>
 
 <!-- INFORMAÇÕES -->
-<section>
+<section id="info">
   <h2>INFORMAÇÕES GERAIS</h2>
   <div class="grid">
     <img src="imagens/foto22.jpg.jpeg" class="full-img">
@@ -397,7 +385,7 @@ iframe{
 </section>
 
 <!-- CARDÁPIO -->
-<section>
+<section id="cardapio">
   <h2>CARDÁPIO</h2>
   <div class="grid">
     <img src="imagens/foto24.jpg.jpeg" class="full-img">
@@ -405,18 +393,19 @@ iframe{
   </div>
 </section>
 
-<!-- LOCALIZAÇÃO -->
-<section>
+<!-- LOCAL -->
+<section id="local">
   <h2>LOCALIZAÇÃO</h2>
   <iframe src="https://www.google.com/maps?q=Cachoeira%20Grande%20SP&output=embed"></iframe>
 </section>
 
-<!-- LISTA DE PRESENTES -->
-<section>
+<!-- PRESENTES -->
+<section id="presentes">
   <h2>LISTA DE PRESENTES</h2>
   <div class="grid">
     <div class="card">
       <img src="imagens/presente1.jpg">
+      <p class="texto"><strong>Lua de Mel</strong><br>Valor livre</p>
       <div class="qr">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850">
       </div>
@@ -425,7 +414,7 @@ iframe{
   <p class="texto"><strong>Pix (CPF):</strong> 300.389.638-50</p>
 </section>
 
-<!-- CONFIRME SUA PRESENÇA -->
+<!-- RSVP -->
 <section id="rsvp">
   <h2>CONFIRME SUA PRESENÇA</h2>
   <a href="https://docs.google.com/forms/d/e/1FAIpQLScU7mQdPGp_Oy1N2eMSJPgL2apfoZNu1rGnb6z7sCNtkDo1WQ/viewform" target="_blank">
