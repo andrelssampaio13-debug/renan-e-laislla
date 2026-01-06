@@ -225,22 +225,13 @@ section h2{
 }
 
 /* ===== RSVP ===== */
-form{
-  max-width:420px;
-  margin:auto;
-}
-
-input,button{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-}
-
 button{
   background:var(--roxo);
   color:#fff;
   border:none;
+  padding:12px 25px;
   cursor:pointer;
+  font-size:16px;
 }
 
 /* ===== MAPA ===== */
@@ -261,7 +252,6 @@ iframe{
 
 <body>
 
-<!-- TODO O SEU SITE ORIGINAL (INTEIRO) -->
 <!-- TOPO -->
 <div class="hero">
   <img src="imagens/foto1.jpg.jpeg">
@@ -333,6 +323,7 @@ iframe{
   <button class="prev">‹</button>
   <button class="next">›</button>
 </div>
+
 <div class="dots" id="dots"></div>
 
 <!-- RECEPÇÃO -->
@@ -383,7 +374,7 @@ iframe{
   </p>
 </section>
 
-<!-- LISTA DE PRESENTES (NOVO) -->
+<!-- LISTA DE PRESENTES -->
 <section>
   <h2>LISTA DE PRESENTES</h2>
   <div class="grid">
@@ -399,7 +390,7 @@ iframe{
       <img src="imagens/presente2.jpg">
       <p class="texto"><strong>Jantar Especial</strong><br>R$ 300</p>
       <div class="qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data==30038963850">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850">
       </div>
     </div>
   </div>
@@ -407,14 +398,17 @@ iframe{
   <p class="texto"><strong>Pix (CPF):</strong> 300.389.638-50</p>
 </section>
 
-<!-- CONFIRME SUA PRESENÇA (NOVO) -->
-<section>
+<!-- CONFIRME SUA PRESENÇA -->
+<section id="rsvp">
   <h2>CONFIRME SUA PRESENÇA</h2>
-  <form onsubmit="alert('Presença confirmada! Muito obrigado ❤️');return false;">
-    <input type="text" placeholder="Nome completo" required>
-    <input type="number" placeholder="Quantidade de pessoas" required>
-    <button type="submit">Confirmar Presença</button>
-  </form>
+
+  <p class="texto">
+    Para confirmar sua presença, clique no botão abaixo e preencha o formulário.
+  </p>
+
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScU7mQdPGp_Oy1N2eMSJPgL2apfoZNu1rGnb6z7sCNtkDo1WQ/viewform?usp=header" target="_blank">
+    <button>Confirmar Presença</button>
+  </a>
 </section>
 
 <script>
