@@ -13,7 +13,6 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -22,156 +21,247 @@ body{
   background:#fff;
 }
 
-/* MENU */
-nav{
-  position:sticky;
-  top:0;
-  background:#fff;
-  border-bottom:1px solid #eee;
-  z-index:1000;
+/* ===== TOPO ===== */
+.hero{
   text-align:center;
+  padding:50px 20px 30px;
 }
-nav a{
-  display:inline-block;
-  padding:14px 12px;
-  font-size:14px;
-  text-decoration:none;
-  color:#777;
-}
-nav a:hover{color:var(--rosa)}
 
-/* TOPO */
-.hero{text-align:center;padding:50px 20px 30px}
 .hero img{
-  width:260px;height:260px;border-radius:50%;
-  object-fit:cover;border:6px solid #eee
+  width:260px;
+  height:260px;
+  object-fit:cover;
+  border-radius:50%;
+  border:6px solid #eee;
 }
-.hero h1{
-  font-size:46px;letter-spacing:6px;
-  font-weight:300;color:var(--rosa)
-}
-.hero span{display:block;font-size:34px;color:var(--dourado)}
-.hero p{font-size:18px;color:#888}
 
-/* CONTAGEM */
+.hero h1{
+  font-size:46px;
+  letter-spacing:6px;
+  font-weight:300;
+  color:var(--rosa);
+  margin:20px 0 5px;
+}
+
+.hero span{
+  display:block;
+  font-size:34px;
+  color:var(--dourado);
+}
+
+.hero p{
+  font-size:18px;
+  color:#888;
+}
+
+/* ===== CONTAGEM ===== */
 .countdown{
   background:var(--dourado);
   padding:70px 20px;
-  text-align:center
+  text-align:center;
 }
+
 .countdown h2{
-  color:#fff;letter-spacing:6px;font-weight:300
+  color:#fff;
+  letter-spacing:6px;
+  font-weight:300;
+  margin-bottom:30px;
 }
+
 .time{
-  display:flex;justify-content:center;
-  gap:18px;flex-wrap:wrap;margin-top:25px
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
 }
+
 .time div{
-  background:#fff;padding:22px;
-  border-radius:14px;min-width:120px
+  background:#fff;
+  padding:22px;
+  border-radius:14px;
+  min-width:120px;
 }
-.time span{display:block;font-size:36px;color:var(--rosa)}
 
+.time span{
+  display:block;
+  font-size:36px;
+  color:var(--rosa);
+}
+
+/* ===== TEXTO CONTAGEM ===== */
 .texto-contagem{
-  max-width:900px;margin:60px auto;
-  text-align:center;font-size:18px;
-  line-height:1.9;color:#888
+  max-width:900px;
+  margin:60px auto;
+  text-align:center;
+  color:#888;
+  font-size:18px;
+  line-height:1.9;
 }
+
 .texto-contagem .versiculo{
-  color:var(--rosa);font-size:20px;margin-bottom:25px
+  color:var(--rosa);
+  font-size:20px;
+  margin-bottom:25px;
 }
 
-/* SEÇÕES */
+/* ===== SEÇÕES ===== */
 section{
-  max-width:1000px;margin:80px auto;
-  padding:0 20px;text-align:center
+  max-width:1000px;
+  margin:80px auto;
+  padding:0 20px;
+  text-align:center;
 }
+
 section h2{
-  font-weight:300;letter-spacing:5px;
-  margin-bottom:40px;color:#777
+  font-weight:300;
+  letter-spacing:5px;
+  margin-bottom:40px;
+  color:#777;
 }
 
-/* CASAL */
-.casal{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+/* ===== CASAL ===== */
+.casal{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-bottom:40px;
+  flex-wrap:wrap;
+}
+
 .casal img{
-  width:180px;height:180px;border-radius:50%;object-fit:cover
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  object-fit:cover;
 }
-.texto{font-size:20px;line-height:1.8;color:#888}
 
-/* GALERIA */
-.carousel{position:relative;max-width:900px;margin:40px auto;overflow:hidden}
-.carousel-track{display:flex;transition:transform .6s ease}
-.carousel-slide{min-width:100%;display:flex;justify-content:center}
-.carousel-slide img{max-width:100%;max-height:520px;object-fit:contain}
-.carousel button{
-  position:absolute;top:50%;transform:translateY(-50%);
-  background:rgba(216,143,163,.9);
-  color:#fff;border:none;width:44px;height:44px;
-  border-radius:50%;font-size:26px;cursor:pointer
+.texto{
+  font-size:20px;
+  line-height:1.8;
+  color:#888;
 }
-.prev{left:10px}.next{right:10px}
-.dots{display:flex;justify-content:center;margin-top:15px}
-.dot{width:10px;height:10px;border-radius:50%;background:#ccc;margin:0 5px}
+
+/* ===== CARROSSEL ===== */
+.carousel{
+  position:relative;
+  max-width:900px;
+  margin:40px auto;
+  overflow:hidden;
+}
+
+.carousel-track{
+  display:flex;
+  transition:transform .6s ease;
+}
+
+.carousel-slide{
+  min-width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.carousel-slide img{
+  max-width:100%;
+  max-height:520px;
+  object-fit:contain;
+  background:#fff;
+}
+
+.carousel button{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(216,143,163,.9);
+  color:#fff;
+  border:none;
+  font-size:26px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.prev{left:10px}
+.next{right:10px}
+
+/* ===== DOTS ===== */
+.dots{
+  display:flex;
+  justify-content:center;
+  margin-top:15px;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ccc;
+  margin:0 5px;
+}
+
 .dot.active{background:var(--dourado)}
 
-/* GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
-.full-img{width:100%;max-height:400px;object-fit:cover;border-radius:8px}
+/* ===== GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
 
-/* PRESENTES */
+.full-img{
+  width:100%;
+  max-height:400px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+/* ===== PRESENTES ===== */
 .card{
-  border:1px solid #eee;border-radius:8px;
-  padding:20px;background:#fff
+  border:1px solid #eee;
+  border-radius:8px;
+  padding:20px;
 }
-.card img{width:100%;border-radius:6px}
-.card h3{font-weight:400}
-.card button{margin-top:10px}
-.qr img{width:220px}
 
-/* MODAL */
-.modal{
-  display:none;position:fixed;top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,.6);
-  justify-content:center;align-items:center;
-  z-index:2000
+.card img{
+  width:100%;
+  border-radius:6px;
 }
-.modal-content{
-  background:#fff;padding:30px;
-  border-radius:10px;max-width:400px;
-  width:90%;text-align:center
-}
-.close{cursor:pointer;float:right;font-size:20px}
 
-/* BOTÕES */
+.qr img{
+  width:180px;
+}
+
+/* ===== BOTÕES ===== */
 button{
-  background:var(--rosa);color:#fff;
-  border:none;padding:12px 25px;
-  cursor:pointer;font-size:15px
+  background:var(--rosa);
+  color:#fff;
+  border:none;
+  padding:12px 25px;
+  cursor:pointer;
+  font-size:16px;
 }
 
-/* MAPA */
-iframe{width:100%;height:350px;border:0;border-radius:8px}
+/* ===== MAPA ===== */
+iframe{
+  width:100%;
+  height:350px;
+  border:0;
+  border-radius:8px;
+}
 
+/* ===== MOBILE ===== */
 @media(max-width:600px){
-  .hero h1{font-size:32px}
-  .carousel-slide img{max-height:300px}
-  nav a{font-size:12px;padding:12px 8px}
+  .hero h1{font-size:34px}
+  .carousel-slide img{max-height:320px}
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="#inicio">Início</a>
-  <a href="#casal">O Casal</a>
-  <a href="#galeria">Galeria</a>
-  <a href="#presentes">Presentes</a>
-  <a href="#rsvp">Confirmar Presença</a>
-</nav>
-
-<div class="hero" id="inicio">
+<!-- TOPO -->
+<div class="hero">
   <img src="imagens/foto18.jpg.jpeg">
   <h1>LAISLLA</h1>
   <span>+</span>
@@ -179,6 +269,7 @@ iframe{width:100%;height:350px;border:0;border-radius:8px}
   <p>22 de agosto de 2026 • Cachoeira Grande</p>
 </div>
 
+<!-- CONTAGEM -->
 <div class="countdown">
   <h2>CONTAGEM REGRESSIVA</h2>
   <div class="time">
@@ -191,30 +282,143 @@ iframe{width:100%;height:350px;border:0;border-radius:8px}
 
 <div class="texto-contagem">
   <div class="versiculo">
-    <strong>O que Deus uniu, ninguém o separe</strong><br>Mateus 19:6
+    <strong>O que Deus uniu, ninguém o separe</strong><br>
+    Mateus 19:6
   </div>
+
+  Criamos esse site para compartilhar com vocês os detalhes da organização do nosso casamento.
+  Estamos muito felizes e contamos com a presença de todos no nosso grande dia!<br><br>
+
+  Aqui vocês encontrarão trajes, estacionamento, etc.
+  Ah, é importante também confirmar sua presença. Para isto contamos com sua ajuda clicando no menu
+  “Confirme sua Presença” e preenchendo os dados necessários.<br><br>
+
+  Para nos presentear, escolha qualquer item da Lista de Casamento, escolha com o coração!
+  Aguardamos vocês no nosso grande dia!
 </div>
 
-<section id="presentes">
-  <h2>LISTA DE PRESENTES</h2>
-  <div class="grid" id="listaPresentes"></div>
-  <button id="verMais">Ver mais presentes</button>
+<!-- O CASAL -->
+<section>
+  <h2>O CASAL</h2>
+
+  <div class="casal">
+    <img src="imagens/foto19.jpg.jpeg">
+    <img src="imagens/foto20.jpg.jpeg">
+  </div>
+
+  <div class="texto">
+    <strong>Cada dia é um capítulo novo na nossa história de amor</strong><br><br>
+    Histórias de amor existem, e, às vezes, nem nós mesmos acreditamos todo o tempo que já estamos juntos.
+    Porém, o brilho intenso e apaixonado dos nossos olhares nos fazem lembrar o porquê de chegarmos até aqui
+    sem sentir tanto o tempo passar...<br><br>
+    Vamos nos casar! Estamos preparando tudo com muito carinho para curtirmos cada momento com nossos amigos
+    e familiares queridos!
+  </div>
 </section>
 
-<div class="modal" id="pixModal">
-  <div class="modal-content">
-    <span class="close" onclick="fecharModal()">✕</span>
-    <h3 id="modalTitulo"></h3>
-    <p id="modalValor"></p>
-    <div class="qr">
-      <img id="qrPix">
-    </div>
-    <p><strong>Pix:</strong> 300.389.638-50</p>
+<!-- GALERIA -->
+<div class="carousel">
+  <div class="carousel-track">
+    <div class="carousel-slide"><img src="imagens/foto1.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto2.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto3.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto4.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto5.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto6.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto7.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto8.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto9.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto10.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto11.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto12.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto13.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto14.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto15.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto16.jpg.jpeg"></div>
+    <div class="carousel-slide"><img src="imagens/foto17.jpg.jpeg"></div>
   </div>
+
+  <button class="prev">‹</button>
+  <button class="next">›</button>
 </div>
 
+<div class="dots" id="dots"></div>
+
+<!-- RECEPÇÃO -->
+<section>
+  <h2>RECEPÇÃO</h2>
+  <img src="imagens/foto21.jpg.jpeg" class="full-img">
+  <p class="texto">
+    O casal convida para recepção no dia 22 de agosto de 2026,
+    na Cachoeira Grande, São Paulo. Será a partir de 14h.
+    Não vai perder, né?
+  </p>
+</section>
+
+<!-- INFORMAÇÕES -->
+<section>
+  <h2>INFORMAÇÕES GERAIS</h2>
+  <p class="texto"><strong>Dresscode:</strong> Social / Passeio Completo</p>
+
+  <div class="grid">
+    <img src="imagens/foto22.jpg.jpeg" class="full-img">
+    <img src="imagens/foto23.jpg.jpeg" class="full-img">
+  </div>
+</section>
+
+<!-- CARDÁPIO -->
+<section>
+  <h2>CARDÁPIO</h2>
+  <p class="texto">
+    <strong>Cardápio:</strong><br>
+    Nossos queridos convidados serão recebidos com um incrível welcome drinks
+    (linda mesa de aperitivos) de pós viagem para que não fiquem com fome durante
+    a nossa cerimônia maravilhosa.<br><br>
+
+    Já no almoço teremos uma maravilhosa feijoada bem brasileira e suculenta.
+    (Teremos mais opções para alérgicos e seletivos).
+  </p>
+
+  <div class="grid">
+    <img src="imagens/foto24.jpg.jpeg" class="full-img">
+    <img src="imagens/foto25.jpg.jpeg" class="full-img">
+  </div>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section>
+  <h2>LOCALIZAÇÃO</h2>
+  <iframe src="https://www.google.com/maps?q=Cachoeira%20Grande%20SP&output=embed"></iframe>
+  <p class="texto">
+    Nosso dia especial será em uma linda cachoeira no interior de São Paulo
+    na presença da natureza que o Senhor fez, teremos um dia maravilhoso entre família e amigos.
+  </p>
+</section>
+
+<!-- LISTA DE PRESENTES (ESTÁTICA) -->
+<section>
+  <h2>LISTA DE PRESENTES</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="imagens/presente1.jpg">
+      <p class="texto"><strong>Lua de Mel</strong><br>Contribua com qualquer valor</p>
+      <div class="qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850">
+      </div>
+    </div>
+  </div>
+
+  <p class="texto"><strong>Pix (CPF):</strong> 300.389.638-50</p>
+</section>
+
+<!-- CONFIRME SUA PRESENÇA -->
 <section id="rsvp">
   <h2>CONFIRME SUA PRESENÇA</h2>
+
+  <p class="texto">
+    Para confirmar sua presença, clique no botão abaixo e preencha o formulário.
+  </p>
+
   <a href="https://docs.google.com/forms/d/e/1FAIpQLScU7mQdPGp_Oy1N2eMSJPgL2apfoZNu1rGnb6z7sCNtkDo1WQ/viewform" target="_blank">
     <button>Confirmar Presença</button>
   </a>
@@ -225,52 +429,37 @@ iframe{width:100%;height:350px;border:0;border-radius:8px}
 const data=new Date("2026-08-22T14:00:00").getTime();
 setInterval(()=>{
   const n=new Date().getTime();
-  const d=data-n;if(d<0)return;
-  d>0&&(d0=d);
+  const d=data-n;
+  if(d<0)return;
   document.getElementById("d").innerText=Math.floor(d/(1000*60*60*24));
   document.getElementById("h").innerText=Math.floor((d/(1000*60*60))%24);
   document.getElementById("m").innerText=Math.floor((d/(1000*60))%60);
   document.getElementById("s").innerText=Math.floor((d/1000)%60);
 },1000);
 
-/* PRESENTES VIA PLANILHA */
-const CSV_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vSUOq5Rmx6x6K9XZnuppxV6VnyJODPnEqBvrWtGYbBl_rp0uh3sczKGv7W1YzKL1-m2HH2R46MaCL6B/pub?output=csv";
-let dados=[],pagina=0;
+/* CARROSSEL */
+let i=0;
+const track=document.querySelector(".carousel-track");
+const slides=document.querySelectorAll(".carousel-slide");
+const prev=document.querySelector(".prev");
+const next=document.querySelector(".next");
+const dotsC=document.getElementById("dots");
 
-fetch(CSV_URL).then(r=>r.text()).then(t=>{
-  const linhas=t.split("\n").slice(1);
-  dados=linhas.map(l=>{
-    const c=l.split(",");
-    return{nome:c[0],valor:c[1],tipo:c[2],ativo:c[3]=="sim"};
-  }).filter(i=>i.ativo);
-  render();
+slides.forEach((_,x)=>{
+  const d=document.createElement("div");
+  d.className="dot"+(x===0?" active":"");
+  d.onclick=()=>{i=x;update();}
+  dotsC.appendChild(d);
 });
 
-function render(){
-  const cont=document.getElementById("listaPresentes");
-  dados.slice(0,(pagina+1)*9).forEach(i=>{
-    if(i.rendered)return;
-    i.rendered=true;
-    cont.innerHTML+=`
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?wedding,gift">
-      <h3>${i.nome}</h3>
-      <p>${i.tipo=="livre"?"Valor livre":"R$ "+i.valor}</p>
-      <button onclick="abrirModal('${i.nome}','${i.valor}','${i.tipo}')">Presentear</button>
-    </div>`;
-  });
+function update(){
+  track.style.transform=`translateX(-${i*100}%)`;
+  document.querySelectorAll(".dot").forEach((d,x)=>d.classList.toggle("active",x===i));
 }
 
-document.getElementById("verMais").onclick=()=>{pagina++;render()};
-
-function abrirModal(n,v,t){
-  document.getElementById("modalTitulo").innerText=n;
-  document.getElementById("modalValor").innerText=t=="livre"?"Escolha o valor":"Valor sugerido: R$ "+v;
-  document.getElementById("qrPix").src=
-   "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850";
-  document.getElementById("pixModal").style.display="flex";
-}
-function fecharModal(){document.getElementById("pixModal").style.display="none";}
+prev.onclick=()=>{i=(i-1+slides.length)%slides.length;update();}
+next.onclick=()=>{i=(i+1)%slides.length;update();}
+setInterval(()=>{next.onclick()},4000);
 </script>
 
 </body>
