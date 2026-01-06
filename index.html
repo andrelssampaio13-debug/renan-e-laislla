@@ -33,7 +33,8 @@ body{
   height:260px;
   border-radius:50%;
   object-fit:cover;
-  object-position:center 20%;
+  object-position:center 25%;
+  background:#fff;
 }
 
 .hero h1{
@@ -118,6 +119,8 @@ section h2{
   height:180px;
   border-radius:50%;
   object-fit:cover;
+  object-position:center 20%;
+  background:#fff;
 }
 
 .texto{
@@ -197,8 +200,34 @@ section h2{
 /* ===== GRID ===== */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
+}
+
+/* ===== PRESENTES ===== */
+.card{
+  border:1px solid #eee;
+  border-radius:8px;
+  padding:20px;
+}
+
+.card img{
+  width:100%;
+  border-radius:6px;
+}
+
+.qr img{
+  width:180px;
+}
+
+/* ===== BOTÃO ===== */
+button{
+  background:var(--roxo);
+  color:#fff;
+  border:none;
+  padding:12px 25px;
+  cursor:pointer;
+  font-size:16px;
 }
 
 /* ===== MAPA ===== */
@@ -240,81 +269,51 @@ iframe{
   <div class="count-text">
     <strong>O que Deus uniu, ninguém o separe</strong><br>
     Mateus 19:6<br><br>
-
     Criamos esse site para compartilhar com vocês os detalhes da organização do nosso casamento.
     Estamos muito felizes e contamos com a presença de todos no nosso grande dia!<br><br>
-
-    Aqui vocês encontrarão trajes, estacionamento, etc.
-    Ah, é importante também confirmar sua presença.<br><br>
-
     Para nos presentear, escolha qualquer item da Lista de Casamento, escolha com o coração!
-    Aguardamos vocês no nosso grande dia!
   </div>
 </div>
 
 <!-- O CASAL -->
 <section>
   <h2>O CASAL</h2>
-
   <div class="casal">
     <img src="imagens/foto19.jpg.jpeg">
     <img src="imagens/foto20.jpg.jpeg">
-  </div>
-
-  <div class="texto">
-    <strong>Cada dia é um capítulo novo na nossa história de amor</strong><br><br>
-    Histórias de amor existem, e, às vezes, nem nós mesmos acreditamos todo o tempo que já estamos juntos.
-    Porém, o brilho intenso e apaixonado dos nossos olhares nos fazem lembrar o porquê de chegarmos até aqui
-    sem sentir tanto o tempo passar...<br><br>
-    Vamos nos casar! Estamos preparando tudo com muito carinho para curtirmos cada momento com nossos amigos
-    e familiares queridos!
   </div>
 </section>
 
 <!-- GALERIA -->
 <div class="carousel">
   <div class="carousel-track" id="track"></div>
-
   <button class="prev">‹</button>
   <button class="next">›</button>
 </div>
 <div class="dots" id="dots"></div>
 
-<!-- RECEPÇÃO -->
+<!-- LISTA DE PRESENTES -->
 <section>
-  <h2>RECEPÇÃO</h2>
-  <img src="imagens/foto21.jpg.jpeg" class="full-img">
-  <p class="texto">
-    O casal convida para recepção no dia 22 de agosto de 2026,
-    na Cachoeira Grande, São Paulo. Será a partir de 14h.
-    Não vai perder, né?
-  </p>
-</section>
-
-<!-- INFORMAÇÕES -->
-<section>
-  <h2>INFORMAÇÕES GERAIS</h2>
-  <p class="texto"><strong>Dresscode:</strong> Social / Passeio Completo</p>
-
+  <h2>LISTA DE PRESENTES</h2>
   <div class="grid">
-    <img src="imagens/foto22.jpg.jpeg" class="full-img">
-    <img src="imagens/foto23.jpg.jpeg" class="full-img">
+    <div class="card">
+      <img src="imagens/presente1.jpg">
+      <p class="texto"><strong>Lua de Mel</strong><br>Contribua com qualquer valor</p>
+      <div class="qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=30038963850">
+      </div>
+    </div>
   </div>
+  <p class="texto"><strong>Pix (CPF):</strong> 300.389.638-50</p>
 </section>
 
-<!-- CARDÁPIO -->
+<!-- CONFIRME SUA PRESENÇA -->
 <section>
-  <h2>CARDÁPIO</h2>
-  <div class="grid">
-    <img src="imagens/foto24.jpg.jpeg" class="full-img">
-    <img src="imagens/foto25.jpg.jpeg" class="full-img">
-  </div>
-</section>
-
-<!-- MAPA -->
-<section>
-  <h2>LOCALIZAÇÃO</h2>
-  <iframe src="https://www.google.com/maps?q=Cachoeira%20Grande%20SP&output=embed"></iframe>
+  <h2>CONFIRME SUA PRESENÇA</h2>
+  <p class="texto">Clique no botão abaixo para confirmar sua presença.</p>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScU7mQdPGp_Oy1N2eMSJPgL2apfoZNu1rGnb6z7sCNtkDo1WQ/viewform?usp=header" target="_blank">
+    <button>Confirmar Presença</button>
+  </a>
 </section>
 
 <script>
@@ -340,6 +339,8 @@ const fotos=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
 const track=document.getElementById("track");
 const dots=document.getElementById("dots");
 
+let index=0;
+
 fotos.forEach((f,i)=>{
   const slide=document.createElement("div");
   slide.className="carousel-slide";
@@ -352,7 +353,6 @@ fotos.forEach((f,i)=>{
   dots.appendChild(dot);
 });
 
-let index=0;
 function update(){
   track.style.transform=`translateX(-${index*100}%)`;
   document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("active",i===index));
