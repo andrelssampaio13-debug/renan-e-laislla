@@ -662,6 +662,25 @@ function fecharModal() {
     </div>
   </div>
 </div>
+<script>
+  function abrirModalCompra() {
+    document.getElementById("modal-compra").classList.add("ativo");
+    document.body.style.overflow = "hidden";
+  }
+
+  function fecharModalCompra() {
+    document.getElementById("modal-compra").classList.remove("ativo");
+    document.body.style.overflow = "";
+  }
+
+  // botão X do modal
+  document.addEventListener("DOMContentLoaded", function () {
+    const btnFechar = document.querySelector(".modal-fechar");
+    if (btnFechar) {
+      btnFechar.addEventListener("click", fecharModalCompra);
+    }
+  });
+</script>
  
 </body>
 </html>
