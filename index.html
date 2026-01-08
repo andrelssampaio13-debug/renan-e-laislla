@@ -11,8 +11,10 @@
   --dourado:#e6c76b;
   --cinza:#777;
 }
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
 body{
   margin:0;
   font-family:"Georgia","Times New Roman",serif;
@@ -20,7 +22,7 @@ body{
   background:#fff;
 }
 
-/* MENU */
+/* ===== MENU ===== */
 nav{
   position:sticky;
   top:0;
@@ -38,11 +40,12 @@ nav a{
 }
 nav a:hover{color:var(--rosa)}
 
-/* TOPO */
+/* ===== TOPO ===== */
 .hero{
   text-align:center;
   padding:50px 20px 30px;
 }
+
 .hero img{
   width:260px;
   height:260px;
@@ -50,6 +53,7 @@ nav a:hover{color:var(--rosa)}
   border-radius:50%;
   border:6px solid #eee;
 }
+
 .hero h1{
   font-size:46px;
   letter-spacing:6px;
@@ -57,47 +61,53 @@ nav a:hover{color:var(--rosa)}
   color:var(--rosa);
   margin:20px 0 5px;
 }
+
 .hero span{
   display:block;
   font-size:34px;
   color:var(--dourado);
 }
+
 .hero p{
   font-size:18px;
   color:#888;
 }
 
-/* CONTAGEM */
+/* ===== CONTAGEM ===== */
 .countdown{
   background:var(--dourado);
   padding:70px 20px;
   text-align:center;
 }
+
 .countdown h2{
   color:#000;
   letter-spacing:6px;
   font-weight:300;
   margin-bottom:30px;
 }
+
 .time{
   display:flex;
   justify-content:center;
   gap:18px;
   flex-wrap:wrap;
 }
+
 .time div{
   background:#fff;
   padding:22px;
   border-radius:14px;
   min-width:120px;
 }
+
 .time span{
   display:block;
   font-size:36px;
   color:var(--rosa);
 }
 
-/* TEXTO */
+/* ===== TEXTO CONTAGEM ===== */
 .texto-contagem{
   max-width:900px;
   margin:60px auto;
@@ -106,19 +116,21 @@ nav a:hover{color:var(--rosa)}
   font-size:18px;
   line-height:1.9;
 }
+
 .texto-contagem .versiculo{
   color:var(--rosa);
   font-size:20px;
   margin-bottom:25px;
 }
 
-/* SEÇÕES */
+/* ===== SEÇÕES ===== */
 section{
   max-width:1000px;
   margin:80px auto;
   padding:0 20px;
   text-align:center;
 }
+
 section h2{
   font-weight:300;
   letter-spacing:5px;
@@ -126,7 +138,7 @@ section h2{
   color:#777;
 }
 
-/* CASAL */
+/* ===== CASAL ===== */
 .casal{
   display:flex;
   justify-content:center;
@@ -134,40 +146,47 @@ section h2{
   margin-bottom:40px;
   flex-wrap:wrap;
 }
+
 .casal img{
   width:180px;
   height:180px;
   border-radius:50%;
   object-fit:cover;
 }
+
 .texto{
   font-size:20px;
   line-height:1.8;
   color:#888;
 }
 
-/* CARROSSEL */
+/* ===== CARROSSEL ===== */
 .carousel{
   position:relative;
   max-width:900px;
   margin:40px auto;
   overflow:hidden;
 }
+
 .carousel-track{
   display:flex;
   transition:transform .6s ease;
 }
+
 .carousel-slide{
   min-width:100%;
   display:flex;
   justify-content:center;
   align-items:center;
 }
+
 .carousel-slide img{
   max-width:100%;
   max-height:520px;
   object-fit:contain;
+  background:#fff;
 }
+
 .carousel button{
   position:absolute;
   top:50%;
@@ -181,15 +200,17 @@ section h2{
   border-radius:50%;
   cursor:pointer;
 }
+
 .prev{left:10px}
 .next{right:10px}
 
-/* DOTS */
+/* ===== DOTS ===== */
 .dots{
   display:flex;
   justify-content:center;
   margin-top:15px;
 }
+
 .dot{
   width:10px;
   height:10px;
@@ -197,14 +218,16 @@ section h2{
   background:#ccc;
   margin:0 5px;
 }
+
 .dot.active{background:var(--dourado)}
 
-/* GRID */
+/* ===== GRID ===== */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
 }
+
 .full-img{
   width:100%;
   max-height:400px;
@@ -212,16 +235,19 @@ section h2{
   border-radius:8px;
 }
 
-/* PRESENTES */
+/* ===== PRESENTES ===== */
 .card{
   border:1px solid #eee;
   border-radius:8px;
   padding:20px;
 }
+
 .card img{
   width:100%;
   border-radius:6px;
 }
+
+/* ===== BOTÕES ===== */
 button{
   background:var(--rosa);
   color:#fff;
@@ -231,7 +257,7 @@ button{
   font-size:16px;
 }
 
-/* MAPA */
+/* ===== MAPA ===== */
 iframe{
   width:100%;
   height:350px;
@@ -239,7 +265,7 @@ iframe{
   border-radius:8px;
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
 @media(max-width:768px){
   .hero h1{font-size:34px}
   .carousel-slide img{max-height:320px}
@@ -283,6 +309,7 @@ iframe{
   </div>
 </div>
 
+<!-- TEXTO -->
 <div class="texto-contagem">
   <div class="versiculo">
     <strong>O que Deus uniu, ninguém o separe</strong><br>Mateus 19:6
@@ -290,6 +317,7 @@ iframe{
   Criamos esse site para compartilhar com vocês os detalhes da organização do nosso casamento.
 </div>
 
+<!-- CASAL -->
 <section id="casal">
   <h2>O CASAL</h2>
   <div class="casal">
@@ -322,8 +350,10 @@ iframe{
   <button class="prev">‹</button>
   <button class="next">›</button>
 </div>
+
 <div class="dots" id="dots"></div>
 
+<!-- PRESENTES -->
 <section id="presentes">
   <h2>LISTA DE PRESENTES</h2>
   <div class="grid" id="listaPresentes"></div>
@@ -337,7 +367,6 @@ setInterval(()=>{
   const n=new Date().getTime();
   const d=data-n;
   if(d<0)return;
-  d>=0&&(d>=0);
   document.getElementById("d").innerText=Math.floor(d/(1000*60*60*24));
   document.getElementById("h").innerText=Math.floor((d/(1000*60*60))%24);
   document.getElementById("m").innerText=Math.floor((d/(1000*60))%60);
@@ -367,10 +396,8 @@ function update(){
 prev.onclick=()=>{i=(i-1+slides.length)%slides.length;update();}
 next.onclick=()=>{i=(i+1)%slides.length;update();}
 setInterval(()=>{next.onclick()},4000);
-</script>
 
-<script>
-/* LISTA DE PRESENTES VIA CSV */
+/* LISTA DE PRESENTES */
 const CSV_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vSUOq5Rmx6x6K9XZnuppxV6VnyJODPnEqBvrWtGYbBl_rp0uh3sczKGv7W1YzKL1-m2HH2R46MaCL6B/pub?output=csv";
 let presentes=[],pagina=0,porPagina=9;
 
