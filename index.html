@@ -610,8 +610,8 @@ function renderPresentes() {
 const imagemPresente = p.imagem && p.imagem.trim() !== ""
   ? p.imagem
   : "https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?w=800";
-
-cont.innerHTML += 
+    
+cont.innerHTML += `
   <div class="card">
     <img src="${imagemPresente}">
     <h3>${p.nome}</h3>
@@ -620,7 +620,7 @@ cont.innerHTML +=
       Presentear
     </button>
   </div>
-;
+`;
 
   });
 }
