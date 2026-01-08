@@ -11,8 +11,10 @@
   --dourado:#e6c76b;
   --cinza:#777;
 }
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
 body{
   margin:0;
   font-family:"Georgia","Times New Roman",serif;
@@ -20,7 +22,7 @@ body{
   background:#fff;
 }
 
-/* MENU */
+/* ===== MENU ===== */
 nav{
   position:sticky;
   top:0;
@@ -38,11 +40,12 @@ nav a{
 }
 nav a:hover{color:var(--rosa)}
 
-/* TOPO */
+/* ===== TOPO ===== */
 .hero{
   text-align:center;
   padding:50px 20px 30px;
 }
+
 .hero img{
   width:260px;
   height:260px;
@@ -50,6 +53,7 @@ nav a:hover{color:var(--rosa)}
   border-radius:50%;
   border:6px solid #eee;
 }
+
 .hero h1{
   font-size:46px;
   letter-spacing:6px;
@@ -57,46 +61,53 @@ nav a:hover{color:var(--rosa)}
   color:var(--rosa);
   margin:20px 0 5px;
 }
+
 .hero span{
   display:block;
   font-size:34px;
   color:var(--dourado);
 }
+
 .hero p{
   font-size:18px;
   color:#888;
 }
 
-/* CONTAGEM */
+/* ===== CONTAGEM ===== */
 .countdown{
   background:var(--dourado);
   padding:70px 20px;
   text-align:center;
 }
+
 .countdown h2{
+  color:#000;
   letter-spacing:6px;
   font-weight:300;
   margin-bottom:30px;
 }
+
 .time{
   display:flex;
   justify-content:center;
   gap:18px;
   flex-wrap:wrap;
 }
+
 .time div{
   background:#fff;
   padding:22px;
   border-radius:14px;
   min-width:120px;
 }
+
 .time span{
   display:block;
   font-size:36px;
   color:var(--rosa);
 }
 
-/* TEXTO */
+/* ===== TEXTO CONTAGEM ===== */
 .texto-contagem{
   max-width:900px;
   margin:60px auto;
@@ -105,19 +116,21 @@ nav a:hover{color:var(--rosa)}
   font-size:18px;
   line-height:1.9;
 }
+
 .texto-contagem .versiculo{
   color:var(--rosa);
   font-size:20px;
   margin-bottom:25px;
 }
 
-/* SEÇÕES */
+/* ===== SEÇÕES ===== */
 section{
   max-width:1000px;
   margin:80px auto;
   padding:0 20px;
   text-align:center;
 }
+
 section h2{
   font-weight:300;
   letter-spacing:5px;
@@ -125,7 +138,7 @@ section h2{
   color:#777;
 }
 
-/* CASAL */
+/* ===== CASAL ===== */
 .casal{
   display:flex;
   justify-content:center;
@@ -133,6 +146,7 @@ section h2{
   margin-bottom:40px;
   flex-wrap:wrap;
 }
+
 .casal img{
   width:180px;
   height:180px;
@@ -140,27 +154,39 @@ section h2{
   object-fit:cover;
 }
 
-/* GALERIA */
+.texto{
+  font-size:20px;
+  line-height:1.8;
+  color:#888;
+}
+
+/* ===== CARROSSEL ===== */
 .carousel{
   position:relative;
   max-width:900px;
   margin:40px auto;
   overflow:hidden;
 }
+
 .carousel-track{
   display:flex;
   transition:transform .6s ease;
 }
+
 .carousel-slide{
   min-width:100%;
   display:flex;
   justify-content:center;
+  align-items:center;
 }
+
 .carousel-slide img{
   max-width:100%;
   max-height:520px;
   object-fit:contain;
+  background:#fff;
 }
+
 .carousel button{
   position:absolute;
   top:50%;
@@ -174,15 +200,17 @@ section h2{
   border-radius:50%;
   cursor:pointer;
 }
+
 .prev{left:10px}
 .next{right:10px}
 
-/* DOTS */
+/* ===== DOTS ===== */
 .dots{
   display:flex;
   justify-content:center;
   margin-top:15px;
 }
+
 .dot{
   width:10px;
   height:10px;
@@ -190,14 +218,16 @@ section h2{
   background:#ccc;
   margin:0 5px;
 }
+
 .dot.active{background:var(--dourado)}
 
-/* GRID */
+/* ===== GRID ===== */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
 }
+
 .full-img{
   width:100%;
   max-height:400px;
@@ -205,16 +235,23 @@ section h2{
   border-radius:8px;
 }
 
-/* PRESENTES */
+/* ===== PRESENTES ===== */
 .card{
   border:1px solid #eee;
   border-radius:8px;
   padding:20px;
 }
+
 .card img{
   width:100%;
   border-radius:6px;
 }
+
+.qr img{
+  width:180px;
+}
+
+/* ===== BOTÕES ===== */
 button{
   background:var(--rosa);
   color:#fff;
@@ -224,7 +261,7 @@ button{
   font-size:16px;
 }
 
-/* MAPA */
+/* ===== MAPA ===== */
 iframe{
   width:100%;
   height:350px;
@@ -232,17 +269,85 @@ iframe{
   border-radius:8px;
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
 @media(max-width:768px){
   .hero h1{font-size:34px}
   .carousel-slide img{max-height:320px}
   nav a{font-size:12px;padding:12px 8px}
 }
+  /* ===== MODAL DE COMPRA ===== */
+.modal-compra {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none; /* escondido por padrão */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.modal-compra.ativo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modal-box {
+  background: #fff;
+  padding: 32px;
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 14px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.modal-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.btn-cartao {
+  background: #009ee3;
+  color: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-pix {
+  background: #00b894;
+  color: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- MENU -->
 <nav>
   <a href="#inicio">Início</a>
   <a href="#casal">O Casal</a>
@@ -255,6 +360,7 @@ iframe{
   <a href="#rsvp">Confirmação</a>
 </nav>
 
+<!-- TOPO -->
 <div class="hero" id="inicio">
   <img src="imagens/foto18.jpg.jpeg">
   <h1>LAISLLA</h1>
@@ -263,6 +369,7 @@ iframe{
   <p>22 de agosto de 2026 • Cachoeira Grande</p>
 </div>
 
+<!-- CONTAGEM -->
 <div class="countdown">
   <h2>CONTAGEM REGRESSIVA</h2>
   <div class="time">
@@ -275,23 +382,43 @@ iframe{
 
 <div class="texto-contagem">
   <div class="versiculo">
-    <strong>O que Deus uniu, ninguém o separe</strong><br>Mateus 19:6
+    <strong>O que Deus uniu, ninguém o separe</strong><br>
+    Mateus 19:6
   </div>
+
   Criamos esse site para compartilhar com vocês os detalhes da organização do nosso casamento.
-  Estamos muito felizes e contamos com a presença de todos no nosso grande dia!
+  Estamos muito felizes e contamos com a presença de todos no nosso grande dia!<br><br>
+
+  Aqui vocês encontrarão trajes, estacionamento, etc.
+  Ah, é importante também confirmar sua presença. Para isto contamos com sua ajuda clicando no menu
+  “Confirme sua Presença” e preenchendo os dados necessários.<br><br>
+
+  Para nos presentear, escolha qualquer item da Lista de Casamento, escolha com o coração!
+  Aguardamos vocês no nosso grande dia!
 </div>
 
+<!-- O CASAL -->
 <section id="casal">
   <h2>O CASAL</h2>
+
   <div class="casal">
     <img src="imagens/foto19.jpg.jpeg">
     <img src="imagens/foto20.jpg.jpeg">
   </div>
+
+  <div class="texto">
+    <strong>Cada dia é um capítulo novo na nossa história de amor</strong><br><br>
+    Histórias de amor existem, e, às vezes, nem nós mesmos acreditamos todo o tempo que já estamos juntos.
+    Porém, o brilho intenso e apaixonado dos nossos olhares nos fazem lembrar o porquê de chegarmos até aqui
+    sem sentir tanto o tempo passar...<br><br>
+    Vamos nos casar! Estamos preparando tudo com muito carinho para curtirmos cada momento com nossos amigos
+    e familiares queridos!
+  </div>
 </section>
 
+<!-- GALERIA -->
 <div class="carousel" id="galeria">
   <div class="carousel-track">
-    <!-- 17 fotos -->
     <div class="carousel-slide"><img src="imagens/foto1.jpg.jpeg"></div>
     <div class="carousel-slide"><img src="imagens/foto2.jpg.jpeg"></div>
     <div class="carousel-slide"><img src="imagens/foto3.jpg.jpeg"></div>
@@ -310,40 +437,98 @@ iframe{
     <div class="carousel-slide"><img src="imagens/foto16.jpg.jpeg"></div>
     <div class="carousel-slide"><img src="imagens/foto17.jpg.jpeg"></div>
   </div>
+
   <button class="prev">‹</button>
   <button class="next">›</button>
 </div>
+
 <div class="dots" id="dots"></div>
 
+<!-- RECEPÇÃO -->
 <section id="recepcao">
   <h2>RECEPÇÃO</h2>
   <img src="imagens/foto21.jpg.jpeg" class="full-img">
-  <p>Recepção a partir das 14h na Cachoeira Grande.</p>
+  <p class="texto">
+    O casal convida para recepção no dia 22 de agosto de 2026,
+    na Cachoeira Grande, São Paulo. Será a partir de 14h.
+    Não vai perder, né?
+  </p>
 </section>
 
+<!-- INFORMAÇÕES -->
 <section id="informacoes">
   <h2>INFORMAÇÕES GERAIS</h2>
-  <p>Dress code, estacionamento e orientações gerais.</p>
+  <p class="texto"><strong>Dresscode:</strong> Social / Passeio Completo</p>
+
+  <div class="grid">
+    <img src="imagens/foto22.jpg.jpeg" class="full-img">
+    <img src="imagens/foto23.jpg.jpeg" class="full-img">
+  </div>
 </section>
 
+<!-- CARDÁPIO -->
 <section id="cardapio">
   <h2>CARDÁPIO</h2>
-  <p>Welcome drinks e feijoada completa.</p>
+  <p class="texto">
+    <strong>Cardápio:</strong><br>
+    Nossos queridos convidados serão recebidos com um incrível welcome drinks
+    (linda mesa de aperitivos) de pós viagem para que não fiquem com fome durante
+    a nossa cerimônia maravilhosa.<br><br>
+
+    Já no almoço teremos uma maravilhosa feijoada bem brasileira e suculenta.
+    (Teremos mais opções para alérgicos e seletivos).
+  </p>
+
+  <div class="grid">
+    <img src="imagens/foto24.jpg.jpeg" class="full-img">
+    <img src="imagens/foto25.jpg.jpeg" class="full-img">
+  </div>
 </section>
 
+<!-- LOCALIZAÇÃO -->
 <section id="localizacao">
   <h2>LOCALIZAÇÃO</h2>
   <iframe src="https://www.google.com/maps?q=Cachoeira%20Grande%20SP&output=embed"></iframe>
+  <p class="texto">
+    Nosso dia especial será em uma linda cachoeira no interior de São Paulo
+    na presença da natureza que o Senhor fez, teremos um dia maravilhoso entre família e amigos.
+  </p>
 </section>
 
+<!-- LISTA DE PRESENTES (DINÂMICA - PLANILHA) -->
 <section id="presentes">
   <h2>LISTA DE PRESENTES</h2>
+
   <div class="grid" id="listaPresentes"></div>
+
+  <button id="verMais" style="margin-top:30px">Ver mais presentes</button>
+
+  <p class="texto" style="margin-top:40px">
+    <strong>Pix (CPF):</strong> 300.389.638-50
+  </p>
 </section>
 
+<!-- MODAL PIX -->
+<div class="modal" id="pixModal">
+  <div class="modal-content">
+    <span class="close" onclick="fecharModal()">✕</span>
+    <h3 id="modalTitulo"></h3>
+    <p id="modalValor"></p>
+    <div class="qr">
+      <img id="qrPix">
+    </div>
+    <p><strong>Pix:</strong> 300.389.638-50</p>
+  </div>
+</div>
+
+  
+<!-- CONFIRME SUA PRESENÇA -->
 <section id="rsvp">
   <h2>CONFIRME SUA PRESENÇA</h2>
-  <button>Confirmar Presença</button>
+  <p class="texto">Para confirmar sua presença, clique no botão abaixo e preencha o formulário.</p>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScU7mQdPGp_Oy1N2eMSJPgL2apfoZNu1rGnb6z7sCNtkDo1WQ/viewform" target="_blank">
+    <button>Confirmar Presença</button>
+  </a>
 </section>
 
 <script>
@@ -375,7 +560,7 @@ slides.forEach((_,x)=>{
 });
 
 function update(){
-  track.style.transform=`translateX(-${i*100}%)`;
+  track.style.transform=translateX(-${i*100}%);
   document.querySelectorAll(".dot").forEach((d,x)=>d.classList.toggle("active",x===i));
 }
 
@@ -383,6 +568,132 @@ prev.onclick=()=>{i=(i-1+slides.length)%slides.length;update();}
 next.onclick=()=>{i=(i+1)%slides.length;update();}
 setInterval(()=>{next.onclick()},4000);
 </script>
+<script>
+/* ===== LISTA DE PRESENTES VIA PLANILHA ===== */
+const CSV_URL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vSUOq5Rmx6x6K9XZnuppxV6VnyJODPnEqBvrWtGYbBl_rp0uh3sczKGv7W1YzKL1-m2HH2R46MaCL6B/pub?output=csv";
 
+let presentes = [];
+let pagina = 0;
+const porPagina = 9;
+
+fetch(CSV_URL)
+  .then(res => res.text())
+  .then(csv => {
+    const linhas = csv.split("\n").slice(1);
+    presentes = linhas
+      .map(l => {
+        const c = l.split(",");
+       return {
+  nome: c[0],
+  valor: c[1],
+  tipo: c[2],
+  ativo: c[3] === "sim",
+  imagem: c[5] || ""
+};
+
+      })
+      .filter(p => p.ativo);
+    renderPresentes();
+  });
+
+function renderPresentes() {
+  const cont = document.getElementById("listaPresentes");
+  const fim = (pagina + 1) * porPagina;
+
+  presentes.slice(0, fim).forEach(p => {
+    if (p.rendered) return;
+    p.rendered = true;
+
+    // define imagem do presente
+
+const imagemPresente = p.imagem && p.imagem.trim() !== ""
+  ? p.imagem
+  : "https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?w=800";
+
+cont.innerHTML += 
+  <div class="card">
+    <img src="${imagemPresente}">
+    <h3>${p.nome}</h3>
+    <p>${p.tipo === "livre" ? "Valor livre" : "R$ " + p.valor}</p>
+    <button onclick="abrirModal('${p.nome}','${p.valor}','${p.tipo}')">
+      Presentear
+    </button>
+  </div>
+;
+
+  });
+}
+
+document.getElementById("verMais").onclick = () => {
+  pagina++;
+  renderPresentes();
+};
+
+/* ===== MODAL PIX ===== */
+function abrirModal(nome, valor, tipo) {
+  document.getElementById("modalTitulo").innerText = nome;
+
+  document.getElementById("modalValor").innerText =
+    tipo === "livre"
+      ? "Escolha o valor no Pix"
+      : "Valor sugerido: R$ " + valor;
+
+  const pixPayload =
+    "00020126730014BR.GOV.BCB.PIX0122gosteieufalo@gmail.com0225CASAMENTO RENAN & LAISLLA5204000053039865802BR5925Andre Luis dos Santos Sam6009SAO PAULO62140510gr9f1DTcXP6304B8F8";
+
+  document.getElementById("qrPix").src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+    encodeURIComponent(pixPayload);
+
+  document.getElementById("pixModal").style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+
+function fecharModal() {
+  document.getElementById("pixModal").style.display = "none";
+  document.body.style.overflow = "";
+}
+</script>
+ <!-- MODAL DE COMPRA -->
+<div id="modal-compra" class="modal-compra">
+  <div class="modal-box">
+    <button class="modal-fechar">×</button>
+
+    <h2>Finalizar presente</h2>
+    <p>Escolha a forma de pagamento</p>
+
+    <div class="modal-acoes">
+      <a href="#" class="btn-cartao">
+        💳 Pagar com cartão
+      </a>
+
+      <button class="btn-pix">
+        🟦 Pagar com Pix
+      </button>
+    </div>
+  </div>
+</div>
+<script>
+  function abrirModalCompra() {
+    document.getElementById("modal-compra").classList.add("ativo");
+    document.body.style.overflow = "hidden";
+  }
+
+  function fecharModalCompra() {
+    document.getElementById("modal-compra").classList.remove("ativo");
+    document.body.style.overflow = "";
+  }
+
+  // botão X do modal
+  document.addEventListener("DOMContentLoaded", function () {
+    const btnFechar = document.querySelector(".modal-fechar");
+    if (btnFechar) {
+      btnFechar.addEventListener("click", fecharModalCompra);
+    }
+  });
+</script>
+ 
 </body>
 </html>
