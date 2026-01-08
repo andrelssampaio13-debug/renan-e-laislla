@@ -700,6 +700,40 @@ function fecharModal() {
       btnFechar.addEventListener("click", fecharModalCompra);
     }
   });
+  <script>
+function gerarPix() {
+  // lê título e valor exibidos no modal
+  const nome = document.querySelector("#modal-compra h2").innerText;
+  const textoValor = document.querySelector("#modal-compra p").innerText;
+
+  // extrai valor numérico (ex: R$ 600 → 60000)
+  let valor = "";
+  if (textoValor.includes("R$")) {
+    valor = textoValor.replace(/[^\d]/g, "");
+  }
+
+  // payload PIX (CPF como chave)
+  const payloadBase =
+    "00020126360014BR.GOV.BCB.PIX011430038963850520400005303986";
+
+  const payloadValor = valor ? "54" + valor : "";
+
+  const payloadFinal =
+    payloadBase +
+    payloadValor +
+    "5802BR5913RENAN E LAISLLA6009SAO PAULO6304";
+
+  // gera QR Code
+  const qr = document.getElementById("qrPix");
+  qr.src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+    encodeURIComponent(payloadFinal);
+
+  // exibe QR e info Pix
+  qr.style.display = "block";
+  document.getElementById("pixInfo").style.display = "block";
+}
+</script>
 </script>
  
 </body>
