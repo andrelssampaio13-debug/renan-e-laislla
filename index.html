@@ -618,7 +618,7 @@ cont.innerHTML += `
     <img src="${imagemPresente}">
     <h3>${p.nome}</h3>
     <p>${p.tipo === "livre" ? "Valor livre" : "R$ " + p.valor}</p>
-   <button onclick="abrirModalCompra('${p.nome}', '${p.valor}', '${p.tipo}')">
+   <button onclick="abrirModal('${p.nome}', '${p.valor}', '${p.tipo}')">
       Presentear
     </button>
   </div>
