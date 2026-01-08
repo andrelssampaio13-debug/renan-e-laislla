@@ -678,10 +678,17 @@ function fecharModal() {
   </div>
 </div>
 <script>
-  function abrirModalCompra() {
-    document.getElementById("modal-compra").classList.add("ativo");
-    document.body.style.overflow = "hidden";
-  }
+  function abrirModalCompra(nome, valor, tipo) {
+  document.querySelector("#modal-compra h2").innerText = nome;
+
+  document.querySelector("#modal-compra p").innerText =
+    tipo === "livre"
+      ? "Escolha o valor no Pix"
+      : "Valor sugerido: R$ " + valor;
+
+  document.getElementById("modal-compra").classList.add("ativo");
+  document.body.style.overflow = "hidden";
+}
 
   function fecharModalCompra() {
     document.getElementById("modal-compra").classList.remove("ativo");
