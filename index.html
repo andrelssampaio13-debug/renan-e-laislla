@@ -647,6 +647,34 @@ document.getElementById("verMais").onclick = () => {
   pagina++;
   renderPresentes();
 };
+  
+<script>
+/* ===== CONTROLE DO MODAL DE COMPRA ===== */
+
+function abrirModalCompra() {
+  const modal = document.getElementById("modal-compra");
+  if (!modal) return;
+
+  modal.classList.add("ativo");
+  document.body.style.overflow = "hidden";
+}
+
+function fecharModalCompra() {
+  const modal = document.getElementById("modal-compra");
+  if (!modal) return;
+
+  modal.classList.remove("ativo");
+  document.body.style.overflow = "";
+}
+
+/* botão X do modal */
+document.addEventListener("DOMContentLoaded", function () {
+  const btnFechar = document.querySelector(".modal-fechar");
+  if (btnFechar) {
+    btnFechar.addEventListener("click", fecharModalCompra);
+  }
+});
+</script>
 
 /* ===== MODAL PIX ===== */
 function abrirModal(nome, valor, tipo) {
