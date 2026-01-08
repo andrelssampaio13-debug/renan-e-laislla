@@ -560,7 +560,7 @@ slides.forEach((_,x)=>{
 });
 
 function update(){
-  track.style.transform=translateX(-${i*100}%);
+track.style.transform = `translateX(-${i*100}%)`;
   document.querySelectorAll(".dot").forEach((d,x)=>d.classList.toggle("active",x===i));
 }
 
