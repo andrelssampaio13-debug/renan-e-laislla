@@ -673,9 +673,7 @@ document.addEventListener("DOMContentLoaded", function () {
     btnFechar.addEventListener("click", fecharModalCompra);
   }
 });
-</script>
-
-/* ===== MODAL PIX ===== */
+  /* ===== MODAL PIX ===== */
 function abrirModal(nome, valor, tipo) {
   document.getElementById("modalTitulo").innerText = nome;
 
@@ -695,11 +693,13 @@ function abrirModal(nome, valor, tipo) {
   document.body.style.overflow = "hidden";
 }
 
-
 function fecharModal() {
   document.getElementById("pixModal").style.display = "none";
   document.body.style.overflow = "";
 }
+</script>
+
+
 </script>
  <!-- MODAL DE COMPRA -->
 <div id="modal-compra" class="modal-compra">
