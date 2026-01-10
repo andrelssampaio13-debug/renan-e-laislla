@@ -220,128 +220,6 @@ section h2{
 }
 
 .dot.active{background:var(--dourado)}
-
-/* ===== GRID ===== */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-
-.full-img{
-  width:100%;
-  max-height:400px;
-  object-fit:cover;
-  border-radius:8px;
-}
-
-/* ===== PRESENTES ===== */
-.card{
-  border:1px solid #eee;
-  border-radius:8px;
-  padding:20px;
-}
-
-.card img{
-  width:100%;
-  border-radius:6px;
-}
-
-.qr img{
-  width:180px;
-}
-
-/* ===== BOTÕES ===== */
-button{
-  background:var(--rosa);
-  color:#fff;
-  border:none;
-  padding:12px 25px;
-  cursor:pointer;
-  font-size:16px;
-}
-
-/* ===== MAPA ===== */
-iframe{
-  width:100%;
-  height:350px;
-  border:0;
-  border-radius:8px;
-}
-
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-  .hero h1{font-size:34px}
-  .carousel-slide img{max-height:320px}
-  nav a{font-size:12px;padding:12px 8px}
-}
-  /* ===== MODAL DE COMPRA ===== */
-.modal-compra {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  display: none; /* escondido por padrão */
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-}
-
-.modal-compra.ativo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.modal-box {
-  background: #fff;
-  padding: 32px;
-  box-sizing: border-box;
-  width: 90%;
-  max-width: 420px;
-  border-radius: 14px;
-  text-align: center;
-  position: relative;
-}
-
-.modal-fechar {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  border: none;
-  background: none;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-.modal-acoes {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 24px;
-}
-
-.btn-cartao {
-  background: #009ee3;
-  color: #fff;
-  padding: 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.btn-pix {
-  background: #00b894;
-  color: #fff;
-  padding: 14px;
-  border-radius: 8px;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
 </style>
 </head>
 
@@ -443,95 +321,168 @@ iframe{
 </div>
 
 <div class="dots" id="dots"></div>
-
 <!-- RECEPÇÃO -->
 <section id="recepcao">
   <h2>RECEPÇÃO</h2>
-  <img src="imagens/foto21.jpg.jpeg" class="full-img">
-  <p class="texto">
-    O casal convida para recepção no dia 22 de agosto de 2026,
-    na Cachoeira Grande, São Paulo. Será a partir de 14h.
-    Não vai perder, né?
-  </p>
+  <div class="texto">
+    Com grande alegria convidamos você para celebrar conosco este momento tão especial.
+    Nossa recepção será preparada com muito carinho para receber cada convidado
+    e tornar este dia inesquecível.
+  </div>
 </section>
 
 <!-- INFORMAÇÕES -->
 <section id="informacoes">
-  <h2>INFORMAÇÕES GERAIS</h2>
-  <p class="texto"><strong>Dresscode:</strong> Social / Passeio Completo</p>
-
-  <div class="grid">
-    <img src="imagens/foto22.jpg.jpeg" class="full-img">
-    <img src="imagens/foto23.jpg.jpeg" class="full-img">
+  <h2>INFORMAÇÕES</h2>
+  <div class="texto">
+    <strong>Traje:</strong> Esporte fino<br><br>
+    <strong>Horário:</strong> 16h<br><br>
+    <strong>Observação:</strong> Chegue com antecedência para aproveitar cada momento
+    e evitar atrasos na cerimônia.
   </div>
 </section>
 
 <!-- CARDÁPIO -->
 <section id="cardapio">
   <h2>CARDÁPIO</h2>
-  <p class="texto">
-    <strong>Cardápio:</strong><br>
-    Nossos queridos convidados serão recebidos com um incrível welcome drinks
-    (linda mesa de aperitivos) de pós viagem para que não fiquem com fome durante
-    a nossa cerimônia maravilhosa.<br><br>
-
-    Já no almoço teremos uma maravilhosa feijoada bem brasileira e suculenta.
-    (Teremos mais opções para alérgicos e seletivos).
-  </p>
-
   <div class="grid">
-    <img src="imagens/foto24.jpg.jpeg" class="full-img">
-    <img src="imagens/foto25.jpg.jpeg" class="full-img">
+    <div class="card">
+      <h3>Entradas</h3>
+      <p>Canapés variados<br>Bruschettas<br>Petiscos frios</p>
+    </div>
+    <div class="card">
+      <h3>Prato Principal</h3>
+      <p>Arroz<br>Massas<br>Carnes selecionadas</p>
+    </div>
+    <div class="card">
+      <h3>Sobremesas</h3>
+      <p>Bolo dos noivos<br>Doces finos<br>Frutas</p>
+    </div>
   </div>
 </section>
 
 <!-- LOCALIZAÇÃO -->
 <section id="localizacao">
   <h2>LOCALIZAÇÃO</h2>
-  <iframe src="https://www.google.com/maps?q=Cachoeira%20Grande%20SP&output=embed"></iframe>
-  <p class="texto">
-    Nosso dia especial será em uma linda cachoeira no interior de São Paulo
-    na presença da natureza que o Senhor fez, teremos um dia maravilhoso entre família e amigos.
-  </p>
+  <div class="texto">
+    Cachoeira Grande – MA<br><br>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.0000000000000"
+      width="100%"
+      height="350"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+  </div>
 </section>
 
-<!-- LISTA DE PRESENTES (DINÂMICA - PLANILHA) -->
+<!-- PRESENTES -->
 <section id="presentes">
   <h2>LISTA DE PRESENTES</h2>
-  
-<!-- ORDENAR PRESENTES -->
-<div class="ordenar-presentes" style="margin-bottom:30px;text-align:left">
-  <label for="ordenarSelect"><strong>Ordenar lista por:</strong></label>
-  <select id="ordenarSelect" style="margin-left:10px;padding:8px">
-    <option value="menor">Menor preço</option>
-    <option value="maior">Maior preço</option>
-    <option value="az">A–Z</option>
-  </select>
-</div>
 
-  <div class="grid" id="listaPresentes"></div>
+  <div class="grid">
 
-  <button id="verMais" style="margin-top:30px">Ver mais presentes</button>
+    <div class="card">
+      <img src="imagens/presente1.jpg">
+      <h3>Jantar Romântico</h3>
+      <p>Ajude-nos a viver um momento especial a dois.</p>
+      <button onclick="abrirModalCompra('Jantar Romântico')">
+        Presentear
+      </button>
+    </div>
 
-  <p class="texto" style="margin-top:40px">
-    <strong>Pix (CPF):</strong> 300.389.638-50
-  </p>
+    <div class="card">
+      <img src="imagens/presente2.jpg">
+      <h3>Lua de Mel</h3>
+      <p>Contribua para nossa viagem inesquecível.</p>
+      <button onclick="abrirModalCompra('Lua de Mel')">
+        Presentear
+      </button>
+    </div>
+
+    <div class="card">
+      <img src="imagens/presente3.jpg">
+      <h3>Eletrodomésticos</h3>
+      <p>Ajudando a montar nosso novo lar.</p>
+      <button onclick="abrirModalCompra('Eletrodomésticos')">
+        Presentear
+      </button>
+    </div>
+
+    <div class="card">
+      <img src="imagens/presente4.jpg">
+      <h3>Decoração</h3>
+      <p>Detalhes que fazem a diferença.</p>
+      <button onclick="abrirModalCompra('Decoração')">
+        Presentear
+      </button>
+    </div>
+
+    <div class="card">
+      <img src="imagens/presente5.jpg">
+      <h3>Mobília</h3>
+      <p>Construindo nosso lar com amor.</p>
+      <button onclick="abrirModalCompra('Mobília')">
+        Presentear
+      </button>
+    </div>
+
+    <div class="card">
+      <img src="imagens/presente6.jpg">
+      <h3>Ajuda Financeira</h3>
+      <p>Contribuição livre para nosso futuro.</p>
+      <button onclick="abrirModalCompra('Ajuda Financeira')">
+        Presentear
+      </button>
+    </div>
+
+  </div>
 </section>
+<!-- MODAL DE PRESENTE / MERCADO PAGO + PIX -->
+<div id="modal-compra" class="modal-compra">
+  <div class="modal-box">
+    <button class="modal-fechar">×</button>
+
+    <h2 id="tituloPresente">Finalizar presente</h2>
+    <p>Escolha a forma de pagamento</p>
+
+    <div class="modal-acoes">
+      <!-- MERCADO PAGO -->
+      <a
+        id="linkMercadoPago"
+        href="https://www.mercadopago.com.br/"
+        target="_blank"
+        class="btn-cartao"
+      >
+        💳 Pagar com cartão (Mercado Pago)
+      </a>
+
+      <!-- PIX -->
+      <button class="btn-pix" onclick="abrirPix()">
+        🟢 Pagar com Pix
+      </button>
+    </div>
+  </div>
+</div>
 
 <!-- MODAL PIX -->
 <div class="modal" id="pixModal">
   <div class="modal-content">
-    <span class="close" onclick="fecharModal()">✕</span>
-    <h3 id="modalTitulo"></h3>
-    <p id="modalValor"></p>
+    <span class="close" onclick="fecharPix()">✕</span>
+
+    <h3 id="pixTitulo"></h3>
+    <p id="pixValor">Use o QR Code abaixo para pagar</p>
+
     <div class="qr">
       <img id="qrPix">
     </div>
-    <p><strong>Pix:</strong> 300.389.638-50</p>
+
+    <p><strong>Pix (CPF):</strong> 300.389.638-50</p>
   </div>
 </div>
-  
-<!-- CONFIRME SUA PRESENÇA -->
+
+<!-- RSVP -->
 <section id="rsvp">
   <h2>CONFIRME SUA PRESENÇA</h2>
 
@@ -540,9 +491,9 @@ iframe{
     Clique no botão abaixo para confirmar.
   </p>
 
-  <a 
-    href="https://docs.google.com/forms/d/e/1FAIpQLScU7mQdPGp_Oy1N2eMSJPgL2apfoZNu1rGnb6z7sCNtkDo1WQ/viewform" 
-    target="_blank" 
+  <a
+    href="https://docs.google.com/forms/d/e/1FAIpQLScU7mQdPGp_Oy1N2eMSJPgL2apfoZNu1rGnb6z7sCNtkDo1WQ/viewform"
+    target="_blank"
     rel="noopener"
   >
     <button>Confirmar Presença</button>
@@ -550,196 +501,38 @@ iframe{
 </section>
 
 <script>
-/* CONTAGEM */
-const data=new Date("2026-08-22T14:00:00").getTime();
-setInterval(()=>{
-  const n=new Date().getTime();
-  const d=data-n;
-  if(d<0)return;
-  document.getElementById("d").innerText=Math.floor(d/(1000*60*60*24));
-  document.getElementById("h").innerText=Math.floor((d/(1000*60*60))%24);
-  document.getElementById("m").innerText=Math.floor((d/(1000*60))%60);
-  document.getElementById("s").innerText=Math.floor((d/1000)%60);
-},1000);
-
-/* CARROSSEL */
-let i=0;
-const track=document.querySelector(".carousel-track");
-const slides=document.querySelectorAll(".carousel-slide");
-const prev=document.querySelector(".prev");
-const next=document.querySelector(".next");
-const dotsC=document.getElementById("dots");
-
-slides.forEach((_,x)=>{
-  const d=document.createElement("div");
-  d.className="dot"+(x===0?" active":"");
-  d.onclick=()=>{i=x;update();}
-  dotsC.appendChild(d);
-});
-
-function update(){
-track.style.transform = `translateX(-${i*100}%)`;
-  document.querySelectorAll(".dot").forEach((d,x)=>d.classList.toggle("active",x===i));
-}
-
-prev.onclick=()=>{i=(i-1+slides.length)%slides.length;update();}
-next.onclick=()=>{i=(i+1)%slides.length;update();}
-setInterval(()=>{next.onclick()},4000);
-</script>
-<script>
-/* ===== LISTA DE PRESENTES VIA PLANILHA ===== */
-const CSV_URL =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vSUOq5Rmx6x6K9XZnuppxV6VnyJODPnEqBvrWtGYbBl_rp0uh3sczKGv7W1YzKL1-m2HH2R46MaCL6B/pub?output=csv";
-
-let presentes = [];
-let pagina = 0;
-const porPagina = 9;
-
-fetch(CSV_URL)
-  .then(res => res.text())
-  .then(csv => {
-    const linhas = csv.split("\n").slice(1);
-    presentes = linhas
-      .map(l => {
-        const c = l.split(",");
-       return {
-  nome: c[0],
-  valor: c[1],
-  tipo: c[2],
-  ativo: c[3] === "sim",
-  imagem: c[5] || ""
-};
-
-      })
-      .filter(p => p.ativo);
-    renderPresentes();
-  });
-
-function renderPresentes() {
-  const cont = document.getElementById("listaPresentes");
-  const fim = (pagina + 1) * porPagina;
-
-  presentes.slice(0, fim).forEach(p => {
-    if (p.rendered) return;
-    p.rendered = true;
-
-    // define imagem do presente
-
-const imagemPresente = p.imagem && p.imagem.trim() !== ""
-  ? p.imagem
-  : "https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?w=800";
-    
-cont.innerHTML += `
-  <div class="card">
-    <img src="${imagemPresente}">
-    <h3>${p.nome}</h3>
-    <p>${p.tipo === "livre" ? "Valor livre" : "R$ " + p.valor}</p>
-    <button onclick="abrirModal('${p.nome}','${p.valor}','${p.tipo}')">
-      Presentear
-    </button>
-  </div>
-`;
-
-  });
-}
-
-document.getElementById("verMais").onclick = () => {
-  pagina++;
-  renderPresentes();
-};
-/* ===== CONTROLE DO MODAL DE COMPRA ===== 
-
-function abrirModalCompra() {
-  const modal = document.getElementById("modal-compra");
-  if (!modal) return;
-
-  modal.classList.add("ativo");
+/* ===== MODAL COMPRA ===== */
+function abrirModalCompra(presente) {
+  document.getElementById("tituloPresente").innerText = presente;
+  document.getElementById("modal-compra").classList.add("ativo");
   document.body.style.overflow = "hidden";
 }
 
 function fecharModalCompra() {
-  const modal = document.getElementById("modal-compra");
-  if (!modal) return;
-
-  modal.classList.remove("ativo");
+  document.getElementById("modal-compra").classList.remove("ativo");
   document.body.style.overflow = "";
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const btnFechar = document.querySelector(".modal-fechar");
-  if (btnFechar) {
-    btnFechar.addEventListener("click", fecharModalCompra);
-  }
-});
-  */
-  /* ===== MODAL PIX ===== */
-function abrirModal(nome, valor, tipo) {
-  document.getElementById("modalTitulo").innerText = nome;
+document.querySelector(".modal-fechar").onclick = fecharModalCompra;
 
-  document.getElementById("modalValor").innerText =
-    tipo === "livre"
-      ? "Escolha o valor no Pix"
-      : "Valor sugerido: R$ " + valor;
+/* ===== PIX ===== */
+function abrirPix() {
+  document.getElementById("modal-compra").classList.remove("ativo");
+  document.getElementById("pixModal").style.display = "flex";
 
-  const pixPayload =
-    "00020126730014BR.GOV.BCB.PIX0122gosteieufalo@gmail.com0225CASAMENTO RENAN & LAISLLA5204000053039865802BR5925Andre Luis dos Santos Sam6009SAO PAULO62140510gr9f1DTcXP6304B8F8";
+  const payloadPix =
+    "00020126730014BR.GOV.BCB.PIX0122300389638505204000053039865802BR5920Renan e Laislla6009SAO PAULO62140510RL20266304ABCD";
 
   document.getElementById("qrPix").src =
     "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
-    encodeURIComponent(pixPayload);
-
-  document.getElementById("pixModal").style.display = "flex";
-  document.body.style.overflow = "hidden";
+    encodeURIComponent(payloadPix);
 }
 
-function fecharModal() {
+function fecharPix() {
   document.getElementById("pixModal").style.display = "none";
   document.body.style.overflow = "";
 }
 </script>
 
-
-</script>
- <!-- MODAL DE COMPRA -->
-<!--
-<div id="modal-compra" class="modal-compra">
-  <div class="modal-box">
-    <button class="modal-fechar">×</button>
-
-    <h2>Finalizar presente</h2>
-    <p>Escolha a forma de pagamento</p>
-
-    <div class="modal-acoes">
-      <a href="#" class="btn-cartao">
-        💳 Pagar com cartão
-      </a>
-
-      <button class="btn-pix">
-        🟦 Pagar com Pix
-      </button>
-    </div>
-  </div>
-</div>
-  -->
-<script>
-  function abrirModalCompra() {
-    document.getElementById("modal-compra").classList.add("ativo");
-    document.body.style.overflow = "hidden";
-  }
-
-  function fecharModalCompra() {
-    document.getElementById("modal-compra").classList.remove("ativo");
-    document.body.style.overflow = "";
-  }
-
-  // botão X do modal
-  document.addEventListener("DOMContentLoaded", function () {
-    const btnFechar = document.querySelector(".modal-fechar");
-    if (btnFechar) {
-      btnFechar.addEventListener("click", fecharModalCompra);
-    }
-  });
-</script>
- 
 </body>
 </html>
