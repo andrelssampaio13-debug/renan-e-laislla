@@ -750,6 +750,14 @@ function crc16(payload) {
   }
   return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, "0");
 }
+function normalizarPixTexto(texto) {
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^A-Za-z0-9 ]/g, "")
+    .toUpperCase()
+    .trim();
+}
 
 // gerador de payload Pix (ainda não usado)
 function gerarPixPayload({ chave, nome, cidade, valor, mensagem }) {
