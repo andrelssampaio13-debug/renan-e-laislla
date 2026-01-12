@@ -696,7 +696,11 @@ function fecharModal() {
   document.getElementById("pixModal").style.display = "none";
   document.body.style.overflow = "";
 }
-
+document.getElementById("pixModal").addEventListener("click", function(e) {
+  if (e.target.id === "pixModal") {
+    fecharModal();
+  }
+});
 </script>
  <!-- MODAL DE COMPRA -->
 <!-- MODAL DE COMPRA DESATIVADO (NÃO USAR AGORA) --> 
