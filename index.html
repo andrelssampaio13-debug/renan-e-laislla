@@ -618,7 +618,7 @@ setInterval(()=>{next.onclick()},4000);
 <script>
 /* ===== LISTA DE PRESENTES VIA PLANILHA ===== */
 const CSV_URL =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vSUOq5Rmx6x6K9XZnuppxV6VnyJODPnEqBvrWtGYbBl_rp0uh3sczKGv7W1YzKL1-m2HH2R46MaCL6B/pub?output=csv";
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vSUOq5Rmx6x6K9XZnuppxV6VnyJODPnEqBvrWtGYbBl_rp0uh3sczKGv7W1YzKL1-m2HH2R46MaCL6B/pub?output=csv&nocache=" + Date.now();
 
 let presentes = [];
 let pagina = 0;
