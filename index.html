@@ -758,17 +758,27 @@ function gerarPixPayload({ chave, nome, cidade, valor, mensagem }) {
 function abrirModal(nome, valor, tipo) {
   document.getElementById("modalTitulo").innerText = nome;
 
+  const valorNumerico =
+    tipo === "livre"
+      ? null
+      : parseFloat(valor.replace(",", "."));
+
   document.getElementById("modalValor").innerText =
     tipo === "livre"
-      ? "Escolha o valor no Pix"
-      : "Valor sugerido: R$ " + valor;
+      ? "Escolha o valor no seu app Pix 💕"
+      : "Valor do presente: R$ " + valor;
 
-  const pixPayload =
-    "00020126730014BR.GOV.BCB.PIX0122gosteieufalo@gmail.com0225CASAMENTO RENAN & LAISLLA5204000053039865802BR5925Andre Luis dos Santos Sam6009SAO PAULO62140510gr9f1DTcXP6304B8F8";
+  const payload = gerarPixPayload({
+    chave: "gosteieufalo@gmail.com",
+    nome: "Renan e Laislla",
+    cidade: "SAO PAULO",
+    valor: valorNumerico,
+    mensagem: "Presente: " + nome
+  });
 
   document.getElementById("qrPix").src =
     "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
-    encodeURIComponent(pixPayload);
+    encodeURIComponent(payload);
 
   document.getElementById("pixModal").style.display = "flex";
   document.body.style.overflow = "hidden";
