@@ -753,35 +753,48 @@ function crc16(payload) {
 
 // gerador de payload Pix (ainda não usado)
 function gerarPixPayload({ chave, nome, cidade, valor, mensagem }) {
-  const valorFormatado = valor
-    ? `54${valor.toFixed(2).replace(".", "").length
-        .toString()
-        .padStart(2, "0")}${valor.toFixed(2).replace(".", "")}`
+  const gui = "0014BR.GOV.BCB.PIX";
+  const chavePix = "01" + chave.length.toString().padStart(2, "0") + chave;
+  const merchantAccount = gui + chavePix;
+  const merchantAccountField =
+    "26" + merchantAccount.length.toString().padStart(2, "0") + merchantAccount;
+
+  const valorField = valor
+    ? "54" +
+      valor.toFixed(2).replace(".", "").length.toString().padStart(2, "0") +
+      valor.toFixed(2).replace(".", "")
+    : "";
+
+  const mensagemField = mensagem
+    ? "62" +
+      ("05" + mensagem.length.toString().padStart(2, "0") + mensagem)
+        .length.toString()
+        .padStart(2, "0") +
+      "05" +
+      mensagem.length.toString().padStart(2, "0") +
+      mensagem
     : "";
 
   let payload =
     "000201" +
-    "26" + (14 + chave.length).toString().padStart(2, "0") +
-    "0014BR.GOV.BCB.PIX" +
-    "01" + chave.length.toString().padStart(2, "0") + chave +
+    merchantAccountField +
     "52040000" +
     "5303986" +
-    valorFormatado +
+    valorField +
     "5802BR" +
-    "59" + nome.length.toString().padStart(2, "0") + nome +
-    "60" + cidade.length.toString().padStart(2, "0") + cidade +
-    (mensagem
-      ? "62" +
-        (05 + mensagem.length).toString().padStart(2, "0") +
-        "05" +
-        mensagem.length.toString().padStart(2, "0") +
-        mensagem
-      : "") +
+    "59" +
+    nome.length.toString().padStart(2, "0") +
+    nome +
+    "60" +
+    cidade.length.toString().padStart(2, "0") +
+    cidade +
+    mensagemField +
     "6304";
 
   payload += crc16(payload);
   return payload;
 }
+
   /* ===== MODAL PIX ===== */
 function abrirModal(nome, valor, tipo) {
   document.getElementById("modalTitulo").innerText = nome;
