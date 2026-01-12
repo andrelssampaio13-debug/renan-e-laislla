@@ -819,7 +819,7 @@ function abrirModal(nome, valor, tipo) {
 
   const payload = gerarPixPayload({
     chave: "gosteieufalo@gmail.com",
-    nome: "Renan e Laislla",
+    nome: normalizarPixTexto("Renan e Laislla"),
     cidade: "SAO PAULO",
     valor: valorNumerico,
     mensagem: "Presente: " + nome
