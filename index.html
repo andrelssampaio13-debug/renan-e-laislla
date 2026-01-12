@@ -600,17 +600,34 @@ fetch(CSV_URL)
   .then(csv => {
     const linhas = csv.split("\n").slice(1);
     presentes = linhas
-      .map(l => {
-        const c = l.split(",");
-       return {
-  nome: c[0],
-  valor: c[1],
-  tipo: c[2],
-  ativo: c[3] === "sim",
-  imagem: c[5] || ""
-};
+    .map(l => {
+  const c = [];
+  let atual = "";
+  let dentroAspas = false;
 
-      })
+  for (let i = 0; i < l.length; i++) {
+    const char = l[i];
+
+    if (char === '"') {
+      dentroAspas = !dentroAspas;
+    } else if (char === "," && !dentroAspas) {
+      c.push(atual);
+      atual = "";
+    } else {
+      atual += char;
+    }
+  }
+  c.push(atual);
+
+  return {
+    nome: c[0]?.replace(/(^"|"$)/g, ""),
+    valor: c[1],
+    tipo: c[2],
+    ativo: c[3] === "sim",
+    imagem: c[5] || ""
+  };
+})
+ 
       .filter(p => p.ativo);
     renderPresentes();
   });
