@@ -642,7 +642,26 @@ cont.innerHTML += `
 
   });
 }
+document.getElementById("ordenarSelect").addEventListener("change", function(e) {
+  const tipoOrdenacao = e.target.value;
 
+  // reseta estado
+  presentes.forEach(p => p.rendered = false);
+  pagina = 0;
+  document.getElementById("listaPresentes").innerHTML = "";
+
+  if (tipoOrdenacao === "menor") {
+    presentes.sort((a, b) => parseFloat(a.valor) - parseFloat(b.valor));
+  } 
+  else if (tipoOrdenacao === "maior") {
+    presentes.sort((a, b) => parseFloat(b.valor) - parseFloat(a.valor));
+  } 
+  else {
+    presentes.sort((a, b) => a.nome.localeCompare(b.nome));
+  }
+
+  renderPresentes();
+});
 document.getElementById("verMais").onclick = () => {
   pagina++;
   renderPresentes();
