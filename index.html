@@ -767,11 +767,13 @@ function gerarPixPayload({ chave, nome, cidade, valor, mensagem }) {
   const merchantAccountField =
     "26" + merchantAccount.length.toString().padStart(2, "0") + merchantAccount;
 
-  const valorField = valor
-    ? "54" +
-      valor.toFixed(2).replace(".", "").length.toString().padStart(2, "0") +
-      valor.toFixed(2).replace(".", "")
-    : "";
+ const valorEmCentavos = valor ? Math.round(valor * 100).toString() : "";
+
+const valorField = valor
+  ? "54" +
+    valorEmCentavos.length.toString().padStart(2, "0") +
+    valorEmCentavos
+  : "";
 
   const mensagemField = mensagem
     ? "62" +
