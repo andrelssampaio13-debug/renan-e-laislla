@@ -767,12 +767,24 @@ function gerarPixPayload({ chave, nome, cidade, valor, mensagem }) {
   const merchantAccountField =
     "26" + merchantAccount.length.toString().padStart(2, "0") + merchantAccount;
 
- const valorEmCentavos = valor ? Math.round(valor * 100).toString() : "";
+ // === TRATAMENTO CORRETO DO VALOR PIX ===
+let valorCentavos = "";
 
-const valorField = valor
+if (valor !== null && valor !== undefined && valor !== "") {
+  let valorStr = valor.toString().trim();
+  valorStr = valorStr.replace(",", ".");
+
+  const valorNumero = Number(valorStr);
+
+  if (!isNaN(valorNumero)) {
+    valorCentavos = Math.round(valorNumero * 100).toString();
+  }
+}
+
+const valorField = valorCentavos
   ? "54" +
-    valorEmCentavos.length.toString().padStart(2, "0") +
-    valorEmCentavos
+    valorCentavos.length.toString().padStart(2, "0") +
+    valorCentavos
   : "";
 
   const mensagemField = mensagem
