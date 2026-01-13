@@ -693,7 +693,14 @@ cont.innerHTML += `
   <div class="card">
     <img src="${imagemPresente}">
     <h3>${p.nome}</h3>
-    <p>${p.tipo === "livre" ? "Valor livre" : "R$ " + p.valor}</p>
+    <p>
+  ${
+    p.tipo === "livre"
+      ? "Valor livre"
+      : "R$ " + normalizarValor(p.valor).replace(".", ",")
+  }
+</p>
+
     <button onclick="abrirModal('${p.nome}','${p.valor}','${p.tipo}')">
       Presentear
     </button>
