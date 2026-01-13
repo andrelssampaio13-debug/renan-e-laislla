@@ -960,11 +960,18 @@ function mostrarPix() {
   document.getElementById("areaPix").style.display = "block";
 }
 function copiarPix() {
-  const campo = document.getElementById("pixCopiaCola");
-  campo.select();
-  campo.setSelectionRange(0, 99999);
-  document.execCommand("copy");
-  alert("Código Pix copiado! Agora é só colar no seu banco 💚");
+  const texto = document.getElementById("pixCopiaCola").value;
+
+  if (!navigator.clipboard) {
+    alert("Seu navegador não suporta cópia automática. Selecione e copie manualmente.");
+    return;
+  }
+
+  navigator.clipboard.writeText(texto).then(() => {
+    alert("Código Pix Copia e Cola copiado! Funciona em qualquer banco 💚");
+  }).catch(() => {
+    alert("Não foi possível copiar automaticamente. Copie manualmente.");
+  });
 }
 
   // botão X do modal
