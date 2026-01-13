@@ -874,12 +874,19 @@ function fecharModal() {
   document.getElementById("pixModal").style.display = "none";
 }
 
-document.getElementById("pixModal").addEventListener("click", function(e) {
-  if (e.target.id === "pixModal") {
-    fecharModal();
-  }
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const pixModal = document.getElementById("pixModal");
+  if (!pixModal) return;
+
+  pixModal.addEventListener("click", function (e) {
+    if (e.target === pixModal) {
+      fecharModal();
+    }
+  });
 });
 </script>
+
  <!-- MODAL DE COMPRA -->
 <!-- MODAL DE COMPRA DESATIVADO (NÃO USAR AGORA) --> 
 <!--
