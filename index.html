@@ -853,13 +853,12 @@ document.documentElement.style.overflow = "hidden";
       ? "Escolha o valor no seu app Pix 💕"
       : "Valor do presente: R$ " + valor;
 
-  const payload = gerarPixPayload({
-    chave: "gosteieufalo@gmail.com",
-    nome: normalizarPixTexto("Renan e Laislla"),
-    cidade: "SAO PAULO",
-    valor: valorNumerico,
-    mensagem: null
-  });
+const payload = gerarPixPayload({
+  chave: "gosteieufalo@gmail.com",
+  nome: normalizarPixTexto("RENAN E LAISLLA"),
+  cidade: "SAO PAULO",
+  valor: valorNumerico ? normalizarValor(valorNumerico) : null
+});
 
   document.getElementById("qrPix").src =
     "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
