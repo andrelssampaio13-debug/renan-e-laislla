@@ -924,9 +924,10 @@ function abrirModal(nome, valor, tipo) {
 }
 
 function fecharModal() {
+  document.body.classList.remove("modal-aberto");
   document.getElementById("pixModal").style.display = "none";
-  document.body.style.overflow = "";
 }
+
 document.getElementById("pixModal").addEventListener("click", function(e) {
   if (e.target.id === "pixModal") {
     fecharModal();
