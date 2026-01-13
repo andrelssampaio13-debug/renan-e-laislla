@@ -812,6 +812,13 @@ function normalizarPixTexto(texto) {
     .toUpperCase()
     .trim();
 }
+function chavePresente(nome) {
+  return "presente_" + nome
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, "_");
+}
 
 function gerarPixPayload({ chave, nome, cidade, valor }) {
   function campo(id, valor) {
