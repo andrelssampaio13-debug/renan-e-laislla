@@ -866,8 +866,9 @@ if (valor !== null && valor !== undefined && valor !== "") {
 
   /* ===== MODAL PIX ===== */
 function abrirModal(nome, valor, tipo) {
-  document.body.classList.add("modal-aberto");
-
+document.body.classList.add("modal-aberto");
+document.documentElement.style.overflow = "hidden";
+  
   document.getElementById("modalTitulo").innerText = nome;
 
   const valorNumerico = tipo === "livre" ? null : valor;
