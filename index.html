@@ -897,6 +897,10 @@ function abrirModal(nome, valor, tipo) {
   document.getElementById("qrPix").src =
     "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
     encodeURIComponent(payload);
+  
+// salva Pix Copia e Cola (universal)
+window.pixPayloadAtual = payload;
+document.getElementById("pixCopiaCola").value = payload;
 
   document.getElementById("pixModal").style.display = "flex";
   document.body.style.overflow = "hidden";
