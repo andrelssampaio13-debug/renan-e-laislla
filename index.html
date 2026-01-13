@@ -553,20 +553,25 @@ iframe{
     <span class="close" onclick="fecharModal()">✕</span>
     <h3 id="modalTitulo"></h3>
     <p id="modalValor"></p>
-    <div class="qr">
-      <img id="qrPix">
-    </div>
-    <a 
-  href="https://www.mercadopago.com.br" 
-  target="_blank" 
-  rel="noopener"
-  style="text-decoration:none"
->
-  <button style="margin-top:16px;background:#009ee3">
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:12px">
+  <button 
+    onclick="mostrarPix()" 
+    style="background:#00b894"
+  >
+    🟢 Pagar com Pix
+  </button>
+
+  <button 
+    style="background:#009ee3"
+  >
     💳 Pagar com cartão
   </button>
-</a>
-    <p><strong>Pix:</strong> 300.389.638-50</p>
+</div>
+
+<div class="qr" id="areaPix" style="display:none;margin-top:20px">
+  <img id="qrPix">
+  <p style="margin-top:10px"><strong>Pix:</strong> 300.389.638-50</p>
+</div>
   </div>
 </div>
   
