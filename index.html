@@ -768,24 +768,31 @@ function gerarPixPayload({ chave, nome, cidade, valor, mensagem }) {
     "26" + merchantAccount.length.toString().padStart(2, "0") + merchantAccount;
 
  // === TRATAMENTO CORRETO DO VALOR PIX ===
-let valorCentavos = "";
+// === TRATAMENTO CORRETO DO VALOR PIX (PADRÃO BACEN) ===
+let valorField = "";
 
 if (valor !== null && valor !== undefined && valor !== "") {
   let valorStr = valor.toString().trim();
+
+  // garante ponto decimal
+  if (!valorStr.includes(".")) {
+    valorStr = valorStr + ".00";
+  }
+
+  // troca vírgula por ponto
   valorStr = valorStr.replace(",", ".");
 
-  const valorNumero = Number(valorStr);
+  const partes = valorStr.split(".");
+  const reais = partes[0];
+  const centavos = (partes[1] || "00").padEnd(2, "0").substring(0, 2);
 
-  if (!isNaN(valorNumero)) {
-    valorCentavos = Math.round(valorNumero * 100).toString();
-  }
+  const valorFinal = reais + centavos;
+
+  valorField =
+    "54" +
+    valorFinal.length.toString().padStart(2, "0") +
+    valorFinal;
 }
-
-const valorField = valorCentavos
-  ? "54" +
-    valorCentavos.length.toString().padStart(2, "0") +
-    valorCentavos
-  : "";
 
   const mensagemField = mensagem
     ? "62" +
