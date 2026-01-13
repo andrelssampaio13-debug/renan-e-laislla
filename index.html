@@ -829,9 +829,9 @@ function abrirModal(nome, valor, tipo) {
   document.getElementById("modalTitulo").innerText = nome;
 
   const valorNumerico =
-    tipo === "livre"
-      ? null
-      : parseFloat(valor.replace(",", "."));
+  tipo === "livre"
+    ? null
+    : valor;
 
   document.getElementById("modalValor").innerText =
     tipo === "livre"
