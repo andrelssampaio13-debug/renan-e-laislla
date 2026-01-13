@@ -951,6 +951,13 @@ document.getElementById("pixModal").addEventListener("click", function(e) {
 function mostrarPix() {
   document.getElementById("areaPix").style.display = "block";
 }
+function copiarPix() {
+  const campo = document.getElementById("pixCopiaCola");
+  campo.select();
+  campo.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  alert("Código Pix copiado! Agora é só colar no seu banco 💚");
+}
 
   // botão X do modal
   document.addEventListener("DOMContentLoaded", function () {
