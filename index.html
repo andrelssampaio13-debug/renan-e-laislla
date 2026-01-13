@@ -378,6 +378,18 @@ iframe{
   font-weight: bold;
   cursor: pointer;
 }
+  
+/* ===== BLOQUEIO TOTAL DA PÁGINA QUANDO MODAL ABERTO ===== */
+body.modal-aberto {
+  overflow: hidden !important;
+  height: 100vh !important;
+  position: fixed;
+  width: 100%;
+}
+
+body.modal-aberto > *:not(#pixModal) {
+  pointer-events: none;
+}
 
 </style>
 </head>
