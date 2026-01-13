@@ -634,7 +634,20 @@ track.style.transform = `translateX(-${i*100}%)`;
 
 prev.onclick=()=>{i=(i-1+slides.length)%slides.length;update();}
 next.onclick=()=>{i=(i+1)%slides.length;update();}
-setInterval(()=>{next.onclick()},4000);
+let autoSlide = setInterval(() => {
+  if (!document.hidden) {
+    next.onclick();
+  }
+}, 4000);
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    clearInterval(autoSlide);
+  } else {
+    autoSlide = setInterval(() => next.onclick(), 4000);
+  }
+});
+
 </script>
 <script>
 /* ===== LISTA DE PRESENTES VIA PLANILHA ===== */
