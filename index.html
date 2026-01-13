@@ -894,12 +894,11 @@ if (valor !== null && valor !== undefined && valor !== "") {
 
   /* ===== MODAL PIX ===== */
 function abrirModal(nome, valor, tipo) {
+  document.body.classList.add("modal-aberto");
+
   document.getElementById("modalTitulo").innerText = nome;
 
-  const valorNumerico =
-  tipo === "livre"
-    ? null
-    : valor;
+  const valorNumerico = tipo === "livre" ? null : valor;
 
   document.getElementById("modalValor").innerText =
     tipo === "livre"
@@ -911,19 +910,17 @@ function abrirModal(nome, valor, tipo) {
     nome: normalizarPixTexto("Renan e Laislla"),
     cidade: "SAO PAULO",
     valor: valorNumerico,
-     mensagem: null
+    mensagem: null
   });
 
   document.getElementById("qrPix").src =
     "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
     encodeURIComponent(payload);
-  
-// salva Pix Copia e Cola (universal)
-window.pixPayloadAtual = payload;
-document.getElementById("pixCopiaCola").value = payload;
 
+  document.getElementById("pixCopiaCola").value = payload;
+
+  document.getElementById("areaPix").style.display = "none";
   document.getElementById("pixModal").style.display = "flex";
-  document.body.style.overflow = "hidden";
 }
 
 function fecharModal() {
