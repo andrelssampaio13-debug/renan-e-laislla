@@ -813,55 +813,30 @@ function normalizarPixTexto(texto) {
     .trim();
 }
 
-// gerador de payload Pix (ainda não usado)
-function gerarPixPayload({ chave, nome, cidade, valor, mensagem }) {
-  const gui = "0014BR.GOV.BCB.PIX";
-  const chavePix = "01" + chave.length.toString().padStart(2, "0") + chave;
-  const merchantAccount = gui + chavePix;
-  const merchantAccountField =
-    "26" + merchantAccount.length.toString().padStart(2, "0") + merchantAccount;
+function gerarPixPayload({ chave, nome, cidade, valor }) {
+  function campo(id, valor) {
+    const tamanho = valor.length.toString().padStart(2, "0");
+    return id + tamanho + valor;
+  }
 
- // === TRATAMENTO CORRETO DO VALOR PIX ===
-// === TRATAMENTO CORRETO DO VALOR PIX (PADRÃO BACEN) ===
-let valorField = "";
+  const payloadSemCRC =
+    campo("00", "01") +
+    campo(
+      "26",
+      campo("00", "BR.GOV.BCB.PIX") +
+      campo("01", chave)
+    ) +
+    campo("52", "0000") +
+    campo("53", "986") +
+    (valor ? campo("54", valor) : "") +
+    campo("58", "BR") +
+    campo("59", nome.substring(0, 25)) +
+    campo("60", cidade.substring(0, 15)) +
+    campo("62", campo("05", "***"));
 
-if (valor !== null && valor !== undefined && valor !== "") {
-  const valorNormalizado = normalizarValor(valor); // ex: "100.00"
+  const crc = crc16(payloadSemCRC + "6304");
 
-  valorField =
-    "54" +
-    valorNormalizado.length.toString().padStart(2, "0") +
-    valorNormalizado;
-}
-
-  const mensagemField = mensagem
-    ? "62" +
-      ("05" + mensagem.length.toString().padStart(2, "0") + mensagem)
-        .length.toString()
-        .padStart(2, "0") +
-      "05" +
-      mensagem.length.toString().padStart(2, "0") +
-      mensagem
-    : "";
-
-  let payload =
-    "000201" +
-    merchantAccountField +
-    "52040000" +
-    "5303986" +
-    valorField +
-    "5802BR" +
-    "59" +
-    nome.length.toString().padStart(2, "0") +
-    nome +
-    "60" +
-    cidade.length.toString().padStart(2, "0") +
-    cidade +
-    mensagemField +
-    "6304";
-
-  payload += crc16(payload);
-  return payload;
+  return payloadSemCRC + "6304" + crc;
 }
 
   /* ===== MODAL PIX ===== */
