@@ -832,7 +832,7 @@ function gerarPixPayload({ chave, nome, cidade, valor }) {
     campo("58", "BR") +
     campo("59", nome.substring(0, 25)) +
     campo("60", cidade.substring(0, 15)) +
-    campo("62", campo("05", "***"));
+    campo("62", "0503***");
 
   const crc = crc16(payloadSemCRC + "6304");
 
