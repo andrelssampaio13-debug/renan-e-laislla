@@ -902,16 +902,16 @@ document.documentElement.style.overflow = "";
   document.getElementById("pixModal").style.display = "none";
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const pixModal = document.getElementById("pixModal");
-  if (!pixModal) return;
+const pixModal = document.getElementById("pixModal");
 
-  pixModal.addEventListener("click", function (e) {
+if (pixModal) {
+  pixModal.onclick = function (e) {
     if (e.target === pixModal) {
       fecharModal();
     }
-  });
-});
+  };
+}
+
 </script>
 
  <!-- MODAL DE COMPRA -->
