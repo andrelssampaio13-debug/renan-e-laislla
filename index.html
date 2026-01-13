@@ -819,6 +819,24 @@ function chavePresente(nome) {
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]/g, "_");
 }
+function iniciarPresente(nome, valor, tipo) {
+  const chave = chavePresente(nome);
+
+  if (localStorage.getItem(chave) === "finalizado") {
+    alert("Este presente já foi escolhido 💕");
+    return;
+  }
+
+  if (localStorage.getItem(chave) === "reservado") {
+    alert("Este presente está sendo escolhido agora 😊");
+    return;
+  }
+
+  // reserva temporária
+  localStorage.setItem(chave, "reservado");
+
+  abrirModal(nome, valor, tipo);
+}
 
 function gerarPixPayload({ chave, nome, cidade, valor }) {
   function campo(id, valor) {
