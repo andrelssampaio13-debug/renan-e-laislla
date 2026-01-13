@@ -721,16 +721,22 @@ function renderPresentes() {
 document.getElementById("ordenarSelect").addEventListener("change", function(e) {
   const tipoOrdenacao = e.target.value;
 
-  // reseta estado
+  // reseta estado de renderização
   presentes.forEach(p => p.rendered = false);
   pagina = 0;
   document.getElementById("listaPresentes").innerHTML = "";
 
+  // função segura para ordenar valores
+  function valorSeguro(v) {
+    const n = parseFloat(v);
+    return isNaN(n) ? Infinity : n;
+  }
+
   if (tipoOrdenacao === "menor") {
-    presentes.sort((a, b) => parseFloat(a.valor) - parseFloat(b.valor));
+    presentes.sort((a, b) => valorSeguro(a.valor) - valorSeguro(b.valor));
   } 
   else if (tipoOrdenacao === "maior") {
-    presentes.sort((a, b) => parseFloat(b.valor) - parseFloat(a.valor));
+    presentes.sort((a, b) => valorSeguro(b.valor) - valorSeguro(a.valor));
   } 
   else {
     presentes.sort((a, b) => a.nome.localeCompare(b.nome));
@@ -738,6 +744,7 @@ document.getElementById("ordenarSelect").addEventListener("change", function(e) 
 
   renderPresentes();
 });
+
 document.getElementById("verMais").onclick = () => {
   pagina++;
   renderPresentes();
