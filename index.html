@@ -380,16 +380,20 @@ iframe{
 }
   
 /* ===== BLOQUEIO TOTAL DA PÁGINA QUANDO MODAL ABERTO ===== */
+/* ===== BLOQUEIO CORRETO PARA MODAL (SAFE MOBILE) ===== */
 body.modal-aberto {
-  overflow: hidden !important;
-  height: 100vh !important;
-  position: fixed;
-  width: 100%;
+  overflow: hidden;
 }
 
+/* impede clique fora do modal sem travar layout */
 body.modal-aberto > *:not(#pixModal) {
   pointer-events: none;
 }
+
+#pixModal {
+  overscroll-behavior: contain;
+}
+
 
 </style>
 </head>
