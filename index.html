@@ -1073,6 +1073,63 @@ function copiarPix() {
   </div><!-- /modal-content -->
 
 </div><!-- /pixModal -->
+<!-- ===== PAINEL ADMIN (OCULTO) ===== -->
+<div id="adminPainel" style="display:none;position:fixed;bottom:20px;right:20px;z-index:999999;background:#fff;border:1px solid #ccc;padding:15px;border-radius:10px;max-width:300px">
+  <strong>🔒 Admin – Presentes</strong>
+  <div id="adminLista" style="margin-top:10px;font-size:14px"></div>
+</div>
+<script>
+/* ===== ADMIN SECRETO ===== */
+document.addEventListener("keydown", function (e) {
+  // combinação secreta: Ctrl + Alt + A
+  if (e.ctrlKey && e.altKey && e.key.toLowerCase() === "a") {
+    const senha = prompt("Área restrita. Digite a senha:");
+
+    if (senha === "admin123") {
+      abrirPainelAdmin();
+    } else {
+      alert("Senha incorreta");
+    }
+  }
+});
+
+function abrirPainelAdmin() {
+  const painel = document.getElementById("adminPainel");
+  const lista = document.getElementById("adminLista");
+
+  lista.innerHTML = "";
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const chave = localStorage.key(i);
+
+    if (chave.startsWith("presente_") && localStorage.getItem(chave) === "finalizado") {
+      const nome = chave.replace("presente_", "").replace(/_/g, " ");
+
+      const item = document.createElement("div");
+      item.style.marginBottom = "8px";
+
+      item.innerHTML = `
+        🎁 ${nome}
+        <button style="margin-left:8px;font-size:12px" onclick="desmarcarPresente('${chave}')">
+          Desmarcar
+        </button>
+      `;
+
+      lista.appendChild(item);
+    }
+  }
+
+  painel.style.display = "block";
+}
+
+function desmarcarPresente(chave) {
+  if (confirm("Deseja liberar este presente?")) {
+    localStorage.removeItem(chave);
+    alert("Presente liberado");
+    location.reload();
+  }
+}
+</script>
 
 </body>
 </html>
