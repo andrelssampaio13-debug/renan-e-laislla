@@ -741,20 +741,27 @@ function renderPresentes() {
         ? "Valor livre"
         : "R$ " + valorNormalizado.replace(".", ",");
 
-    cont.insertAdjacentHTML(
-      "beforeend",
-      `
-      <div class="card">
-        <img src="${imagemPresente}">
-        <h3>${p.nome}</h3>
-        <p>${textoValor}</p>
-       <button onclick="iniciarPresente('${p.nome}','${p.valor}','${p.tipo}')">
- 
-          Presentear
-        </button>
-      </div>
-      `
-    );
+   const chave = chavePresente(p.nome);
+const escolhido = localStorage.getItem(chave) === "finalizado";
+
+cont.insertAdjacentHTML(
+  "beforeend",
+  `
+  <div class="card ${escolhido ? "escolhido" : ""}">
+    <img src="${imagemPresente}">
+    <h3>${p.nome}</h3>
+    <p>${textoValor}</p>
+    ${
+      escolhido
+        ? ""
+        : `<button onclick="iniciarPresente('${p.nome}','${p.valor}','${p.tipo}')">
+             Presentear
+           </button>`
+    }
+  </div>
+  `
+);
+
   });
 }
 
