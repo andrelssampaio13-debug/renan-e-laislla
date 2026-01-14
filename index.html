@@ -725,44 +725,64 @@ function renderPresentes() {
   const cont = document.getElementById("listaPresentes");
   const fim = (pagina + 1) * porPagina;
 
-  presentes.slice(0, fim).forEach(p => {
+  // separa valor livre do restante
+  const presenteLivre = presentes.find(p => p.tipo === "livre");
+  const outrosPresentes = presentes.filter(p => p.tipo !== "livre");
+
+  // limpa lista ao renderizar primeira página
+  if (pagina === 0) {
+    cont.innerHTML = "";
+    presentes.forEach(p => p.rendered = false);
+  }
+
+  // renderiza valor livre sempre primeiro
+  if (presenteLivre && !presenteLivre.rendered) {
+    renderCard(presenteLivre);
+    presenteLivre.rendered = true;
+  }
+
+  // renderiza os demais respeitando paginação
+  outrosPresentes.slice(0, fim).forEach(p => {
     if (p.rendered) return;
+    renderCard(p);
     p.rendered = true;
-
-    const imagemPresente =
-      p.imagem && p.imagem.trim() !== ""
-        ? p.imagem
-        : "imagens/presente-padrao.jpg.jpeg";
-
-    const valorNormalizado = normalizarValor(p.valor);
-
-    const textoValor =
-      p.tipo === "livre" || !valorNormalizado
-        ? "Valor livre"
-        : "R$ " + valorNormalizado.replace(".", ",");
-
-   const chave = chavePresente(p.nome);
-const escolhido = localStorage.getItem(chave) === "finalizado";
-
-cont.insertAdjacentHTML(
-  "beforeend",
-  `
-  <div class="card ${escolhido ? "escolhido" : ""}">
-    <img src="${imagemPresente}">
-    <h3>${p.nome}</h3>
-    <p>${textoValor}</p>
-    ${
-      escolhido
-        ? ""
-        : `<button onclick="iniciarPresente('${p.nome}','${p.valor}','${p.tipo}')">
-             Presentear
-           </button>`
-    }
-  </div>
-  `
-);
-
   });
+}
+function renderCard(p) {
+  const cont = document.getElementById("listaPresentes");
+
+  const imagemPresente =
+    p.imagem && p.imagem.trim() !== ""
+      ? p.imagem
+      : "imagens/presente-padrao.jpg.jpeg";
+
+  const valorNormalizado = normalizarValor(p.valor);
+
+  const textoValor =
+    p.tipo === "livre" || !valorNormalizado
+      ? "Valor livre"
+      : "R$ " + valorNormalizado.replace(".", ",");
+
+  const chave = chavePresente(p.nome);
+  const escolhido = localStorage.getItem(chave) === "finalizado";
+
+  cont.insertAdjacentHTML(
+    "beforeend",
+    `
+    <div class="card ${escolhido ? "escolhido" : ""}">
+      <img src="${imagemPresente}">
+      <h3>${p.nome}</h3>
+      <p>${textoValor}</p>
+      ${
+        escolhido
+          ? ""
+          : `<button onclick="iniciarPresente('${p.nome}','${p.valor}','${p.tipo}')">
+               Presentear
+             </button>`
+      }
+    </div>
+    `
+  );
 }
 
 document.getElementById("ordenarSelect").addEventListener("change", function(e) {
