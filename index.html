@@ -926,8 +926,19 @@ const payload = gerarPixPayload({
 }
 
 function fecharModal() {
+  const nome = document.getElementById("modalTitulo").innerText;
+
+  if (nome) {
+    const chave = chavePresente(nome);
+
+    // se não foi finalizado, libera a reserva
+    if (localStorage.getItem(chave) === "reservado") {
+      localStorage.removeItem(chave);
+    }
+  }
+
   document.body.classList.remove("modal-aberto");
-document.documentElement.style.overflow = "";
+  document.documentElement.style.overflow = "";
   document.getElementById("pixModal").style.display = "none";
 }
 
