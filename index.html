@@ -947,6 +947,12 @@ if (pixModal) {
     document.body.style.overflow = "";
   }
 function mostrarPix() {
+  const nome = document.getElementById("modalTitulo").innerText;
+  const chave = chavePresente(nome);
+
+  // marca como presente finalizado
+  localStorage.setItem(chave, "finalizado");
+
   document.getElementById("areaPix").style.display = "block";
 }
 function copiarPix() {
