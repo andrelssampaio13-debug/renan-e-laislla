@@ -793,8 +793,7 @@ function renderCard(p) {
       ? "Valor livre"
       : "R$ " + valorNormalizado.replace(".", ",");
 
-  const chave = chavePresente(p.nome);
-  const escolhido = localStorage.getItem(chave) === "finalizado";
+  const escolhido = p.status === "finalizado";
 
   cont.insertAdjacentHTML(
     "beforeend",
