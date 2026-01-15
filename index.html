@@ -910,8 +910,8 @@ function iniciarPresente(nome, valor, tipo) {
       nome: nome
     })
   })
-  .then(r => r.json())
-  .then(data => {
+  .then(r => r.text())
+.then(texto => {
     if (data.erro) {
       alert(data.erro);
       return;
