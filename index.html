@@ -900,27 +900,25 @@ function chavePresente(nome) {
 }
 
 function iniciarPresente(nome, valor, tipo) {
+  const params = new URLSearchParams();
+  params.append("acao", "reservar");
+  params.append("nome", nome);
+
   fetch(API_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      acao: "reservar",
-      nome: nome
-    })
+    body: params
   })
-  .then(response => response.json())
+  .then(r => r.json())
   .then(data => {
     if (data.status === "ok") {
       abrirModal(nome, valor, tipo);
     } else {
-      alert("Este presente já foi escolhido ou está indisponível 💕");
+      alert("Este presente já foi escolhido 💕");
     }
   })
   .catch(err => {
     console.error(err);
-    alert("Erro ao tentar reservar o presente. Tente novamente.");
+    alert("Erro de comunicação. Atualize a página.");
   });
 }
 
