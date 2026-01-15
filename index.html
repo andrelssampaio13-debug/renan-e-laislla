@@ -900,24 +900,30 @@ function chavePresente(nome) {
 }
 
 function iniciarPresente(nome, valor, tipo) {
-  const params = new URLSearchParams();
-  params.append("acao", "reservar");
-  params.append("nome", nome);
-
   fetch(API_URL, {
     method: "POST",
-    body: params
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      acao: "reservar",
+      nome: nome
+    })
   })
   .then(r => r.json())
- .then(data => {
-  if (data.erro) {
-    alert(data.erro);
-    return;
-  }
+  .then(data => {
+    if (data.erro) {
+      alert(data.erro);
+      return;
+    }
 
-  abrirModal(nome, valor, tipo);
-})
+    if (data.status === "bloqueado") {
+      alert("Este presente já foi escolhido 💕");
+      return;
+    }
 
+    abrirModal(nome, valor, tipo);
+  })
   .catch(err => {
     console.error(err);
     alert("Erro de comunicação. Atualize a página.");
