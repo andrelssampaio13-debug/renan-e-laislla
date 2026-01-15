@@ -982,23 +982,6 @@ const payload = gerarPixPayload({
 }
 
 function fecharModal() {
-  const nome = document.getElementById("modalTitulo").innerText;
-
-  if (nome) {
-    fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        acao: "liberar",
-        nome: nome
-      })
-    })
-    .then(r => r.json())
-    .catch(err => console.error(err));
-  }
-
   document.body.classList.remove("modal-aberto");
   document.documentElement.style.overflow = "";
   document.getElementById("pixModal").style.display = "none";
