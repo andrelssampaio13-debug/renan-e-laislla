@@ -720,19 +720,23 @@ function renderPresentes() {
         ? "Valor livre"
         : "R$ " + valorNormalizado.replace(".", ",");
 
-    cont.insertAdjacentHTML(
-      "beforeend",
-      `
-     <div class="card ${p.status === "finalizado" ? "escolhido" : ""}">
-        <img src="${imagemPresente}">
-        <h3>${p.nome}</h3>
-        <p>${textoValor}</p>
-        <button onclick="abrirModal('${p.nome}','${p.valor}','${p.tipo}')">
-          Presentear
-        </button>
-      </div>
-      `
-    );
+   cont.insertAdjacentHTML(
+  "beforeend",
+  `
+  <div class="card ${p.status === "finalizado" ? "escolhido" : ""}">
+    <img src="${imagemPresente}">
+    <h3>${p.nome}</h3>
+    <p>${textoValor}</p>
+    ${
+      p.status === "finalizado"
+        ? ""
+        : `<button onclick="abrirModal('${p.nome}','${p.valor}','${p.tipo}')">
+             Presentear
+           </button>`
+    }
+  </div>
+  `
+);
   });
 }
 
