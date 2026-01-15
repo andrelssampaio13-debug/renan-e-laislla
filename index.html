@@ -394,6 +394,25 @@ body.modal-aberto > *:not(#pixModal) {
   overscroll-behavior: contain;
 }
 
+.card.escolhido {
+  opacity: 0.55;
+  position: relative;
+}
+
+.card.escolhido::after {
+  content: "🎁 Presente já escolhido";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #555;
+  font-size: 16px;
+  text-align: center;
+  pointer-events: none;
+}
 
 </style>
 </head>
