@@ -723,7 +723,7 @@ function renderPresentes() {
     cont.insertAdjacentHTML(
       "beforeend",
       `
-      <div class="card">
+     <div class="card ${p.status === "finalizado" ? "escolhido" : ""}">
         <img src="${imagemPresente}">
         <h3>${p.nome}</h3>
         <p>${textoValor}</p>
