@@ -987,11 +987,16 @@ function fecharModal() {
   if (nome) {
     fetch(API_URL, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         acao: "liberar",
         nome: nome
       })
-    });
+    })
+    .then(r => r.json())
+    .catch(err => console.error(err));
   }
 
   document.body.classList.remove("modal-aberto");
