@@ -687,12 +687,13 @@ fetch(CSV_URL)
   c.push(atual);
 
   return {
-    nome: c[0]?.replace(/(^"|"$)/g, ""),
-    valor: c[1],
-    tipo: c[2],
-    ativo: c[3] === "sim",
-    imagem: c[5] || ""
-  };
+  nome: c[0]?.replace(/(^"|"$)/g, ""),
+  valor: c[1],
+  tipo: c[2],
+  ativo: c[3] === "sim",
+  imagem: c[5] || "",
+  status: (c[6] || "livre").trim()
+};
 })
  
       .filter(p => p.ativo);
