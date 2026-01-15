@@ -978,12 +978,19 @@ function fecharModal() {
   const nome = document.getElementById("modalTitulo").innerText;
 
   if (nome) {
-    const chave = chavePresente(nome);
+    fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        acao: "liberar",
+        nome: nome
+      })
+    });
+  }
 
-    // se não foi finalizado, libera a reserva
-    if (localStorage.getItem(chave) === "reservado") {
-      localStorage.removeItem(chave);
-    }
+  document.body.classList.remove("modal-aberto");
+  document.documentElement.style.overflow = "";
+  document.getElementById("pixModal").style.display = "none";
+}
   }
 
   document.body.classList.remove("modal-aberto");
