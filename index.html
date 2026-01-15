@@ -5,10 +5,6 @@
 <title>Renan & Laislla</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Site do casamento de Renan e Laislla com informações sobre o evento, galeria de fotos, lista de presentes, localização e confirmação de presença.">
-  
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -21,11 +17,10 @@
 html{scroll-behavior:smooth}
 
 body{
-  margin: 0;
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-weight: 400;
-  color: #555;
-  background: #fff;
+  margin:0;
+  font-family:"Georgia","Times New Roman",serif;
+  color:#555;
+  background:#fff;
 }
 
 /* ===== MENU ===== */
@@ -38,16 +33,12 @@ nav{
   text-align:center;
 }
 nav a{
-  display: inline-block;
-  padding: 14px 12px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  color: #777;
-  text-transform: uppercase;
+  display:inline-block;
+  padding:14px 12px;
+  font-size:14px;
+  text-decoration:none;
+  color:#777;
 }
-
 nav a:hover{color:var(--rosa)}
 
 /* ===== TOPO ===== */
@@ -142,11 +133,10 @@ section{
 }
 
 section h2{
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  margin-bottom: 40px;
-  color: #777;
-  text-transform: uppercase;
+  font-weight:300;
+  letter-spacing:5px;
+  margin-bottom:40px;
+  color:#777;
 }
 
 /* ===== CASAL ===== */
@@ -256,43 +246,6 @@ section h2{
 .card img{
   width:100%;
   border-radius:6px;
-}
- /* ===== TEXTO DOS CARDS ===== */
-.card h3{
-  font-weight: 400 !important; /* nome leve */
-  font-size: 16px;
-  color: #444;
-  margin: 14px 0 6px;
-}
-
-.card p{
-  font-weight: 700 !important; /* VALOR EM NEGRITO */
-  font-size: 16px;
-  color: #444;
-  margin-bottom: 14px;
-}
-
-.card.escolhido {
-  opacity: 0.55;
-  position: relative;
-}
-
-.card.escolhido::after {
-  content: "🎁 Presente já escolhido";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: #555;
-  font-size: 16px;
-  text-align: center;
-}
-
-.card.escolhido button {
-  display: none;
 }
 
 .qr img{
@@ -704,10 +657,10 @@ document.addEventListener("visibilitychange", () => {
 /* ===== LISTA DE PRESENTES VIA PLANILHA ===== */
 const CSV_URL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vSUOq5Rmx6x6K9XZnuppxV6VnyJODPnEqBvrWtGYbBl_rp0uh3sczKGv7W1YzKL1-m2HH2R46MaCL6B/pub?output=csv&nocache=" + Date.now();
-const API_URL = "https://script.google.com/macros/s/AKfycbxaGF4bKPa76wcZhgqvJ0j4ijpMO1dGDi3lCkQKzawPW9-8niKPBCS-wnpR1cxFnD8T/exec";
+
 let presentes = [];
 let pagina = 0;
-const porPagina = 15;
+const porPagina = 9;
 
 fetch(CSV_URL)
   .then(res => res.text())
@@ -733,21 +686,16 @@ fetch(CSV_URL)
   }
   c.push(atual);
 
- return {
-  nome: c[0]?.replace(/(^"|"$)/g, ""),
-  valor: c[1],
-  tipo: c[2],
-  ativo: c[3] === "sim",
-  ordem: c[4],
-  imagem: c[5] || "",
-  status: (c[6] || "livre").trim()
-};
+  return {
+    nome: c[0]?.replace(/(^"|"$)/g, ""),
+    valor: c[1],
+    tipo: c[2],
+    ativo: c[3] === "sim",
+    imagem: c[5] || ""
+  };
 })
  
       .filter(p => p.ativo);
-    
-    window.presentes = presentes;
-
     renderPresentes();
   });
 
@@ -755,63 +703,36 @@ function renderPresentes() {
   const cont = document.getElementById("listaPresentes");
   const fim = (pagina + 1) * porPagina;
 
-  // separa valor livre do restante
-  const presenteLivre = presentes.find(p => p.tipo === "livre");
-  const outrosPresentes = presentes.filter(p => p.tipo !== "livre");
-
-  // limpa lista ao renderizar primeira página
-  if (pagina === 0) {
-    cont.innerHTML = "";
-    presentes.forEach(p => p.rendered = false);
-  }
-
-  // renderiza valor livre sempre primeiro
-  if (presenteLivre && !presenteLivre.rendered) {
-    renderCard(presenteLivre);
-    presenteLivre.rendered = true;
-  }
-
-  // renderiza os demais respeitando paginação
-  outrosPresentes.slice(0, fim).forEach(p => {
+  presentes.slice(0, fim).forEach(p => {
     if (p.rendered) return;
-    renderCard(p);
     p.rendered = true;
+
+    const imagemPresente =
+      p.imagem && p.imagem.trim() !== ""
+        ? p.imagem
+        : "imagens/presente-padrao.jpg.jpeg";
+
+    const valorNormalizado = normalizarValor(p.valor);
+
+    const textoValor =
+      p.tipo === "livre" || !valorNormalizado
+        ? "Valor livre"
+        : "R$ " + valorNormalizado.replace(".", ",");
+
+    cont.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="card">
+        <img src="${imagemPresente}">
+        <h3>${p.nome}</h3>
+        <p>${textoValor}</p>
+        <button onclick="abrirModal('${p.nome}','${p.valor}','${p.tipo}')">
+          Presentear
+        </button>
+      </div>
+      `
+    );
   });
-}
-function renderCard(p) {
-  const cont = document.getElementById("listaPresentes");
-
-  const imagemPresente =
-    p.imagem && p.imagem.trim() !== ""
-      ? p.imagem
-      : "imagens/presente-padrao.jpg.jpeg";
-
-  const valorNormalizado = normalizarValor(p.valor);
-
-  const textoValor =
-    p.tipo === "livre" || !valorNormalizado
-      ? "Valor livre"
-      : "R$ " + valorNormalizado.replace(".", ",");
-
-  const escolhido = p.status === "finalizado" || p.status === "reservado";
-
-  cont.insertAdjacentHTML(
-    "beforeend",
-    `
-    <div class="card ${escolhido ? "escolhido" : ""}">
-      <img src="${imagemPresente}">
-      <h3>${p.nome}</h3>
-      <p>${textoValor}</p>
-      ${
-        escolhido
-          ? ""
-          : `<button onclick="iniciarPresente('${p.nome}','${p.valor}','${p.tipo}')">
-               Presentear
-             </button>`
-      }
-    </div>
-    `
-  );
 }
 
 document.getElementById("ordenarSelect").addEventListener("change", function(e) {
@@ -891,39 +812,6 @@ function normalizarPixTexto(texto) {
     .toUpperCase()
     .trim();
 }
-function chavePresente(nome) {
-  return "presente_" + nome
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]/g, "_");
-}
-
-function iniciarPresente(nome, valor, tipo) {
- fetch(API_URL, {
-  method: "POST",
-  body: "acao=reservar&nome=" + encodeURIComponent(nome)
-})
-
-  .then(r => r.text())
-.then(texto => {
-    if (data.erro) {
-      alert(data.erro);
-      return;
-    }
-
-    if (data.status === "bloqueado") {
-      alert("Este presente já foi escolhido 💕");
-      return;
-    }
-
-    abrirModal(nome, valor, tipo);
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Erro de comunicação. Atualize a página.");
-  });
-}
 
 function gerarPixPayload({ chave, nome, cidade, valor }) {
   function campo(id, valor) {
@@ -984,7 +872,7 @@ const payload = gerarPixPayload({
 
 function fecharModal() {
   document.body.classList.remove("modal-aberto");
-  document.documentElement.style.overflow = "";
+document.documentElement.style.overflow = "";
   document.getElementById("pixModal").style.display = "none";
 }
 
@@ -1035,7 +923,6 @@ if (pixModal) {
 function mostrarPix() {
   document.getElementById("areaPix").style.display = "block";
 }
-
 function copiarPix() {
   const texto = document.getElementById("pixCopiaCola").value;
 
@@ -1114,63 +1001,6 @@ function copiarPix() {
   </div><!-- /modal-content -->
 
 </div><!-- /pixModal -->
-<!-- ===== PAINEL ADMIN (OCULTO) ===== -->
-<div id="adminPainel" style="display:none;position:fixed;bottom:20px;right:20px;z-index:999999;background:#fff;border:1px solid #ccc;padding:15px;border-radius:10px;max-width:300px">
-  <strong>🔒 Admin – Presentes</strong>
-  <div id="adminLista" style="margin-top:10px;font-size:14px"></div>
-</div>
-<script>
-/* ===== ADMIN SECRETO ===== */
-document.addEventListener("keydown", function (e) {
-  // combinação secreta: Ctrl + Alt + A
-  if (e.ctrlKey && e.altKey && e.key.toLowerCase() === "a") {
-    const senha = prompt("Área restrita. Digite a senha:");
-
-    if (senha === "admin123") {
-      abrirPainelAdmin();
-    } else {
-      alert("Senha incorreta");
-    }
-  }
-});
-
-function abrirPainelAdmin() {
-  const painel = document.getElementById("adminPainel");
-  const lista = document.getElementById("adminLista");
-
-  lista.innerHTML = "";
-
-  for (let i = 0; i < localStorage.length; i++) {
-    const chave = localStorage.key(i);
-
-    if (chave.startsWith("presente_") && localStorage.getItem(chave) === "finalizado") {
-      const nome = chave.replace("presente_", "").replace(/_/g, " ");
-
-      const item = document.createElement("div");
-      item.style.marginBottom = "8px";
-
-      item.innerHTML = `
-        🎁 ${nome}
-        <button style="margin-left:8px;font-size:12px" onclick="desmarcarPresente('${chave}')">
-          Desmarcar
-        </button>
-      `;
-
-      lista.appendChild(item);
-    }
-  }
-
-  painel.style.display = "block";
-}
-
-function desmarcarPresente(chave) {
-  if (confirm("Deseja liberar este presente?")) {
-    localStorage.removeItem(chave);
-    alert("Presente liberado");
-    location.reload();
-  }
-}
-</script>
 
 </body>
 </html>
