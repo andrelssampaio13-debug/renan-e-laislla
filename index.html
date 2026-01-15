@@ -1048,13 +1048,18 @@ if (pixModal) {
   }
 function mostrarPix() {
   const nome = document.getElementById("modalTitulo").innerText;
-  const chave = chavePresente(nome);
 
-  // marca como presente finalizado
-  localStorage.setItem(chave, "finalizado");
+  fetch(API_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      acao: "finalizar",
+      nome: nome
+    })
+  });
 
   document.getElementById("areaPix").style.display = "block";
 }
+
 function copiarPix() {
   const texto = document.getElementById("pixCopiaCola").value;
 
