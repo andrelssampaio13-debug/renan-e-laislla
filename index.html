@@ -898,9 +898,13 @@ function chavePresente(nome) {
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]/g, "_");
 }
+
 function iniciarPresente(nome, valor, tipo) {
   fetch(API_URL, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
       acao: "reservar",
       nome: nome
@@ -911,15 +915,14 @@ function iniciarPresente(nome, valor, tipo) {
     if (data.status === "ok") {
       abrirModal(nome, valor, tipo);
     } else {
-      alert("Este presente já foi escolhido 💕");
-      location.reload();
+      alert("Este presente já foi escolhido ou está indisponível 💕");
     }
   })
-  .catch(() => {
+  .catch(err => {
+    console.error(err);
     alert("Erro ao tentar reservar o presente. Tente novamente.");
   });
 }
-
 
 function gerarPixPayload({ chave, nome, cidade, valor }) {
   function campo(id, valor) {
