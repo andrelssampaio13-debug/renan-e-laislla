@@ -781,6 +781,7 @@ document.getElementById("ordenarSelect").addEventListener("change", function(e) 
   presentes.forEach(p => p.rendered = false);
   pagina = 0;
   document.getElementById("listaPresentes").innerHTML = "";
+  document.getElementById("verMais").style.display = "block";
 
   // separa presente livre
   const presenteLivre = presentes.find(p => p.tipo === "livre");
