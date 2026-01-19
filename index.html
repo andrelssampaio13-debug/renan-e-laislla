@@ -755,7 +755,7 @@ function renderPresentes() {
   <div class="card ${p.status === "finalizado" ? "escolhido" : ""}">
     <img src="${imagemPresente}">
     <h3>${p.nome}</h3>
-    <p>${textoValor}</p>
+    <p class="valor-presente">${textoValor}</p>
     ${
       p.status === "finalizado"
         ? ""
