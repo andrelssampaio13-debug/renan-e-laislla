@@ -777,29 +777,37 @@ function renderPresentes() {
 document.getElementById("ordenarSelect").addEventListener("change", function(e) {
   const tipoOrdenacao = e.target.value;
 
-  // reseta estado de renderização
+  // reset visual
   presentes.forEach(p => p.rendered = false);
   pagina = 0;
   document.getElementById("listaPresentes").innerHTML = "";
 
-  // função segura para ordenar valores
+  // separa presente livre
+  const presenteLivre = presentes.find(p => p.tipo === "livre");
+  let outrosPresentes = presentes.filter(p => p.tipo !== "livre");
+
   function valorSeguro(v) {
     const n = parseFloat(v);
     return isNaN(n) ? Infinity : n;
   }
 
   if (tipoOrdenacao === "original") {
-  presentes = [...presentesOriginal];
-}
-else if (tipoOrdenacao === "menor") {
-  presentes.sort((a, b) => valorSeguro(a.valor) - valorSeguro(b.valor));
-} 
-else if (tipoOrdenacao === "maior") {
-  presentes.sort((a, b) => valorSeguro(b.valor) - valorSeguro(a.valor));
-} 
-else if (tipoOrdenacao === "az") {
-  presentes.sort((a, b) => a.nome.localeCompare(b.nome));
-}
+    outrosPresentes = [...presentesOriginal.filter(p => p.tipo !== "livre")];
+  }
+  else if (tipoOrdenacao === "menor") {
+    outrosPresentes.sort((a, b) => valorSeguro(a.valor) - valorSeguro(b.valor));
+  } 
+  else if (tipoOrdenacao === "maior") {
+    outrosPresentes.sort((a, b) => valorSeguro(b.valor) - valorSeguro(a.valor));
+  } 
+  else if (tipoOrdenacao === "az") {
+    outrosPresentes.sort((a, b) => a.nome.localeCompare(b.nome));
+  }
+
+  // junta tudo com o livre no topo
+  presentes = presenteLivre
+    ? [presenteLivre, ...outrosPresentes]
+    : outrosPresentes;
 
   renderPresentes();
 });
