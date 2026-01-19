@@ -714,6 +714,7 @@ fetch(CSV_URL)
   valor: c[1],
   tipo: c[2],
   ativo: c[3] === "sim",
+  ordem: parseInt(c[4]) || 9999, // ORDEM ORIGINAL DA PLANILHA
   imagem: c[5] || "",
   status: (c[6] || "livre").trim()
 };
