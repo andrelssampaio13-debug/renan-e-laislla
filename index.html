@@ -807,7 +807,13 @@ else if (tipoOrdenacao === "az") {
 document.getElementById("verMais").onclick = () => {
   pagina++;
   renderPresentes();
+
+  // esconde o botão se não houver mais presentes
+  if ((pagina + 1) * porPagina >= presentes.length) {
+    document.getElementById("verMais").style.display = "none";
+  }
 };
+
 /* ===== CONTROLE DO MODAL DE COMPRA ===== 
 
 function abrirModalCompra() {
