@@ -783,15 +783,18 @@ document.getElementById("ordenarSelect").addEventListener("change", function(e) 
     return isNaN(n) ? Infinity : n;
   }
 
-  if (tipoOrdenacao === "menor") {
-    presentes.sort((a, b) => valorSeguro(a.valor) - valorSeguro(b.valor));
-  } 
-  else if (tipoOrdenacao === "maior") {
-    presentes.sort((a, b) => valorSeguro(b.valor) - valorSeguro(a.valor));
-  } 
-  else {
-    presentes.sort((a, b) => a.nome.localeCompare(b.nome));
-  }
+  if (tipoOrdenacao === "original") {
+  presentes = [...presentesOriginal];
+}
+else if (tipoOrdenacao === "menor") {
+  presentes.sort((a, b) => valorSeguro(a.valor) - valorSeguro(b.valor));
+} 
+else if (tipoOrdenacao === "maior") {
+  presentes.sort((a, b) => valorSeguro(b.valor) - valorSeguro(a.valor));
+} 
+else if (tipoOrdenacao === "az") {
+  presentes.sort((a, b) => a.nome.localeCompare(b.nome));
+}
 
   renderPresentes();
 });
