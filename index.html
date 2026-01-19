@@ -723,6 +723,7 @@ fetch(CSV_URL)
     .filter(p => p.ativo);
 
 presentesOriginal = [...presentes]; // <<< salva ordem inicial
+presentesOriginal.sort((a, b) => a.ordem - b.ordem);
 
 renderPresentes();
       
