@@ -718,9 +718,13 @@ fetch(CSV_URL)
   status: (c[6] || "livre").trim()
 };
 })
- 
-      .filter(p => p.ativo);
-    renderPresentes();
+
+    .filter(p => p.ativo);
+
+presentesOriginal = [...presentes]; // <<< salva ordem inicial
+
+renderPresentes();
+      
   });
 
 function renderPresentes() {
