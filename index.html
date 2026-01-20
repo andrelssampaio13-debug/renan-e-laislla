@@ -780,12 +780,19 @@ const classeValor = p.tipo === "livre" ? "valor-livre" : "valor-fixo";
    cont.insertAdjacentHTML(
   "beforeend",
   `
-  <div class="card ${p.status === "finalizado" ? "escolhido" : ""}">
+   <div class="card ${p.status === "finalizado" ? "escolhido" : ""}">
+    
+    <div class="selo ${p.status === "finalizado" ? "selo-finalizado" : "selo-livre"}">
+      ${p.status === "finalizado" ? "🔒 Já escolhido" : "🟢 Disponível"}
+    </div>
+
     <img src="${imagemPresente}">
     <h3>${p.nome}</h3>
-   <p class="valor-presente ${p.tipo === "livre" ? "valor-livre" : "valor-fixo"}">
-  <strong>${textoValor}</strong>
-</p>
+
+    <p class="valor-presente ${p.tipo === "livre" ? "valor-livre" : "valor-fixo"}">
+      <strong>${textoValor}</strong>
+    </p>
+
     ${
       p.status === "finalizado"
         ? ""
@@ -794,6 +801,7 @@ const classeValor = p.tipo === "livre" ? "valor-livre" : "valor-fixo";
            </button>`
     }
   </div>
+
   `
 );
   });
