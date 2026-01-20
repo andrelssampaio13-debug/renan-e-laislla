@@ -805,10 +805,6 @@ const classeValor = p.tipo === "livre" ? "valor-livre" : "valor-fixo";
   `
    <div class="card ${p.status === "finalizado" ? "escolhido" : ""}">
     
-    <div class="selo ${p.status === "finalizado" ? "selo-finalizado" : "selo-livre"}">
-      ${p.status === "finalizado" ? "🔒 Já escolhido" : "🟢 Disponível"}
-    </div>
-
     <img src="${imagemPresente}">
     <h3>${p.nome}</h3>
 
