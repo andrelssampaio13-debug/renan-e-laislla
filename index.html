@@ -783,7 +783,9 @@ const classeValor = p.tipo === "livre" ? "valor-livre" : "valor-fixo";
   <div class="card ${p.status === "finalizado" ? "escolhido" : ""}">
     <img src="${imagemPresente}">
     <h3>${p.nome}</h3>
-    <p class="valor-presente">${textoValor}</p>
+   <p class="valor-presente ${p.tipo === "livre" ? "valor-livre" : "valor-fixo"}">
+  <strong>${textoValor}</strong>
+</p>
     ${
       p.status === "finalizado"
         ? ""
