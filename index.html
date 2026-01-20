@@ -775,6 +775,7 @@ function renderPresentes() {
       p.tipo === "livre" || !valorNormalizado
         ? "Valor livre"
         : "R$ " + valorNormalizado.replace(".", ",");
+const classeValor = p.tipo === "livre" ? "valor-livre" : "valor-fixo";
 
    cont.insertAdjacentHTML(
   "beforeend",
