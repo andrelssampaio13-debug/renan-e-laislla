@@ -807,41 +807,62 @@ setInterval(()=>{
   document.getElementById("s").innerText=Math.floor((d/1000)%60);
 },1000);
 
-/* CARROSSEL */
-let i=0;
-const track=document.querySelector(".carousel-track");
-const slides=document.querySelectorAll(".carousel-slide");
-const prev=document.querySelector(".prev");
-const next=document.querySelector(".next");
-const dotsC=document.getElementById("dots");
+<script>
+/* ===== CARROSSEL SOBREPOSTO (CASAR REAL) ===== */
+let i = 0;
+const slides = document.querySelectorAll(".carousel-slide");
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+const dotsC = document.getElementById("dots");
 
-slides.forEach((_,x)=>{
-  const d=document.createElement("div");
-  d.className="dot"+(x===0?" active":"");
-  d.onclick=()=>{i=x;update();}
-  dotsC.appendChild(d);
-});
-
-function update(){
-track.style.transform = `translateX(-${i*100}%)`;
-  document.querySelectorAll(".dot").forEach((d,x)=>d.classList.toggle("active",x===i));
+function renderDots() {
+  dotsC.innerHTML = "";
+  slides.forEach((_, x) => {
+    const d = document.createElement("div");
+    d.className = "dot" + (x === i ? " active" : "");
+    d.onclick = () => goTo(x);
+    dotsC.appendChild(d);
+  });
 }
 
-prev.onclick=()=>{i=(i-1+slides.length)%slides.length;update();}
-next.onclick=()=>{i=(i+1)%slides.length;update();}
-let autoSlide = setInterval(() => {
-  if (!document.hidden) {
-    next.onclick();
-  }
-}, 4000);
+function updateSlides(prevIndex) {
+  slides.forEach((s, idx) => {
+    s.classList.remove("active", "prev");
+
+    if (idx === i) {
+      s.classList.add("active");
+    }
+    if (idx === prevIndex) {
+      s.classList.add("prev");
+    }
+  });
+
+  renderDots();
+}
+
+function goTo(index) {
+  const prevIndex = i;
+  i = (index + slides.length) % slides.length;
+  updateSlides(prevIndex);
+}
+
+prev.onclick = () => goTo(i - 1);
+next.onclick = () => goTo(i + 1);
+
+/* AUTO SLIDE */
+let autoSlide = setInterval(() => goTo(i + 1), 4500);
 
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
     clearInterval(autoSlide);
   } else {
-    autoSlide = setInterval(() => next.onclick(), 4000);
+    autoSlide = setInterval(() => goTo(i + 1), 4500);
   }
 });
+
+/* INIT */
+updateSlides(0);
+</script>
 
 </script>
 <script>
