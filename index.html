@@ -5,9 +5,11 @@
 <title>Renan & Laislla</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Site do casamento de Renan e Laislla com informações sobre o evento, galeria de fotos, lista de presentes, localização e confirmação de presença.">
+  
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --rosa:#d88fa3;
@@ -19,14 +21,11 @@
 html{scroll-behavior:smooth}
 
 body{
-  margin:0;
-  font-family: "Montserrat", sans-serif;
-  line-height: 1.7;
-  color:#444;
-  background:#fff;
-}
-h1, h2, h3, h4, h5 {
-  font-family: "Playfair Display", serif;
+  margin: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 400;
+  color: #555;
+  background: #fff;
 }
 
 /* ===== MENU ===== */
@@ -38,23 +37,18 @@ nav{
   z-index:1000;
   text-align:center;
 }
-
-  nav a {
+nav a{
   display: inline-block;
-  padding: 18px 16px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
+  padding: 14px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  color: #555;
-  transition: all .25s ease;
+  color: #777;
+  text-transform: uppercase;
 }
 
-nav a:hover {
-  color: var(--dourado);
-}
+nav a:hover{color:var(--rosa)}
 
 /* ===== TOPO ===== */
 .hero{
@@ -141,17 +135,18 @@ nav a:hover {
 
 /* ===== SEÇÕES ===== */
 section{
-  max-width:1100px;
-  margin:100px auto;
-  padding:0 24px;
+  max-width:1000px;
+  margin:80px auto;
+  padding:0 20px;
   text-align:center;
 }
 
 section h2{
-  font-weight:300;
-  letter-spacing:5px;
-  margin-bottom:40px;
-  color:#777;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  margin-bottom: 40px;
+  color: #777;
+  text-transform: uppercase;
 }
 
 /* ===== CASAL ===== */
@@ -176,101 +171,66 @@ section h2{
   color:#888;
 }
 
-/* ===== CARROSSEL PREMIUM SOBREPOSTO (ESTILO CASAR REAL) ===== */
-.carousel {
-  position: relative;
-  max-width: 1000px;
-  margin: 40px auto;
-  overflow: hidden;
-  border-radius: 18px;
+/* ===== CARROSSEL ===== */
+.carousel{
+  position:relative;
+  max-width:900px;
+  margin:40px auto;
+  overflow:hidden;
 }
 
-.carousel-track {
-  position: relative;
-  width: 100%;
-  height: 520px;
+.carousel-track{
+  display:flex;
+  transition:transform .6s ease;
 }
 
-.carousel-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity .9s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
+.carousel-slide{
+  min-width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-.carousel-slide.active {
-  opacity: 1;
-  z-index: 3;
+.carousel-slide img{
+  max-width:100%;
+  max-height:520px;
+  object-fit:contain;
+  background:#fff;
 }
 
-.carousel-slide.active {
-  opacity: 1;
-  z-index: 2;
-  transform: scale(1);
+.carousel button{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(216,143,163,.9);
+  color:#fff;
+  border:none;
+  font-size:26px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  cursor:pointer;
 }
 
-.carousel-slide.prev {
-  opacity: 0;
-  z-index: 1;
-  transform: scale(1.02);
+.prev{left:10px}
+.next{right:10px}
+
+/* ===== DOTS ===== */
+.dots{
+  display:flex;
+  justify-content:center;
+  margin-top:15px;
 }
 
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 18px;
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ccc;
+  margin:0 5px;
 }
 
-/* SETAS SOBRE A FOTO */
-.carousel button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.85);
-  color: #666;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 5;
-  transition: all .25s ease;
-}
-
-.carousel button:hover {
-  background: #fff;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.prev { left: 16px; }
-.next { right: 16px; }
-
-/* DOTS */
-.dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 14px;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #e0e0e0;
-  margin: 0 7px;
-  transition: all .25s ease;
-}
-
-.dot.active {
-  background: var(--dourado);
-}
+.dot.active{background:var(--dourado)}
 
 /* ===== GRID ===== */
 .grid{
@@ -296,6 +256,43 @@ section h2{
 .card img{
   width:100%;
   border-radius:6px;
+}
+ /* ===== TEXTO DOS CARDS ===== */
+.card h3{
+  font-weight: 400 !important; /* nome leve */
+  font-size: 16px;
+  color: #444;
+  margin: 14px 0 6px;
+}
+
+.card p{
+  font-weight: 700 !important; /* VALOR EM NEGRITO */
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 14px;
+}
+
+.card.escolhido {
+  opacity: 0.55;
+  position: relative;
+}
+
+.card.escolhido::after {
+  content: "🎁 Presente já escolhido";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #555;
+  font-size: 16px;
+  text-align: center;
+}
+
+.card.escolhido button {
+  display: none;
 }
 
 .qr img{
@@ -444,161 +441,8 @@ body.modal-aberto > *:not(#pixModal) {
   overscroll-behavior: contain;
 }
 
-.card.escolhido {
-  opacity: 0.55;
-  position: relative;
-}
-
-.card.escolhido::after {
-  content: "🎁 Presente já escolhido";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: #555;
-  font-size: 16px;
-  text-align: center;
-  pointer-events: none;
-}
-.valor-presente {
-  font-weight: bold;
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 18px;
-  color: #444;
-}
-  section {
-  background: #fafafa;
-  border-radius: 14px;
-}
-  h2 {
-  font-size: 32px;
-  color: #555;
-  margin-bottom: 18px;
-  letter-spacing: 3px;
-}
-  .carousel-slide img {
-  transition: transform .4s ease, box-shadow .4s ease;
-}
-
-.carousel-slide img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-}
-/* ===== PRIORIDADE 3.1 — MENU PREMIUM ===== */
-nav a {
-  position: relative;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
-
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 6px;
-  width: 0;
-  height: 2px;
-  background: var(--dourado);
-  transition: all .3s ease;
-  transform: translateX(-50%);
-}
-
-nav a:hover::after {
-  width: 60%;
-}
-/* ===== PRIORIDADE 3.2 — TÍTULOS PREMIUM ===== */
-section h2::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 2px;
-  background: var(--dourado);
-  margin: 14px auto 0;
-  border-radius: 2px;
-}
-/* ===== PRIORIDADE 3.3 — CARDS PREMIUM ===== */
-.card {
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-}
-/* ===== PRIORIDADE 3.4 — BOTÕES PREMIUM ===== */
-button,
-.btn-cartao {
-  border-radius: 30px;
-  font-weight: 600;
-  letter-spacing: .5px;
-  transition: all .25s ease;
-}
-
-button:hover,
-.btn-cartao:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.05);
-}
-/* ===== MAPA PREMIUM ===== */
-.mapa-container {
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-  margin: 30px 0;
-  border: 1px solid #eee;
-}
-
-.mapa-container iframe {
-  width: 100%;
-  height: 380px;
-  border: 0;
-  filter: grayscale(10%);
-}
-.carousel-slide {
-  display: flex !important;
-}
-/* ===== FIX ENQUADRAMENTO CARROSSEL ===== */
-.carousel-track {
-  height: 420px;   /* altura mais parecida com Casar */
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* NÃO corta a foto */
-  background: #000;    /* fundo elegante se sobrar espaço */
-}
-.carousel-slide {
-  inset: 0;
-  margin: 0;
-}
 
 </style>
-  
-  <style>
-/* ===== AJUSTE VISUAL DOS VALORES ===== */
-.card h3 {
-  font-weight: 400;
-  font-size: 16px;
-  margin-bottom: 6px;
-}
-
-.card p {
-  font-size: 17px;
-  margin: 8px 0;
-  color: #444;
-}
-
-.card p strong {
-  font-size: 18px;
-  font-weight: 700;
-  color: #000;
-}
-</style>
-  
 </head>
 
 <body>
@@ -713,8 +557,8 @@ button:hover,
 
 <!-- INFORMAÇÕES -->
 <section id="informacoes">
-  <h2>INFORMAÇÕES GERAIS</h2> 
-  <p class="texto"><strong>Dress Code:</strong> Social / Passeio Completo</p>
+  <h2>INFORMAÇÕES GERAIS</h2>
+  <p class="texto"><strong>Dresscode:</strong> Social / Passeio Completo</p>
 
   <div class="grid">
     <img src="imagens/foto22.jpg.jpeg" class="full-img">
@@ -741,21 +585,10 @@ button:hover,
   </div>
 </section>
 
-<!-- LOCALIZAÇÃO -->  
+<!-- LOCALIZAÇÃO -->
 <section id="localizacao">
   <h2>LOCALIZAÇÃO</h2>
- <p class="texto">
-  <strong>Como chegar:</strong> O local conta com estacionamento gratuito e fácil acesso para todos os convidados 🚗
-</p>
-
- <div class="mapa-container">
-  <iframe 
-    src="https://www.google.com/maps?q=Cachoeira%20Grande%20SP&output=embed"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
-
+  <iframe src="https://www.google.com/maps?q=Cachoeira%20Grande%20SP&output=embed"></iframe>
   <p class="texto">
     Nosso dia especial será em uma linda cachoeira no interior de São Paulo
     na presença da natureza que o Senhor fez, teremos um dia maravilhoso entre família e amigos.
@@ -765,16 +598,15 @@ button:hover,
 <!-- LISTA DE PRESENTES (DINÂMICA - PLANILHA) -->
 <section id="presentes">
   <h2>LISTA DE PRESENTES</h2>
- 
+  
 <!-- ORDENAR PRESENTES -->
 <div class="ordenar-presentes" style="margin-bottom:30px;text-align:left">
   <label for="ordenarSelect"><strong>Ordenar lista por:</strong></label>
   <select id="ordenarSelect" style="margin-left:10px;padding:8px">
-  <option value="original">Ordem original</option>
-  <option value="menor">Menor preço</option>
-  <option value="maior">Maior preço</option>
-  <option value="az">A–Z</option>
-</select>
+    <option value="menor">Menor preço</option>
+    <option value="maior">Maior preço</option>
+    <option value="az">A–Z</option>
+  </select>
 </div>
 
   <div class="grid" id="listaPresentes"></div>
@@ -820,74 +652,62 @@ function normalizarValor(valor) {
 
 <script>
 /* CONTAGEM */
-const data = new Date("2026-08-22T14:00:00").getTime();
-setInterval(() => {
-  const n = new Date().getTime();
-  const d = data - n;
-  if (d < 0) return;
-  document.getElementById("d").innerText = Math.floor(d / (1000*60*60*24));
-  document.getElementById("h").innerText = Math.floor((d / (1000*60*60)) % 24);
-  document.getElementById("m").innerText = Math.floor((d / (1000*60)) % 60);
-  document.getElementById("s").innerText = Math.floor((d / 1000) % 60);
-}, 1000);
-</script>
-<script>
-/* ===== CARROSSEL SOBREPOSTO (ESTILO CASAR) ===== */
-let i = 0;
-const slides = document.querySelectorAll(".carousel-slide");
-const prev = document.querySelector(".prev");
-const next = document.querySelector(".next");
-const dotsC = document.getElementById("dots");
+const data=new Date("2026-08-22T14:00:00").getTime();
+setInterval(()=>{
+  const n=new Date().getTime();
+  const d=data-n;
+  if(d<0)return;
+  document.getElementById("d").innerText=Math.floor(d/(1000*60*60*24));
+  document.getElementById("h").innerText=Math.floor((d/(1000*60*60))%24);
+  document.getElementById("m").innerText=Math.floor((d/(1000*60))%60);
+  document.getElementById("s").innerText=Math.floor((d/1000)%60);
+},1000);
 
-function renderDots() {
-  dotsC.innerHTML = "";
-  slides.forEach((_, x) => {
-    const d = document.createElement("div");
-    d.className = "dot" + (x === i ? " active" : "");
-    d.onclick = () => goTo(x);
-    dotsC.appendChild(d);
-  });
+/* CARROSSEL */
+let i=0;
+const track=document.querySelector(".carousel-track");
+const slides=document.querySelectorAll(".carousel-slide");
+const prev=document.querySelector(".prev");
+const next=document.querySelector(".next");
+const dotsC=document.getElementById("dots");
+
+slides.forEach((_,x)=>{
+  const d=document.createElement("div");
+  d.className="dot"+(x===0?" active":"");
+  d.onclick=()=>{i=x;update();}
+  dotsC.appendChild(d);
+});
+
+function update(){
+track.style.transform = `translateX(-${i*100}%)`;
+  document.querySelectorAll(".dot").forEach((d,x)=>d.classList.toggle("active",x===i));
 }
 
-function updateSlides() {
-  slides.forEach((s, idx) => {
-    s.classList.toggle("active", idx === i);
-  });
-  renderDots();
-}
-
-function goTo(index) {
-  i = (index + slides.length) % slides.length;
-  updateSlides();
-}
-
-prev.onclick = () => goTo(i - 1);
-next.onclick = () => goTo(i + 1);
-
-/* AUTO SLIDE */
-let autoSlide = setInterval(() => goTo(i + 1), 4500);
+prev.onclick=()=>{i=(i-1+slides.length)%slides.length;update();}
+next.onclick=()=>{i=(i+1)%slides.length;update();}
+let autoSlide = setInterval(() => {
+  if (!document.hidden) {
+    next.onclick();
+  }
+}, 4000);
 
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
     clearInterval(autoSlide);
   } else {
-    autoSlide = setInterval(() => goTo(i + 1), 4500);
+    autoSlide = setInterval(() => next.onclick(), 4000);
   }
 });
 
-/* INIT */
-updateSlides();
 </script>
-
 <script>
 /* ===== LISTA DE PRESENTES VIA PLANILHA ===== */
 const CSV_URL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vSUOq5Rmx6x6K9XZnuppxV6VnyJODPnEqBvrWtGYbBl_rp0uh3sczKGv7W1YzKL1-m2HH2R46MaCL6B/pub?output=csv&nocache=" + Date.now();
-
+const API_URL = "https://script.google.com/macros/s/AKfycbxaGF4bKPa76wcZhgqvJ0j4ijpMO1dGDi3lCkQKzawPW9-8niKPBCS-wnpR1cxFnD8T/exec";
 let presentes = [];
-let presentesOriginal = []; // <<< guarda a ordem original
 let pagina = 0;
-const porPagina = 16;
+const porPagina = 15;
 
 fetch(CSV_URL)
   .then(res => res.text())
@@ -913,108 +733,110 @@ fetch(CSV_URL)
   }
   c.push(atual);
 
-  return {
+ return {
   nome: c[0]?.replace(/(^"|"$)/g, ""),
   valor: c[1],
   tipo: c[2],
   ativo: c[3] === "sim",
-  ordem: parseInt(c[4]) || 9999, // ORDEM ORIGINAL DA PLANILHA
+  ordem: c[4],
   imagem: c[5] || "",
   status: (c[6] || "livre").trim()
 };
 })
+ 
+      .filter(p => p.ativo);
+    
+    window.presentes = presentes;
 
-    .filter(p => p.ativo);
-
-presentesOriginal = [...presentes]; // <<< salva ordem inicial
-presentesOriginal.sort((a, b) => a.ordem - b.ordem);
-
-renderPresentes();
-      
+    renderPresentes();
   });
 
 function renderPresentes() {
   const cont = document.getElementById("listaPresentes");
   const fim = (pagina + 1) * porPagina;
 
-  presentes.slice(0, fim).forEach(p => {
+  // separa valor livre do restante
+  const presenteLivre = presentes.find(p => p.tipo === "livre");
+  const outrosPresentes = presentes.filter(p => p.tipo !== "livre");
+
+  // limpa lista ao renderizar primeira página
+  if (pagina === 0) {
+    cont.innerHTML = "";
+    presentes.forEach(p => p.rendered = false);
+  }
+
+  // renderiza valor livre sempre primeiro
+  if (presenteLivre && !presenteLivre.rendered) {
+    renderCard(presenteLivre);
+    presenteLivre.rendered = true;
+  }
+
+  // renderiza os demais respeitando paginação
+  outrosPresentes.slice(0, fim).forEach(p => {
     if (p.rendered) return;
+    renderCard(p);
     p.rendered = true;
-
-    const imagemPresente =
-      p.imagem && p.imagem.trim() !== ""
-        ? p.imagem
-        : "imagens/presente-padrao.jpg.jpeg";
-
-    const valorNormalizado = normalizarValor(p.valor);
-
-    const textoValor =
-      p.tipo === "livre" || !valorNormalizado
-        ? "Valor livre"
-        : "R$ " + valorNormalizado.replace(".", ",");
-const classeValor = p.tipo === "livre" ? "valor-livre" : "valor-fixo";
-
-   cont.insertAdjacentHTML(
-  "beforeend",
-  `
-   <div class="card ${p.status === "finalizado" ? "escolhido" : ""}">
-    
-    <img src="${imagemPresente}">
-    <h3>${p.nome}</h3>
-
-    <p class="valor-presente ${p.tipo === "livre" ? "valor-livre" : "valor-fixo"}">
-      <strong>${textoValor}</strong>
-    </p>
-
-    ${
-      p.status === "finalizado"
-        ? ""
-        : `<button onclick="abrirModal('${p.nome}','${p.valor}','${p.tipo}')">
-             Presentear
-           </button>`
-    }
-  </div>
-
-  `
-);
   });
+}
+function renderCard(p) {
+  const cont = document.getElementById("listaPresentes");
+
+  const imagemPresente =
+    p.imagem && p.imagem.trim() !== ""
+      ? p.imagem
+      : "imagens/presente-padrao.jpg.jpeg";
+
+  const valorNormalizado = normalizarValor(p.valor);
+
+  const textoValor =
+    p.tipo === "livre" || !valorNormalizado
+      ? "Valor livre"
+      : "R$ " + valorNormalizado.replace(".", ",");
+
+  const escolhido = p.status === "finalizado" || p.status === "reservado";
+
+  cont.insertAdjacentHTML(
+    "beforeend",
+    `
+    <div class="card ${escolhido ? "escolhido" : ""}">
+      <img src="${imagemPresente}">
+      <h3>${p.nome}</h3>
+      <p>${textoValor}</p>
+      ${
+        escolhido
+          ? ""
+          : `<button onclick="iniciarPresente('${p.nome}','${p.valor}','${p.tipo}')">
+               Presentear
+             </button>`
+      }
+    </div>
+    `
+  );
 }
 
 document.getElementById("ordenarSelect").addEventListener("change", function(e) {
   const tipoOrdenacao = e.target.value;
 
-  // reset visual
+  // reseta estado de renderização
   presentes.forEach(p => p.rendered = false);
   pagina = 0;
   document.getElementById("listaPresentes").innerHTML = "";
-  document.getElementById("verMais").style.cssText = "display:block;margin:30px auto;";
 
-  // separa presente livre
-  const presenteLivre = presentes.find(p => p.tipo === "livre");
-  let outrosPresentes = presentes.filter(p => p.tipo !== "livre");
-
+  // função segura para ordenar valores
   function valorSeguro(v) {
     const n = parseFloat(v);
     return isNaN(n) ? Infinity : n;
   }
 
-  if (tipoOrdenacao === "original") {
-    outrosPresentes = [...presentesOriginal.filter(p => p.tipo !== "livre")];
-  }
-  else if (tipoOrdenacao === "menor") {
-    outrosPresentes.sort((a, b) => valorSeguro(a.valor) - valorSeguro(b.valor));
+  if (tipoOrdenacao === "menor") {
+    presentes.sort((a, b) => valorSeguro(a.valor) - valorSeguro(b.valor));
   } 
   else if (tipoOrdenacao === "maior") {
-    outrosPresentes.sort((a, b) => valorSeguro(b.valor) - valorSeguro(a.valor));
+    presentes.sort((a, b) => valorSeguro(b.valor) - valorSeguro(a.valor));
   } 
-  else if (tipoOrdenacao === "az") {
-    outrosPresentes.sort((a, b) => a.nome.localeCompare(b.nome));
+  else {
+    presentes.sort((a, b) => a.nome.localeCompare(b.nome));
   }
-
-  // junta tudo com o livre no topo
-  presentes = presenteLivre
-    ? [presenteLivre, ...outrosPresentes]
-    : outrosPresentes;
 
   renderPresentes();
 });
@@ -1022,13 +844,7 @@ document.getElementById("ordenarSelect").addEventListener("change", function(e) 
 document.getElementById("verMais").onclick = () => {
   pagina++;
   renderPresentes();
-
-  // esconde o botão se não houver mais presentes
-  if ((pagina + 1) * porPagina >= presentes.length) {
-    document.getElementById("verMais").style.display = "none";
-  }
 };
-
 /* ===== CONTROLE DO MODAL DE COMPRA ===== 
 
 function abrirModalCompra() {
@@ -1074,6 +890,39 @@ function normalizarPixTexto(texto) {
     .replace(/[^A-Za-z0-9 ]/g, "")
     .toUpperCase()
     .trim();
+}
+function chavePresente(nome) {
+  return "presente_" + nome
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, "_");
+}
+
+function iniciarPresente(nome, valor, tipo) {
+ fetch(API_URL, {
+  method: "POST",
+  body: "acao=reservar&nome=" + encodeURIComponent(nome)
+})
+
+  .then(r => r.text())
+.then(texto => {
+    if (data.erro) {
+      alert(data.erro);
+      return;
+    }
+
+    if (data.status === "bloqueado") {
+      alert("Este presente já foi escolhido 💕");
+      return;
+    }
+
+    abrirModal(nome, valor, tipo);
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Erro de comunicação. Atualize a página.");
+  });
 }
 
 function gerarPixPayload({ chave, nome, cidade, valor }) {
@@ -1135,7 +984,7 @@ const payload = gerarPixPayload({
 
 function fecharModal() {
   document.body.classList.remove("modal-aberto");
-document.documentElement.style.overflow = "";
+  document.documentElement.style.overflow = "";
   document.getElementById("pixModal").style.display = "none";
 }
 
@@ -1186,6 +1035,7 @@ if (pixModal) {
 function mostrarPix() {
   document.getElementById("areaPix").style.display = "block";
 }
+
 function copiarPix() {
   const texto = document.getElementById("pixCopiaCola").value;
 
@@ -1264,6 +1114,63 @@ function copiarPix() {
   </div><!-- /modal-content -->
 
 </div><!-- /pixModal -->
+<!-- ===== PAINEL ADMIN (OCULTO) ===== -->
+<div id="adminPainel" style="display:none;position:fixed;bottom:20px;right:20px;z-index:999999;background:#fff;border:1px solid #ccc;padding:15px;border-radius:10px;max-width:300px">
+  <strong>🔒 Admin – Presentes</strong>
+  <div id="adminLista" style="margin-top:10px;font-size:14px"></div>
+</div>
+<script>
+/* ===== ADMIN SECRETO ===== */
+document.addEventListener("keydown", function (e) {
+  // combinação secreta: Ctrl + Alt + A
+  if (e.ctrlKey && e.altKey && e.key.toLowerCase() === "a") {
+    const senha = prompt("Área restrita. Digite a senha:");
+
+    if (senha === "admin123") {
+      abrirPainelAdmin();
+    } else {
+      alert("Senha incorreta");
+    }
+  }
+});
+
+function abrirPainelAdmin() {
+  const painel = document.getElementById("adminPainel");
+  const lista = document.getElementById("adminLista");
+
+  lista.innerHTML = "";
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const chave = localStorage.key(i);
+
+    if (chave.startsWith("presente_") && localStorage.getItem(chave) === "finalizado") {
+      const nome = chave.replace("presente_", "").replace(/_/g, " ");
+
+      const item = document.createElement("div");
+      item.style.marginBottom = "8px";
+
+      item.innerHTML = `
+        🎁 ${nome}
+        <button style="margin-left:8px;font-size:12px" onclick="desmarcarPresente('${chave}')">
+          Desmarcar
+        </button>
+      `;
+
+      lista.appendChild(item);
+    }
+  }
+
+  painel.style.display = "block";
+}
+
+function desmarcarPresente(chave) {
+  if (confirm("Deseja liberar este presente?")) {
+    localStorage.removeItem(chave);
+    alert("Presente liberado");
+    location.reload();
+  }
+}
+</script>
 
 </body>
 </html>
