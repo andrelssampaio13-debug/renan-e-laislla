@@ -176,55 +176,84 @@ section h2{
   color:#888;
 }
 
-/* ===== CARROSSEL ===== */
-.carousel{
-  position:relative;
-  max-width:1000px;
-  margin:40px auto;
-  overflow:hidden;
+/* ===== CARROSSEL PREMIUM SOBREPOSTO (ESTILO CASAR REAL) ===== */
+.carousel {
+  position: relative;
+  max-width: 1000px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 18px;
 }
 
-.carousel-track{
-  display:flex;
-  transition:transform .6s ease;
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 520px;
 }
 
-.carousel-slide{
-  min-width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .9s ease, transform .9s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.carousel-slide img{
-  max-width:100%;
-  max-height:520px;
-  object-fit:contain;
-  background:#fff;
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 2;
+  transform: scale(1);
 }
 
+.carousel-slide.prev {
+  opacity: 0;
+  z-index: 1;
+  transform: scale(1.02);
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+/* SETAS SOBRE A FOTO */
 .carousel button {
-  background: rgba(255,255,255,0.9);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.85);
   color: #666;
   border: 1px solid #e5e5e5;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  width: 38px;
-  height: 38px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   font-size: 22px;
+  cursor: pointer;
+  z-index: 5;
   transition: all .25s ease;
 }
 
-.prev{left:10px}
-.next{right:10px}
-
-/* ===== DOTS ===== */
-.dots{
-  display:flex;
-  justify-content:center;
-  margin-top:15px;
+.carousel button:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.1);
 }
 
-.dot{
+.prev { left: 16px; }
+.next { right: 16px; }
+
+/* DOTS */
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -233,7 +262,9 @@ section h2{
   transition: all .25s ease;
 }
 
-.dot.active{background:var(--dourado)}
+.dot.active {
+  background: var(--dourado);
+}
 
 /* ===== GRID ===== */
 .grid{
