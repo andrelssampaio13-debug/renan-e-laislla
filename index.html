@@ -832,7 +832,7 @@ setInterval(()=>{
 },1000);
 
 <script>
-/* ===== CARROSSEL SOBREPOSTO (CASAR REAL) ===== */
+/* ===== CARROSSEL SOBREPOSTO SIMPLES (ESTÁVEL) ===== */
 let i = 0;
 const slides = document.querySelectorAll(".carousel-slide");
 const prev = document.querySelector(".prev");
@@ -849,25 +849,16 @@ function renderDots() {
   });
 }
 
-function updateSlides(prevIndex) {
+function updateSlides() {
   slides.forEach((s, idx) => {
-    s.classList.remove("active", "prev");
-
-    if (idx === i) {
-      s.classList.add("active");
-    }
-    if (idx === prevIndex) {
-      s.classList.add("prev");
-    }
+    s.classList.toggle("active", idx === i);
   });
-
   renderDots();
 }
 
 function goTo(index) {
-  const prevIndex = i;
   i = (index + slides.length) % slides.length;
-  updateSlides(prevIndex);
+  updateSlides();
 }
 
 prev.onclick = () => goTo(i - 1);
@@ -883,6 +874,10 @@ document.addEventListener("visibilitychange", () => {
     autoSlide = setInterval(() => goTo(i + 1), 4500);
   }
 });
+
+/* INIT */
+updateSlides();
+</script>
 
 /* INIT */
 updateSlides(0);
