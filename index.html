@@ -610,6 +610,50 @@ button:hover,
   background: rgba(255,255,255,0.9);
   border: none;
 }
+/* ===== GALERIA PREMIUM PRO (ANIMAÇÃO CASAR) ===== */
+
+/* leve zoom + fade suave */
+.carousel-slide {
+  transition: 
+    opacity .7s ease, 
+    transform .7s cubic-bezier(.4,0,.2,1);
+}
+
+/* slide ativo com leve destaque */
+.carousel-slide.active {
+  transform: scale(1);
+}
+
+/* slides ocultos com micro zoom */
+.carousel-slide:not(.active) {
+  transform: scale(1.04);
+}
+
+/* setas com efeito glass + glow */
+.carousel button {
+  backdrop-filter: blur(6px);
+  box-shadow: 
+    0 8px 20px rgba(0,0,0,0.18),
+    inset 0 0 0 1px rgba(255,255,255,0.6);
+}
+
+/* efeito hover mais premium */
+.carousel button:hover {
+  box-shadow: 
+    0 12px 30px rgba(0,0,0,0.25),
+    inset 0 0 0 1px rgba(255,255,255,0.9);
+}
+
+/* dots com animação suave */
+.dot {
+  transition: 
+    transform .25s ease, 
+    background .25s ease;
+}
+
+.dot.active {
+  transform: scale(1.6);
+}
 
 </style>
   
