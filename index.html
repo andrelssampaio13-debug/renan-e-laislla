@@ -749,64 +749,29 @@ button:hover,
 </head>
 
 <body>
-<!-- CONVITE DE ABERTURA -->
-<div id="conviteOverlay" style="
-  position:fixed;
-  inset:0;
-  background:#fff;
-  z-index:999999;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:20px;
-">
+<!-- ENVELOPE -->
+<div id="envelopeOverlay">
+  <div class="envelope" id="envelopeBox"></div>
 
-  <div style="
-  max-width:420px;
-  width:100%;
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 20px 50px rgba(0,0,0,0.25);
-">
+  <button class="btn-envelope" onclick="abrirEnvelope()">
+    ✉️ Abrir envelope
+  </button>
+</div>
+
+<!-- CONVITE -->
+<div id="conviteOverlay" style="display:none">
 
   <img 
-    src="imagens/convite.jpg.jpeg" 
+    src="imagens/convite.jpg.jpeg"
+    class="convite-img"
     alt="Convite Renan e Laislla"
-    style="
-      width:100%;
-      display:block;
-    "
   >
 
-  <!-- FAIXA DO BOTÃO INTEGRADA AO CONVITE -->
-  <div style="
-    background:linear-gradient(135deg,#e6c76b,#d4af37);
-    padding:18px;
-    text-align:center;
-  ">
-    <button 
-      onclick="abrirConvite()"
-      style="
-        background:#fff;
-        color:#000;
-        padding:14px 42px;
-        font-size:16px;
-        border:none;
-        border-radius:40px;
-        font-weight:700;
-        letter-spacing:1.2px;
-        cursor:pointer;
-        box-shadow:0 6px 18px rgba(0,0,0,0.25);
-        transition:all .25s ease;
-      "
-      onmouseover="this.style.transform='scale(1.05)'"
-      onmouseout="this.style.transform='scale(1)'"
-    >
-      ✨ ABRIR CONVITE
-    </button>
-  </div>
+  <button class="btn-envelope" onclick="abrirConvite()">
+    ✨ Abrir convite
+  </button>
+
+</div>
 
 </div>
 
