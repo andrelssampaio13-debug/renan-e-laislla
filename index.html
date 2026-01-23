@@ -982,7 +982,11 @@ function renderDots() {
 
 function updateSlides() {
   slides.forEach((s, idx) => {
-    s.classList.toggle("active", idx === i);
+    if (idx === i) {
+      s.classList.add("active");
+    } else {
+      s.classList.remove("active");
+    }
   });
   renderDots();
 }
