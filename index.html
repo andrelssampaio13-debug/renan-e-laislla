@@ -654,143 +654,6 @@ button:hover,
 .dot.active {
   transform: scale(1.6);
 }
-/* ===== OVERLAY ENVELOPE + CONVITE ===== */
-#envelopeOverlay, #conviteOverlay {
-  position: fixed;
-  inset: 0;
-  background: #f7f4ef;
-  z-index: 999999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 20px;
-}
-
-/* Envelope */
-.envelope {
-  width: 320px;
-  height: 220px;
-  background: #e6c76b;
-  border-radius: 12px;
-  position: relative;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-  overflow: hidden;
-}
-
-.envelope::before {
-  content: "";
-  position: absolute;
-  top: -110px;
-  left: 0;
-  width: 100%;
-  height: 220px;
-  background: #d4b85f;
-  transform: rotate(0deg);
-  transform-origin: bottom;
-  transition: transform 1s ease;
-}
-
-.envelope.aberto::before {
-  transform: rotateX(180deg);
-}
-
-/* Botões */
-.btn-envelope {
-  margin-top: 30px;
-  background: var(--dourado);
-  border: none;
-  padding: 14px 40px;
-  border-radius: 40px;
-  font-weight: 600;
-  cursor: pointer;
-  letter-spacing: 1px;
-}
-
-/* Convite imagem */
-.convite-img {
-  max-width: 420px;
-  width: 100%;
-  border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-  margin-bottom: 20px;
-  animation: zoomConvite .8s ease;
-}
-
-@keyframes zoomConvite {
-  from { transform: scale(.85); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-/* ===== ENVELOPE PREMIUM ELEGANTE ===== */
-.envelope-overlay {
-  position: fixed;
-  inset: 0;
-  background: #f7f5f0;
-  z-index: 999999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-}
-
-.envelope-premium {
-  position: relative;
-  width: 380px;
-  height: 240px;
-}
-
-.envelope-body {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #e6c76b, #d4b45c);
-  border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-}
-
-.envelope-flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: linear-gradient(135deg, #f1d98a, #e0c36a);
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  box-shadow: inset 0 -2px 6px rgba(0,0,0,0.15);
-}
-
-.envelope-seal {
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 56px;
-  height: 56px;
-  background: #fff;
-  border-radius: 50%;
-  border: 3px solid #d88fa3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-}
-
-.btn-envelope-premium {
-  background: var(--dourado);
-  color: #000;
-  padding: 14px 46px;
-  font-size: 16px;
-  border: none;
-  border-radius: 40px;
-  font-weight: 600;
-  cursor: pointer;
-  letter-spacing: 1px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
 
 </style>
   
@@ -818,38 +681,64 @@ button:hover,
 </head>
 
 <body>
-<!-- ENVELOPE PREMIUM -->
-<div id="envelopeOverlay" class="envelope-overlay">
+<!-- CONVITE DE ABERTURA -->
+<div id="conviteOverlay" style="
+  position:fixed;
+  inset:0;
+  background:#fff;
+  z-index:999999;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+">
 
-  <div class="envelope-premium">
-    <div class="envelope-flap"></div>
-    <div class="envelope-body"></div>
-
-    <div class="envelope-seal">
-      💍
-    </div>
-  </div>
-
-  <button class="btn-envelope-premium" onclick="abrirEnvelope()">
-    ✨ Abrir convite
-  </button>
-
-</div>
-
-<!-- CONVITE -->
-<div id="conviteOverlay" style="display:none">
+  <div style="
+  max-width:420px;
+  width:100%;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,0.25);
+">
 
   <img 
-    src="imagens/convite.jpg.jpeg"
-    class="convite-img"
+    src="imagens/convite.jpg.jpeg" 
     alt="Convite Renan e Laislla"
+    style="
+      width:100%;
+      display:block;
+    "
   >
 
-  <button class="btn-envelope" onclick="abrirConvite()">
-    ✨ Abrir convite
-  </button>
-
-</div>
+  <!-- FAIXA DO BOTÃO INTEGRADA AO CONVITE -->
+  <div style="
+    background:linear-gradient(135deg,#e6c76b,#d4af37);
+    padding:18px;
+    text-align:center;
+  ">
+    <button 
+      onclick="abrirConvite()"
+      style="
+        background:#fff;
+        color:#000;
+        padding:14px 42px;
+        font-size:16px;
+        border:none;
+        border-radius:40px;
+        font-weight:700;
+        letter-spacing:1.2px;
+        cursor:pointer;
+        box-shadow:0 6px 18px rgba(0,0,0,0.25);
+        transition:all .25s ease;
+      "
+      onmouseover="this.style.transform='scale(1.05)'"
+      onmouseout="this.style.transform='scale(1)'"
+    >
+      ✨ ABRIR CONVITE
+    </button>
+  </div>
 
 </div>
 
@@ -1580,20 +1469,7 @@ function abrirConvite() {
 
 document.body.style.overflow = "hidden";
 </script>
-<script>
-function abrirEnvelope() {
-  const env = document.getElementById("envelopeBox");
-  env.classList.add("aberto");
 
-  setTimeout(() => {
-    document.getElementById("envelopeOverlay").style.display = "none";
-    document.getElementById("conviteOverlay").style.display = "flex";
-  }, 1000); // tempo da animação do envelope
-}
 
-function abrirConvite() {
-  document.getElementById("conviteOverlay").style.display = "none";
-}
-</script>
 </body>
-</html>
+</html>5
