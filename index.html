@@ -749,13 +749,22 @@ button:hover,
 </head>
 
 <body>
-<!-- ENVELOPE -->
-<div id="envelopeOverlay">
-  <div class="envelope" id="envelopeBox"></div>
+<!-- ENVELOPE PREMIUM -->
+<div id="envelopeOverlay" class="envelope-overlay">
 
-  <button class="btn-envelope" onclick="abrirEnvelope()">
-    ✉️ Abrir envelope
+  <div class="envelope-premium">
+    <div class="envelope-flap"></div>
+    <div class="envelope-body"></div>
+
+    <div class="envelope-seal">
+      💍
+    </div>
+  </div>
+
+  <button class="btn-envelope-premium" onclick="abrirEnvelope()">
+    ✨ Abrir convite
   </button>
+
 </div>
 
 <!-- CONVITE -->
