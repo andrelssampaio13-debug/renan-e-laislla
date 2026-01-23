@@ -1502,7 +1502,20 @@ function abrirConvite() {
 
 document.body.style.overflow = "hidden";
 </script>
+<script>
+function abrirEnvelope() {
+  const env = document.getElementById("envelopeBox");
+  env.classList.add("aberto");
 
+  setTimeout(() => {
+    document.getElementById("envelopeOverlay").style.display = "none";
+    document.getElementById("conviteOverlay").style.display = "flex";
+  }, 1000); // tempo da animação do envelope
+}
 
+function abrirConvite() {
+  document.getElementById("conviteOverlay").style.display = "none";
+}
+</script>
 </body>
 </html>
