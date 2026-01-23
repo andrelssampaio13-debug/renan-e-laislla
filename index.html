@@ -576,31 +576,6 @@ button:hover,
   inset: 0;
   margin: 0;
 }
-/* ===== CARROSSEL COM FUNDO DESFOCADO (INSTAGRAM STYLE) ===== */
-.carousel-slide {
-  overflow: hidden;
-}
-
-/* camada de fundo desfocado */
-.carousel-slide::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: var(--bg-img);
-  background-size: cover;
-  background-position: center;
-  filter: blur(25px) brightness(0.7);
-  transform: scale(1.2);
-  z-index: 1;
-}
-
-/* imagem principal na frente */
-.carousel-slide img {
-  position: relative;
-  z-index: 2;
-  object-fit: contain;
-  background: transparent;
-}
 
 </style>
   
