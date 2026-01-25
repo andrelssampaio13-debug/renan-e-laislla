@@ -1491,13 +1491,22 @@ function copiarPix() {
 </div><!-- /pixModal -->
 <script>
 function abrirConvite() {
-  document.getElementById("conviteOverlay").style.display = "none";
-  document.body.style.overflow = "auto";
+  const overlay = document.getElementById("conviteOverlay");
+
+  // fade out suave
+  overlay.style.transition = "opacity .6s ease, transform .6s ease";
+  overlay.style.opacity = "0";
+  overlay.style.transform = "scale(0.96)";
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+    document.body.style.overflow = "auto";
+  }, 600);
 }
 
+// trava scroll enquanto convite está aberto
 document.body.style.overflow = "hidden";
 </script>
-
 
 </body>
 </html>5
