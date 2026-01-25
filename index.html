@@ -654,6 +654,37 @@ button:hover,
 .dot.active {
   transform: scale(1.6);
 }
+/* ===== ANIMAÇÃO PREMIUM DO CONVITE ===== */
+#conviteOverlay {
+  animation: fadeZoomIn .9s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes fadeZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* imagem do convite com zoom suave */
+#conviteOverlay img {
+  animation: conviteImgIn .9s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes conviteImgIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
 </style>
   
