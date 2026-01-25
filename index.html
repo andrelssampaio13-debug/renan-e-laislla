@@ -685,6 +685,10 @@ button:hover,
     transform: scale(1);
   }
 }
+/* ESCONDE TODO O SITE ATÉ ABRIR O CONVITE */
+body.convite-fechado > *:not(#conviteOverlay) {
+  visibility: hidden;
+}
 
 </style>
   
