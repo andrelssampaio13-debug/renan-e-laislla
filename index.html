@@ -1497,7 +1497,7 @@ function copiarPix() {
 function abrirConvite() {
   const overlay = document.getElementById("conviteOverlay");
 
-  overlay.style.transition = "opacity .8s ease, transform .8s ease";
+  overlay.style.transition = "opacity 1.4s ease, transform 1.4s cubic-bezier(.4,0,.2,1)";
   overlay.style.opacity = "0";
   overlay.style.transform = "translateY(100%)"; // DESCE PRA BAIXO
 
