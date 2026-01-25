@@ -1497,15 +1497,15 @@ function copiarPix() {
 function abrirConvite() {
   const overlay = document.getElementById("conviteOverlay");
 
-  // fade out suave
-  overlay.style.transition = "opacity .6s ease, transform .6s ease";
+  overlay.style.transition = "opacity .8s ease, transform .8s ease";
   overlay.style.opacity = "0";
-  overlay.style.transform = "scale(0.96)";
+  overlay.style.transform = "translateY(100%)"; // DESCE PRA BAIXO
 
   setTimeout(() => {
     overlay.style.display = "none";
+    document.body.classList.remove("convite-fechado");
     document.body.style.overflow = "auto";
-  }, 600);
+  }, 800);
 }
 
 // trava scroll enquanto convite está aberto
