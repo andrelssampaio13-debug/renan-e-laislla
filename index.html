@@ -176,42 +176,43 @@ section h2{
   color:#888;
 }
 
-/* ===== CARROSSEL PREMIUM SOBREPOSTO (ESTILO CASAR REAL) ===== */
+/* ===== CARROSSEL PREMIUM LIMPO (ESTILO CASAR) ===== */
 .carousel {
   position: relative;
   max-width: 1000px;
   margin: 40px auto;
   overflow: hidden;
   border-radius: 18px;
+  background: #fff;
 }
 
 .carousel-track {
   position: relative;
   width: 100%;
-  height: 520px;
+  height: 420px;
 }
 
 .carousel-slide {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity .9s ease;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  transition: 
+    opacity .7s ease, 
+    transform .7s cubic-bezier(.4,0,.2,1);
 }
-  
+
 .carousel-slide.active {
   opacity: 1;
   z-index: 3;
   transform: scale(1);
 }
 
-.carousel-slide.prev {
-  opacity: 0;
-  z-index: 1;
-  transform: scale(1.02);
+.carousel-slide:not(.active) {
+  transform: scale(1.04);
 }
 
 .carousel-slide img {
@@ -219,29 +220,42 @@ section h2{
   height: 100%;
   object-fit: contain;
   border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  transition: transform .4s ease, box-shadow .4s ease;
 }
 
-/* SETAS SOBRE A FOTO */
+.carousel-slide img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* SETAS */
 .carousel button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255,255,255,0.85);
-  color: #666;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
   width: 42px;
   height: 42px;
   border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  color: #666;
   font-size: 22px;
   cursor: pointer;
   z-index: 5;
+  backdrop-filter: blur(6px);
+  box-shadow: 
+    0 8px 20px rgba(0,0,0,0.18),
+    inset 0 0 0 1px rgba(255,255,255,0.6);
   transition: all .25s ease;
 }
 
 .carousel button:hover {
-  background: #fff;
   transform: translateY(-50%) scale(1.1);
+  box-shadow: 
+    0 12px 30px rgba(0,0,0,0.25),
+    inset 0 0 0 1px rgba(255,255,255,0.9);
 }
 
 .prev { left: 16px; }
@@ -260,11 +274,12 @@ section h2{
   border-radius: 50%;
   background: #e0e0e0;
   margin: 0 7px;
-  transition: all .25s ease;
+  transition: transform .25s ease, background .25s ease;
 }
 
 .dot.active {
   background: var(--dourado);
+  transform: scale(1.6);
 }
 
 /* ===== GRID ===== */
