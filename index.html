@@ -1166,7 +1166,7 @@ setInterval(() => {
 }, 1000);
 </script>
 <script>
-/* ===== CARROSSEL SOBREPOSTO (ESTILO CASAR) ===== */
+/* ===== CARROSSEL PREMIUM LIMPO ===== */
 let i = 0;
 const slides = document.querySelectorAll(".carousel-slide");
 const prev = document.querySelector(".prev");
@@ -1185,11 +1185,7 @@ function renderDots() {
 
 function updateSlides() {
   slides.forEach((s, idx) => {
-    if (idx === i) {
-      s.classList.add("active");
-    } else {
-      s.classList.remove("active");
-    }
+    s.classList.toggle("active", idx === i);
   });
   renderDots();
 }
